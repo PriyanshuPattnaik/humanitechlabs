@@ -4,12 +4,41 @@
   
     let mounted = false;
     let currentStat = 0;
+    let currentCard = 0;
+    let touchStartX = 0;
+    let touchEndX = 0;
     
     const stats = [
       { number: '5+', label: 'NGOs Empowered' },
       { number: '200+', label: 'Lives Impacted' },
       { number: '100%', label: 'Client Satisfaction' },
       { number: '3x', label: 'Faster Impact' }
+    ];
+
+    const cards = [
+      {
+        id: 'card-1',
+        icon: `<path d="M3 3V21H21" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+               <path d="M9 9L12 6L16 10L20 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>`,
+        title: 'Impact Analytics',
+        subtitle: 'Real-time insights',
+        metric: '+247%'
+      },
+      {
+        id: 'card-2',
+        icon: `<path d="M12 6.5C13.3807 6.5 14.5 5.38071 14.5 4C14.5 2.61929 13.3807 1.5 12 1.5C10.6193 1.5 9.5 2.61929 9.5 4C9.5 5.38071 10.6193 6.5 12 6.5Z" stroke="currentColor" stroke-width="1.5"/>
+               <path d="M20.5 21C20.5 16.8579 16.6421 13.5 12 13.5C7.35786 13.5 3.5 16.8579 3.5 21" stroke="currentColor" stroke-width="1.5"/>`,
+        title: 'Donor Engagement',
+        subtitle: 'Automated outreach',
+        type: 'dots'
+      },
+      {
+        id: 'card-3',
+        icon: `<path d="M12 2L2 7V10C2 16 6 20.88 12 22C18 20.88 22 16 22 10V7L12 2Z" stroke="currentColor" stroke-width="1.5" fill="none"/>`,
+        title: 'Secure Platform',
+        subtitle: 'Enterprise-grade',
+        type: 'security'
+      }
     ];
   
     onMount(() => {
@@ -21,6 +50,33 @@
       
       return () => clearInterval(interval);
     });
+
+    function handleTouchStart(e: TouchEvent) {
+      touchStartX = e.touches[0].clientX;
+    }
+
+    function handleTouchMove(e: TouchEvent) {
+      touchEndX = e.touches[0].clientX;
+    }
+
+    function handleTouchEnd() {
+      const swipeThreshold = 50;
+      const diff = touchStartX - touchEndX;
+
+      if (Math.abs(diff) > swipeThreshold) {
+        if (diff > 0) {
+          // Swipe left - next card
+          currentCard = (currentCard + 1) % cards.length;
+        } else {
+          // Swipe right - previous card
+          currentCard = (currentCard - 1 + cards.length) % cards.length;
+        }
+      }
+    }
+
+    function goToCard(index: number) {
+      currentCard = index;
+    }
   </script>
   
   <section class="hero">
@@ -34,7 +90,8 @@
       <!-- Hero Visual - Moved to top for mobile -->
       <div class="hero-visual">
         {#if mounted}
-          <div class="visual-container" in:fly={{ x: 50, duration: 1200, delay: 600 }}>
+          <!-- Desktop View -->
+          <div class="visual-container desktop-view" in:fly={{ x: 50, duration: 1200, delay: 600 }}>
             <div class="floating-card card-1" in:fly={{ y: 20, duration: 1000, delay: 1200 }}>
               <div class="card-icon">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -81,6 +138,55 @@
                 <div class="security-ring"></div>
                 <div class="security-dot"></div>
               </div>
+            </div>
+          </div>
+
+          <!-- Mobile Carousel View -->
+          <div class="mobile-carousel" 
+               on:touchstart={handleTouchStart}
+               on:touchmove={handleTouchMove}
+               on:touchend={handleTouchEnd}>
+            <div class="carousel-container">
+              {#each cards as card, index}
+                <div class="carousel-card" 
+                     class:active={currentCard === index}
+                     style="transform: translateX({(index - currentCard) * 100}%)">
+                  <div class="card-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                      {@html card.icon}
+                    </svg>
+                  </div>
+                  <div class="card-content">
+                    <div class="card-title">{card.title}</div>
+                    <div class="card-subtitle">{card.subtitle}</div>
+                  </div>
+                  {#if card.metric}
+                    <div class="card-metric">{card.metric}</div>
+                  {:else if card.type === 'dots'}
+                    <div class="engagement-dots">
+                      <div class="dot active"></div>
+                      <div class="dot active"></div>
+                      <div class="dot"></div>
+                    </div>
+                  {:else if card.type === 'security'}
+                    <div class="security-indicator">
+                      <div class="security-ring"></div>
+                      <div class="security-dot"></div>
+                    </div>
+                  {/if}
+                </div>
+              {/each}
+            </div>
+            
+            <!-- Carousel Indicators -->
+            <div class="carousel-indicators">
+              {#each cards as _, index}
+                <button 
+                  class="carousel-indicator" 
+                  class:active={currentCard === index}
+                  on:click={() => goToCard(index)}>
+                </button>
+              {/each}
             </div>
           </div>
         {/if}
@@ -552,10 +658,6 @@
         order: -1;
         height: 400px;
       }
-      
-      .hero-description {
-        max-width: 100%;
-      }
     }
   
     @media (max-width: 768px) {
@@ -566,18 +668,20 @@
   
       .container {
         padding: 0 20px;
+        min-height: auto;
         gap: 40px;
       }
   
       h1 {
-        font-size: 42px;
+        font-size: 36px;
         line-height: 1.2;
         margin-bottom: 24px;
       }
   
       .hero-description {
-        font-size: 18px;
+        font-size: 16px;
         margin-bottom: 32px;
+        max-width: 100%;
       }
   
       .hero-actions {
@@ -591,7 +695,13 @@
       .cta-secondary {
         width: 100%;
         justify-content: center;
-        max-width: 300px;
+        max-width: 280px;
+        padding: 14px 24px;
+        font-size: 15px;
+      }
+  
+      .hero-stats {
+        margin-bottom: 20px;
       }
   
       .stats-container {
@@ -608,26 +718,53 @@
         font-size: 28px;
       }
   
+      .stat-label {
+        font-size: 12px;
+      }
+  
       .hero-visual {
-        height: 350px;
+        height: 300px;
+        order: -1;
       }
   
-      .card-1 {
-        top: 20px;
-        right: 20px;
-        width: 180px;
+      /* Hide desktop view, show mobile carousel */
+      .desktop-view {
+        display: none !important;
       }
   
-      .card-2 {
-        top: 150px;
-        left: 20px;
-        width: 170px;
+      .mobile-carousel {
+        display: block !important;
       }
   
-      .card-3 {
-        bottom: 20px;
-        right: 60px;
-        width: 160px;
+      .carousel-card {
+        width: 200px;
+        min-height: 120px;
+        padding: 16px;
+      }
+  
+      .carousel-card .card-icon {
+        width: 32px;
+        height: 32px;
+        margin-bottom: 8px;
+      }
+  
+      .carousel-card .card-title {
+        font-size: 12px;
+        margin-bottom: 2px;
+      }
+  
+      .carousel-card .card-subtitle {
+        font-size: 10px;
+        margin-bottom: 8px;
+      }
+  
+      .carousel-card .card-metric {
+        font-size: 16px;
+        margin-top: auto;
+      }
+  
+      .carousel-indicators {
+        bottom: 16px;
       }
     }
   
@@ -642,12 +779,12 @@
       }
   
       h1 {
-        font-size: 32px;
+        font-size: 28px;
         margin-bottom: 20px;
       }
   
       .hero-description {
-        font-size: 16px;
+        font-size: 15px;
         margin-bottom: 28px;
       }
   
@@ -663,16 +800,13 @@
   
       .cta-primary,
       .cta-secondary {
-        padding: 14px 24px;
-        font-size: 15px;
-        max-width: 280px;
+        max-width: 100%;
+        padding: 12px 20px;
+        font-size: 14px;
       }
   
       .stats-container {
         gap: 24px;
-        flex-wrap: wrap;
-        height: auto;
-        justify-content: center;
       }
   
       .stat-item {
@@ -684,50 +818,40 @@
       }
   
       .stat-label {
-        font-size: 12px;
-      }
-  
-      .hero-visual {
-        height: 280px;
-        order: -1;
-      }
-  
-      .visual-container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 12px;
-        height: auto;
-      }
-  
-      .floating-card {
-        position: relative !important;
-        top: auto !important;
-        left: auto !important;
-        right: auto !important;
-        bottom: auto !important;
-        width: 100% !important;
-        max-width: 260px;
-        padding: 18px;
-        margin: 0;
-      }
-  
-      .card-icon {
-        width: 40px;
-        height: 40px;
-        margin-bottom: 12px;
-      }
-  
-      .card-title {
-        font-size: 14px;
-      }
-  
-      .card-subtitle {
         font-size: 11px;
       }
   
-      .card-metric {
-        font-size: 20px;
+      .hero-visual {
+        height: 250px;
+      }
+  
+      .carousel-card {
+        width: 180px;
+        min-height: 100px;
+        padding: 12px;
+      }
+  
+      .carousel-card .card-icon {
+        width: 28px;
+        height: 28px;
+        margin-bottom: 6px;
+      }
+  
+      .carousel-card .card-title {
+        font-size: 11px;
+      }
+  
+      .carousel-card .card-subtitle {
+        font-size: 9px;
+        margin-bottom: 6px;
+      }
+  
+      .carousel-card .card-metric {
+        font-size: 14px;
+      }
+  
+      .carousel-indicators {
+        bottom: 12px;
       }
     }
   
@@ -742,29 +866,16 @@
       }
   
       h1 {
-        font-size: 28px;
+        font-size: 24px;
       }
   
       .hero-description {
-        font-size: 15px;
-        margin-bottom: 24px;
+        font-size: 14px;
       }
   
       .hero-badge {
         padding: 8px 12px;
         font-size: 12px;
-        margin-bottom: 20px;
-      }
-  
-      .hero-actions {
-        margin-bottom: 28px;
-      }
-  
-      .cta-primary,
-      .cta-secondary {
-        padding: 12px 20px;
-        font-size: 14px;
-        max-width: 100%;
       }
   
       .stats-container {
@@ -780,34 +891,36 @@
       }
   
       .stat-label {
-        font-size: 11px;
-      }
-  
-      .hero-visual {
-        height: 240px;
-      }
-  
-      .floating-card {
-        padding: 16px;
-        max-width: 240px;
-      }
-  
-      .card-icon {
-        width: 36px;
-        height: 36px;
-        margin-bottom: 10px;
-      }
-  
-      .card-title {
-        font-size: 13px;
-      }
-  
-      .card-subtitle {
         font-size: 10px;
       }
   
-      .card-metric {
-        font-size: 18px;
+      .carousel-card {
+        width: 160px;
+        min-height: 90px;
+        padding: 10px;
+      }
+  
+      .carousel-card .card-icon {
+        width: 24px;
+        height: 24px;
+        margin-bottom: 4px;
+      }
+  
+      .carousel-card .card-title {
+        font-size: 10px;
+      }
+  
+      .carousel-card .card-subtitle {
+        font-size: 8px;
+        margin-bottom: 4px;
+      }
+  
+      .carousel-card .card-metric {
+        font-size: 12px;
+      }
+  
+      .carousel-indicators {
+        bottom: 8px;
       }
     }
   
@@ -891,5 +1004,75 @@
       .card-metric {
         font-size: 16px;
       }
+    }
+  
+    /* Mobile Carousel Styles */
+    .mobile-carousel {
+      display: none;
+      width: 100%;
+      height: 100%;
+      position: relative;
+      overflow: hidden;
+    }
+  
+    .carousel-container {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  
+    .carousel-card {
+      position: absolute;
+      width: 200px;
+      min-height: 120px;
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      padding: 16px;
+      transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      opacity: 0.6;
+      transform: scale(0.9);
+    }
+  
+    .carousel-card.active {
+      opacity: 1;
+      transform: scale(1);
+    }
+  
+    .carousel-indicators {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 8px;
+      z-index: 10;
+    }
+  
+    .carousel-indicator {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.3);
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      padding: 0;
+    }
+  
+    .carousel-indicator.active {
+      background: #fff;
+      transform: scale(1.2);
+    }
+  
+    .carousel-indicator:hover {
+      background: rgba(255, 255, 255, 0.6);
     }
   </style>
