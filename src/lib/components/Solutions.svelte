@@ -162,8 +162,15 @@
         id="solution-{i}"
         on:mouseenter={() => handleMouseEnter(i)}
         on:mouseleave={handleMouseLeave}
-        role="article"
+        on:keydown={(e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            handleMouseEnter(i);
+          }
+        }}
+        role="button"
         tabindex="0"
+        aria-label={`View solution: ${solution.title}`}
       >
         <div class="solution-card">
           <div class="card-header">

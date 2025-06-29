@@ -1,8 +1,16 @@
-<script>
+<script lang="ts">
     import { onMount } from 'svelte';
     
-    /** @type {{ id: number, x: number, y: number, connections: number[], pulse: boolean }[]} */
-    let nodes = [];
+    type Node = {
+      id: number;
+      x: number;
+      y: number;
+      connections: number[];
+      pulse: boolean;
+      type?: 'hub' | 'research' | 'ngo' | 'satellite';
+    };
+    
+    let nodes: Node[] = [];
     let visible = false;
     let networkActive = false;
     
@@ -79,11 +87,11 @@
     let currentMilestone = 0;
   
     // Auto-advance milestones
-    let milestoneInterval;
+    let milestoneInterval: ReturnType<typeof setInterval> | undefined;
   
     onMount(() => {
       // Generate more sophisticated network nodes
-      const centerNodes = [
+      const centerNodes: { x: number; y: number; type: 'hub' | 'research' | 'ngo' }[] = [
         { x: 50, y: 50, type: 'hub' },
         { x: 25, y: 25, type: 'research' },
         { x: 75, y: 25, type: 'research' },
@@ -123,7 +131,7 @@
           node.connections = targets.filter(t => t !== node.id);
         } else if (node.type === 'research' || node.type === 'ngo') {
           // Connect to hub and some satellites
-          node.connections = [0, ...Array(2).fill().map(() => 
+          node.connections = [0, ...Array(2).fill(0).map(() => 
             Math.floor(Math.random() * 15) + 5
           )];
         } else {
@@ -156,7 +164,7 @@
       };
     });
   
-    function getNodeSize(node) {
+    function getNodeSize(node: Node) {
       switch(node.type) {
         case 'hub': return '16px';
         case 'research':
@@ -165,7 +173,7 @@
       }
     }
   
-    function getNodeColor(node) {
+    function getNodeColor(node: Node) {
       switch(node.type) {
         case 'hub': return '#000000';
         case 'research': return '#4F46E5';
@@ -174,7 +182,7 @@
       }
     }
   
-    function handleCardInteraction(index) {
+    function handleCardInteraction(index: number) {
       activeCard = activeCard === index ? -1 : index;
       
       // Trigger network pulse effect
@@ -324,8 +332,16 @@
               class="timeline-item" 
               class:active={currentMilestone === i}
               on:click={() => currentMilestone = i}
-              role="button"
+              on:keydown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault();
+                  currentMilestone = i;
+                }
+              }}
+              role="tab"
               tabindex="0"
+              aria-label={`View milestone: ${milestone.title}`}
+              aria-selected={currentMilestone === i}
             >
               <div class="timeline-year">{milestone.year}</div>
               <div class="timeline-content">

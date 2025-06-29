@@ -1,5 +1,5 @@
 import "clsx";
-import { h as ensure_array_like, d as attr_class, i as attr_style, f as escape_html, j as attr, c as pop, p as push, k as stringify } from "../../chunks/index.js";
+import { i as ensure_array_like, d as attr_class, j as attr_style, h as escape_html, e as attr, c as pop, p as push, k as stringify } from "../../chunks/index.js";
 function CallToAction($$payload, $$props) {
   push();
   const ctaButtons = [
@@ -23,151 +23,6 @@ function CallToAction($$payload, $$props) {
     $$payload.out += `${$$body}`;
   }
   $$payload.out += `</textarea></div> <button type="submit" class="submit-button primary svelte-1kg5an3">Send Message <div class="button-shine svelte-1kg5an3"></div></button></form></div></div></section>`;
-  pop();
-}
-function Collaboration($$payload, $$props) {
-  push();
-  let nodes = [];
-  let visible = false;
-  let networkActive = false;
-  const partnerships = [
-    {
-      type: "Global Research Consortium",
-      icon: "🧬",
-      description: "Leading breakthrough AI research with 50+ universities across 20 countries. From MIT to IIT, we're pushing the boundaries of ethical AI.",
-      impact: "To Lead 100+ Research Collaborations by 2025",
-      projects: 45,
-      gradient: "from-blue-600 to-purple-600"
-    },
-    {
-      type: "Open Source Accelerator",
-      icon: "⚡",
-      description: "Democratizing access to cutting-edge technology. Our open-source initiatives have been adopted by 10,000+ developers worldwide.",
-      impact: "20+ developers engaged",
-      projects: 120,
-      gradient: "from-green-600 to-teal-600"
-    },
-    {
-      type: "Non-Profit Tech Alliance",
-      icon: "🌍",
-      description: "Empowering 5+ NGOs with  technology solutions, half the cost. We're building everything from disaster response systems to educational platforms.",
-      impact: "5+ NGOs empowered",
-      projects: 85,
-      gradient: "from-orange-600 to-red-600"
-    },
-    {
-      type: "Innovation Hubs Network",
-      icon: "🚀",
-      description: "Creating tech-for-good ecosystems in emerging markets. Building sustainable innovation centers that solve local challenges.",
-      impact: "15 countries reached",
-      projects: 30,
-      gradient: "from-purple-600 to-pink-600"
-    }
-  ];
-  const milestones = [
-    {
-      year: "2023",
-      title: "Foundation & First Impact",
-      description: "Launched with our first AI healthcare project, serving 100+ patients in rural India",
-      metric: "100+ patients served"
-    },
-    {
-      year: "2024",
-      title: "Global Expansion",
-      description: "Expanded to 2 countries with agricultural IoT solutions improving crop yields by 40%",
-      metric: "40% yield increase"
-    },
-    {
-      year: "2025",
-      title: "Open Source Revolution",
-      description: "Aim to Release 25+ open-source tools adopted by universities and NGOs worldwide",
-      metric: "25+ tools"
-    },
-    {
-      year: "2026",
-      title: "Ecosystem Leadership",
-      description: "Become the leading tech-for-good platform with 100+ active collaborations",
-      metric: "100+ collaborations"
-    }
-  ];
-  const partnerLogos = [
-    { name: "Unmute.cz", type: "Research" },
-    { name: "Yahmi", type: "Research" },
-    {
-      name: "Young Scientiscts of India",
-      type: "Research"
-    }
-  ];
-  let activeCard = -1;
-  let currentMilestone = 0;
-  function getNodeSize(node) {
-    switch (node.type) {
-      case "hub":
-        return "16px";
-      case "research":
-      case "ngo":
-        return "12px";
-      default:
-        return "8px";
-    }
-  }
-  function getNodeColor(node) {
-    switch (node.type) {
-      case "hub":
-        return "#000000";
-      case "research":
-        return "#4F46E5";
-      case "ngo":
-        return "#059669";
-      default:
-        return "#6B7280";
-    }
-  }
-  const each_array = ensure_array_like(nodes);
-  const each_array_2 = ensure_array_like(partnerships);
-  const each_array_3 = ensure_array_like(partnerLogos);
-  const each_array_4 = ensure_array_like(milestones);
-  $$payload.out += `<section${attr_class("collaboration svelte-1eu0q8e", void 0, {
-    "visible": visible,
-    "network-active": networkActive
-  })}><div class="container svelte-1eu0q8e"><div class="header-section svelte-1eu0q8e"><h2 class="section-title svelte-1eu0q8e"><span class="gradient-text svelte-1eu0q8e">Building the Future</span> <span class="highlight-text svelte-1eu0q8e">Together</span></h2> <p class="section-description svelte-1eu0q8e">We don't just collaborate—we create ecosystems. Our global network of <strong class="svelte-1eu0q8e">500+ partners</strong> spans research institutions, NGOs, and innovation hubs, 
-          delivering technology that transforms <strong class="svelte-1eu0q8e">2.5 million lives</strong> annually.</p> <div class="impact-stats svelte-1eu0q8e"><div class="stat-item svelte-1eu0q8e"><div class="stat-number svelte-1eu0q8e">500+</div> <div class="stat-label svelte-1eu0q8e">Global Partners</div></div> <div class="stat-item svelte-1eu0q8e"><div class="stat-number svelte-1eu0q8e">2.5M+</div> <div class="stat-label svelte-1eu0q8e">Lives Impacted</div></div> <div class="stat-item svelte-1eu0q8e"><div class="stat-number svelte-1eu0q8e">20</div> <div class="stat-label svelte-1eu0q8e">Countries</div></div> <div class="stat-item svelte-1eu0q8e"><div class="stat-number svelte-1eu0q8e">100%</div> <div class="stat-label svelte-1eu0q8e">Open Source</div></div></div></div> <div class="network-visualization svelte-1eu0q8e"><div class="network-bg svelte-1eu0q8e"></div> <!--[-->`;
-  for (let $$index_1 = 0, $$length = each_array.length; $$index_1 < $$length; $$index_1++) {
-    let node = each_array[$$index_1];
-    const each_array_1 = ensure_array_like(node.connections);
-    $$payload.out += `<div${attr_class("node svelte-1eu0q8e", void 0, {
-      "pulse": node.pulse,
-      "hub": node.type === "hub",
-      "active": networkActive
-    })}${attr_style(` left: ${stringify(node.x)}%; top: ${stringify(node.y)}%; width: ${stringify(getNodeSize(node))}; height: ${stringify(getNodeSize(node))}; background: ${stringify(getNodeColor(node))}; `)}><!--[-->`;
-    for (let $$index = 0, $$length2 = each_array_1.length; $$index < $$length2; $$index++) {
-      let connection = each_array_1[$$index];
-      if (nodes[connection]) {
-        $$payload.out += "<!--[-->";
-        $$payload.out += `<svg${attr_class("connection-line svelte-1eu0q8e", void 0, { "active": networkActive })}><line x1="0" y1="0"${attr("x2", `${stringify((nodes[connection].x - node.x) * 8)}px`)}${attr("y2", `${stringify((nodes[connection].y - node.y) * 4)}px`)} stroke="rgba(0,0,0,0.1)" stroke-width="1" class="connection-path svelte-1eu0q8e"></line></svg>`;
-      } else {
-        $$payload.out += "<!--[!-->";
-      }
-      $$payload.out += `<!--]-->`;
-    }
-    $$payload.out += `<!--]--></div>`;
-  }
-  $$payload.out += `<!--]--> <div class="network-labels svelte-1eu0q8e"><div class="label research-label svelte-1eu0q8e">Research Institutions</div> <div class="label ngo-label svelte-1eu0q8e">NGO Partners</div> <div class="label hub-label svelte-1eu0q8e">Humanitech Hub</div></div></div> <div class="partnership-grid svelte-1eu0q8e"><!--[-->`;
-  for (let i = 0, $$length = each_array_2.length; i < $$length; i++) {
-    let partnership = each_array_2[i];
-    $$payload.out += `<div${attr_class("partnership-card svelte-1eu0q8e", void 0, { "active": activeCard === i })} role="button" tabindex="0"><div class="card-header svelte-1eu0q8e"><span class="partnership-icon svelte-1eu0q8e">${escape_html(partnership.icon)}</span> <div class="card-metrics svelte-1eu0q8e"><div class="metric-item svelte-1eu0q8e"><span class="metric-number svelte-1eu0q8e">${escape_html(partnership.projects)}</span> <span class="metric-label svelte-1eu0q8e">Projects</span></div></div></div> <h3 class="card-title svelte-1eu0q8e">${escape_html(partnership.type)}</h3> <div${attr_class(`impact-badge bg-gradient-to-r ${stringify(partnership.gradient)}`, "svelte-1eu0q8e")}>${escape_html(partnership.impact)}</div> <div${attr_class("card-content svelte-1eu0q8e", void 0, { "expanded": activeCard === i })}><p class="partnership-description svelte-1eu0q8e">${escape_html(partnership.description)}</p> <button class="learn-more-btn svelte-1eu0q8e">Explore Partnership →</button></div></div>`;
-  }
-  $$payload.out += `<!--]--></div> <div class="partners-showcase svelte-1eu0q8e"><h3 class="partners-title svelte-1eu0q8e">Trusted by Global Leaders</h3> <div class="partner-logos svelte-1eu0q8e"><!--[-->`;
-  for (let i = 0, $$length = each_array_3.length; i < $$length; i++) {
-    let partner = each_array_3[i];
-    $$payload.out += `<div class="logo-card svelte-1eu0q8e"${attr_style(`animation-delay: ${stringify(i * 0.1)}s`)}><div class="logo-placeholder svelte-1eu0q8e"><div class="logo-content svelte-1eu0q8e"><div class="partner-name svelte-1eu0q8e">${escape_html(partner.name)}</div> <div class="partner-type svelte-1eu0q8e">${escape_html(partner.type)}</div></div></div></div>`;
-  }
-  $$payload.out += `<!--]--></div></div> <div class="timeline-section svelte-1eu0q8e"><h3 class="timeline-title svelte-1eu0q8e">Our Journey of Impact</h3> <div class="timeline svelte-1eu0q8e"><!--[-->`;
-  for (let i = 0, $$length = each_array_4.length; i < $$length; i++) {
-    let milestone = each_array_4[i];
-    $$payload.out += `<div${attr_class("timeline-item svelte-1eu0q8e", void 0, { "active": currentMilestone === i })} role="button" tabindex="0"><div class="timeline-year svelte-1eu0q8e">${escape_html(milestone.year)}</div> <div class="timeline-content svelte-1eu0q8e"><h4 class="milestone-title svelte-1eu0q8e">${escape_html(milestone.title)}</h4> <p class="milestone-description svelte-1eu0q8e">${escape_html(milestone.description)}</p> <div class="milestone-metric svelte-1eu0q8e">${escape_html(milestone.metric)}</div></div></div>`;
-  }
-  $$payload.out += `<!--]--></div></div> <div class="cta-section svelte-1eu0q8e"><h3 class="cta-title svelte-1eu0q8e">Ready to Shape Tomorrow?</h3> <p class="cta-description svelte-1eu0q8e">Join our ecosystem of innovators, researchers, and changemakers.</p> <div class="cta-buttons svelte-1eu0q8e"><button class="cta-primary svelte-1eu0q8e">Start Collaboration</button> <button class="cta-secondary svelte-1eu0q8e">Explore Partnerships</button></div></div></div></section>`;
   pop();
 }
 function Hero($$payload, $$props) {
@@ -222,7 +77,7 @@ function Research($$payload, $$props) {
       title: "Assistive Technology",
       subtitle: "Technology Without Barriers",
       description: "Creating IoT prosthetics, AI-powered sign language recognition, and voice-enabled systems that ensure technology serves everyone, regardless of ability.",
-      impact: "Working on 5+ Accesibility Solutions",
+      impact: "Working on 5+ Accessibility Solutions",
       domains: ["Accessibility", "IoT", "Inclusion"],
       icon: "🤝"
     },
@@ -264,18 +119,18 @@ function Research($$payload, $$props) {
     }
   ];
   const each_array = ensure_array_like(researchAreas);
-  $$payload.out += `<section class="research svelte-1dlek2y"><div class="research-background svelte-1dlek2y"${attr_style(`transform: translateY(${stringify(scrollY * 0.3)}px)`)}></div> <div class="geometric-elements svelte-1dlek2y"><div class="floating-element svelte-1dlek2y"${attr_style(`transform: translateY(${stringify(scrollY * -0.2)}px) rotate(${stringify(scrollY * 0.1)}deg)`)}></div> <div class="floating-element-2 svelte-1dlek2y"${attr_style(`transform: translateY(${stringify(scrollY * 0.15)}px) rotate(${stringify(scrollY * -0.08)}deg)`)}></div></div> <div class="container svelte-1dlek2y"><div class="research-hero svelte-1dlek2y"><div class="hero-badge svelte-1dlek2y"><span class="badge-text svelte-1dlek2y">BREAKTHROUGH RESEARCH</span></div> <h2 class="section-title svelte-1dlek2y">BUILDING THE FUTURE OF <span class="highlight-text svelte-1dlek2y">HUMAN-CENTERED TECH</span></h2> <p class="hero-subtitle svelte-1dlek2y">Where cutting-edge research meets real-world impact. We architect solutions that don't just push technological boundaries—they uplift humanity.</p></div> <div class="research-grid svelte-1dlek2y"><!--[-->`;
+  $$payload.out += `<section class="research svelte-1qi257a"><div class="research-background svelte-1qi257a"${attr_style(`transform: translateY(${stringify(scrollY * 0.3)}px)`)}></div> <div class="geometric-elements svelte-1qi257a"><div class="floating-element svelte-1qi257a"${attr_style(`transform: translateY(${stringify(scrollY * -0.2)}px) rotate(${stringify(scrollY * 0.1)}deg)`)}></div> <div class="floating-element-2 svelte-1qi257a"${attr_style(`transform: translateY(${stringify(scrollY * 0.15)}px) rotate(${stringify(scrollY * -0.08)}deg)`)}></div></div> <div class="container svelte-1qi257a"><div class="research-hero svelte-1qi257a"><div class="hero-badge svelte-1qi257a"><span class="badge-text svelte-1qi257a">BREAKTHROUGH RESEARCH</span></div> <h2 class="section-title svelte-1qi257a">BUILDING THE FUTURE OF <span class="highlight-text svelte-1qi257a">HUMAN-CENTERED TECH</span></h2> <p class="hero-subtitle svelte-1qi257a">Where cutting-edge research meets real-world impact. We architect solutions that don't just push technological boundaries—they uplift humanity.</p></div> <div class="research-grid svelte-1qi257a"><!--[-->`;
   for (let index = 0, $$length = each_array.length; index < $$length; index++) {
     let area = each_array[index];
     const each_array_1 = ensure_array_like(area.domains);
-    $$payload.out += `<div${attr_class("research-card svelte-1dlek2y", void 0, { "active": activeCard === area.id })}${attr_style(`animation-delay: ${stringify(index * 0.1)}s`)}><div class="card-content svelte-1dlek2y"><div class="card-header svelte-1dlek2y"><div class="card-icon svelte-1dlek2y">${escape_html(area.icon)}</div> <div class="card-impact svelte-1dlek2y">${escape_html(area.impact)}</div></div> <h3 class="card-title svelte-1dlek2y">${escape_html(area.title)}</h3> <p class="card-subtitle svelte-1dlek2y">${escape_html(area.subtitle)}</p> <p class="card-description svelte-1dlek2y">${escape_html(area.description)}</p> <div class="card-domains svelte-1dlek2y"><!--[-->`;
+    $$payload.out += `<div${attr_class("research-card svelte-1qi257a", void 0, { "active": activeCard === area.id })}${attr_style(`animation-delay: ${stringify(index * 0.1)}s`)} role="button" tabindex="0"><div class="card-content svelte-1qi257a"><div class="card-header svelte-1qi257a"><div class="card-icon svelte-1qi257a" role="img"${attr("aria-label", area.title)}>${escape_html(area.icon)}</div> <div class="card-impact svelte-1qi257a">${escape_html(area.impact)}</div></div> <h3 class="card-title svelte-1qi257a">${escape_html(area.title)}</h3> <p class="card-subtitle svelte-1qi257a">${escape_html(area.subtitle)}</p> <p class="card-description svelte-1qi257a">${escape_html(area.description)}</p> <div class="card-domains svelte-1qi257a"><!--[-->`;
     for (let $$index = 0, $$length2 = each_array_1.length; $$index < $$length2; $$index++) {
       let domain = each_array_1[$$index];
-      $$payload.out += `<span class="domain-tag svelte-1dlek2y">${escape_html(domain)}</span>`;
+      $$payload.out += `<span class="domain-tag svelte-1qi257a">${escape_html(domain)}</span>`;
     }
-    $$payload.out += `<!--]--></div> <div class="card-arrow svelte-1dlek2y"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" class="svelte-1dlek2y"><path d="M4 10H16M16 10L12 6M16 10L12 14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svelte-1dlek2y"></path></svg></div></div> <div class="card-glow svelte-1dlek2y"></div></div>`;
+    $$payload.out += `<!--]--></div> <div class="card-arrow svelte-1qi257a"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true" class="svelte-1qi257a"><path d="M4 10H16M16 10L12 6M16 10L12 14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svelte-1qi257a"></path></svg></div></div> <div class="card-glow svelte-1qi257a"></div></div>`;
   }
-  $$payload.out += `<!--]--></div> <div class="research-cta svelte-1dlek2y"><div class="cta-content svelte-1dlek2y"><h3 class="cta-title svelte-1dlek2y">Ready to Shape Tomorrow?</h3> <p class="cta-description svelte-1dlek2y">Join our global research community and help build technology that matters.</p> <div class="cta-buttons svelte-1dlek2y"><button class="cta-primary svelte-1dlek2y">Explore Open Research</button> <button class="cta-secondary svelte-1dlek2y">Collaborate with Us</button></div></div></div></div></section>`;
+  $$payload.out += `<!--]--></div> <div class="research-cta svelte-1qi257a"><div class="cta-content svelte-1qi257a"><h3 class="cta-title svelte-1qi257a">Ready to Shape Tomorrow?</h3> <p class="cta-description svelte-1qi257a">Join our global research community and help build technology that matters.</p> <div class="cta-buttons svelte-1qi257a"><button class="cta-primary svelte-1qi257a">Explore Open Research</button> <button class="cta-secondary svelte-1qi257a">Collaborate with Us</button></div></div></div></div></section>`;
   pop();
 }
 function ImpactDomains($$payload, $$props) {
@@ -378,28 +233,28 @@ function ImpactDomains($$payload, $$props) {
   let hoveredCard = null;
   let selectedDomain = null;
   const each_array = ensure_array_like(domains);
-  $$payload.out += `<section class="impact-domains svelte-bcddwm"><div class="section-header svelte-bcddwm"><span class="section-badge svelte-bcddwm">IMPACT DOMAINS</span> <h2 class="svelte-bcddwm">Solving Tomorrow's<br class="svelte-bcddwm"/><span class="gradient-text svelte-bcddwm">Challenges Today</span></h2> <p class="section-subtitle svelte-bcddwm">Six domains. Infinite possibilities. Real impact.</p></div> <div class="domains-grid svelte-bcddwm"><!--[-->`;
+  $$payload.out += `<section class="impact-domains svelte-14xc0di"><div class="section-header svelte-14xc0di"><span class="section-badge svelte-14xc0di">IMPACT DOMAINS</span> <h2 class="svelte-14xc0di">Solving Tomorrow's<br class="svelte-14xc0di"/><span class="gradient-text svelte-14xc0di">Challenges Today</span></h2> <p class="section-subtitle svelte-14xc0di">Six domains. Infinite possibilities. Real impact.</p></div> <div class="domains-grid svelte-14xc0di"><!--[-->`;
   for (let i = 0, $$length = each_array.length; i < $$length; i++) {
     let domain = each_array[i];
-    $$payload.out += `<div${attr_class("domain-card svelte-bcddwm", void 0, {
+    $$payload.out += `<div${attr_class("domain-card svelte-14xc0di", void 0, {
       "visible": visibleCards.has(i),
       "expanded": selectedDomain === i
-    })}${attr("id", `domain-${stringify(i)}`)}${attr_style(`--delay: ${stringify(i * 0.1)}s`)}><div${attr_class(`card-background bg-gradient-to-br ${stringify(domain.gradient)}`, "svelte-bcddwm")}></div> <div class="card-content svelte-bcddwm"><div class="card-main svelte-bcddwm"><div class="icon-container svelte-bcddwm"><span class="domain-icon svelte-bcddwm">${escape_html(domain.icon)}</span> <div class="pulse-ring svelte-bcddwm"></div></div> <div class="content-text svelte-bcddwm"><span class="tagline svelte-bcddwm">${escape_html(domain.tagline)}</span> <h3 class="domain-title svelte-bcddwm">${escape_html(domain.title)}</h3> <p class="domain-description svelte-bcddwm">${escape_html(domain.description)}</p></div></div> <div class="metrics-preview svelte-bcddwm"><div class="metric-item svelte-bcddwm"><span class="metric-value svelte-bcddwm">${escape_html(domain.metrics.projects)}</span> <span class="metric-label svelte-bcddwm">Projects</span></div> <div class="progress-container svelte-bcddwm"><div class="progress-track svelte-bcddwm"><div class="progress-fill svelte-bcddwm"${attr_style(`width: ${stringify(visibleCards.has(i) ? domain.metrics.progress : 0)}%`)}></div></div> <span class="progress-label svelte-bcddwm">${escape_html(domain.metrics.progress)}%</span></div></div> `;
+    })}${attr("id", `domain-${stringify(i)}`)}${attr_style(`--delay: ${stringify(i * 0.1)}s`)} role="button" tabindex="0"><div${attr_class(`card-background bg-gradient-to-br ${stringify(domain.gradient)}`, "svelte-14xc0di")}></div> <div class="card-content svelte-14xc0di"><div class="card-main svelte-14xc0di"><div class="icon-container svelte-14xc0di"><span class="domain-icon svelte-14xc0di">${escape_html(domain.icon)}</span> <div class="pulse-ring svelte-14xc0di"></div></div> <div class="content-text svelte-14xc0di"><span class="tagline svelte-14xc0di">${escape_html(domain.tagline)}</span> <h3 class="domain-title svelte-14xc0di">${escape_html(domain.title)}</h3> <p class="domain-description svelte-14xc0di">${escape_html(domain.description)}</p></div></div> <div class="metrics-preview svelte-14xc0di"><div class="metric-item svelte-14xc0di"><span class="metric-value svelte-14xc0di">${escape_html(domain.metrics.projects)}</span> <span class="metric-label svelte-14xc0di">Projects</span></div> <div class="progress-container svelte-14xc0di"><div class="progress-track svelte-14xc0di"><div class="progress-fill svelte-14xc0di"${attr_style(`width: ${stringify(visibleCards.has(i) ? domain.metrics.progress : 0)}%`)}></div></div> <span class="progress-label svelte-14xc0di">${escape_html(domain.metrics.progress)}%</span></div></div> `;
     if (selectedDomain === i) {
       $$payload.out += "<!--[-->";
       const each_array_1 = ensure_array_like(domain.technologies);
-      $$payload.out += `<div class="expanded-content svelte-bcddwm"><div class="details-section svelte-bcddwm"><p class="detailed-description svelte-bcddwm">${escape_html(domain.details)}</p> <div class="impact-metric svelte-bcddwm"><span class="impact-number svelte-bcddwm">${escape_html(domain.metrics.impact)}</span> <span class="impact-label svelte-bcddwm">Global Impact</span></div> <div class="tech-stack svelte-bcddwm"><span class="tech-label svelte-bcddwm">Technologies:</span> <div class="tech-tags svelte-bcddwm"><!--[-->`;
+      $$payload.out += `<div class="expanded-content svelte-14xc0di"><div class="details-section svelte-14xc0di"><p class="detailed-description svelte-14xc0di">${escape_html(domain.details)}</p> <div class="impact-metric svelte-14xc0di"><span class="impact-number svelte-14xc0di">${escape_html(domain.metrics.impact)}</span> <span class="impact-label svelte-14xc0di">Global Impact</span></div> <div class="tech-stack svelte-14xc0di"><span class="tech-label svelte-14xc0di">Technologies:</span> <div class="tech-tags svelte-14xc0di"><!--[-->`;
       for (let $$index = 0, $$length2 = each_array_1.length; $$index < $$length2; $$index++) {
         let tech = each_array_1[$$index];
-        $$payload.out += `<span class="tech-tag svelte-bcddwm">${escape_html(tech)}</span>`;
+        $$payload.out += `<span class="tech-tag svelte-14xc0di">${escape_html(tech)}</span>`;
       }
-      $$payload.out += `<!--]--></div></div> <div class="action-buttons svelte-bcddwm"><button class="btn-primary svelte-bcddwm">Explore Projects</button> <button class="btn-secondary svelte-bcddwm">Join Research</button></div></div></div>`;
+      $$payload.out += `<!--]--></div></div> <div class="action-buttons svelte-14xc0di"><button class="btn-primary svelte-14xc0di" type="button">Explore Projects</button> <button class="btn-secondary svelte-14xc0di" type="button">Join Research</button></div></div></div>`;
     } else {
       $$payload.out += "<!--[!-->";
     }
-    $$payload.out += `<!--]--></div> <div${attr_class("card-glow svelte-bcddwm", void 0, { "active": hoveredCard === i })}></div> <div class="corner-accent svelte-bcddwm"></div></div>`;
+    $$payload.out += `<!--]--></div> <div${attr_class("card-glow svelte-14xc0di", void 0, { "active": hoveredCard === i })}></div> <div class="corner-accent svelte-14xc0di"></div></div>`;
   }
-  $$payload.out += `<!--]--></div> <div class="impact-summary svelte-bcddwm"><div class="summary-stat svelte-bcddwm"><span class="stat-number svelte-bcddwm">100+</span> <span class="stat-label svelte-bcddwm">Lives Impacted</span></div> <div class="summary-stat svelte-bcddwm"><span class="stat-number svelte-bcddwm">5+</span> <span class="stat-label svelte-bcddwm">Active Projects</span></div> <div class="summary-stat svelte-bcddwm"><span class="stat-number svelte-bcddwm">100%</span> <span class="stat-label svelte-bcddwm">Open Source</span></div></div></section>`;
+  $$payload.out += `<!--]--></div> <div class="impact-summary svelte-14xc0di"><div class="summary-stat svelte-14xc0di"><span class="stat-number svelte-14xc0di">100+</span> <span class="stat-label svelte-14xc0di">Lives Impacted</span></div> <div class="summary-stat svelte-14xc0di"><span class="stat-number svelte-14xc0di">5+</span> <span class="stat-label svelte-14xc0di">Active Projects</span></div> <div class="summary-stat svelte-14xc0di"><span class="stat-number svelte-14xc0di">100%</span> <span class="stat-label svelte-14xc0di">Open Source</span></div></div></section>`;
   pop();
 }
 function Solutions($$payload, $$props) {
@@ -493,39 +348,39 @@ function Solutions($$payload, $$props) {
   let visibleSections = /* @__PURE__ */ new Set();
   let hoveredSection = null;
   const each_array = ensure_array_like(solutions);
-  $$payload.out += `<section class="solutions svelte-ngnhkm"><div class="header svelte-ngnhkm"><h2 class="svelte-ngnhkm">360° Technology Solutions for Non-Profits</h2> <p class="subtitle svelte-ngnhkm">Empowering organizations with cutting-edge tools that amplify impact, not complexity.</p></div> <div class="solutions-grid svelte-ngnhkm"><!--[-->`;
+  $$payload.out += `<section class="solutions svelte-emf7hy"><div class="header svelte-emf7hy"><h2 class="svelte-emf7hy">360° Technology Solutions for Non-Profits</h2> <p class="subtitle svelte-emf7hy">Empowering organizations with cutting-edge tools that amplify impact, not complexity.</p></div> <div class="solutions-grid svelte-emf7hy"><!--[-->`;
   for (let i = 0, $$length = each_array.length; i < $$length; i++) {
     let solution = each_array[i];
     const each_array_1 = ensure_array_like(solution.services);
     const each_array_2 = ensure_array_like(Object.entries(solution.metrics));
     const each_array_3 = ensure_array_like(Array(6));
     const each_array_4 = ensure_array_like(Array(12));
-    $$payload.out += `<div${attr_class("solution-container svelte-ngnhkm", void 0, {
+    $$payload.out += `<div${attr_class("solution-container svelte-emf7hy", void 0, {
       "visible": visibleSections.has(i),
       "hovered": hoveredSection === i
-    })}${attr("id", `solution-${stringify(i)}`)}><div class="solution-card svelte-ngnhkm"><div class="card-header svelte-ngnhkm"><div class="icon-wrapper svelte-ngnhkm"><span class="icon svelte-ngnhkm">${escape_html(solution.icon)}</span> <div class="icon-glow svelte-ngnhkm"></div></div> <div class="title-section svelte-ngnhkm"><h3 class="svelte-ngnhkm">${escape_html(solution.title)}</h3> <p class="subtitle-text svelte-ngnhkm">${escape_html(solution.subtitle)}</p></div></div> <div class="services-section svelte-ngnhkm"><!--[-->`;
+    })}${attr("id", `solution-${stringify(i)}`)} role="button" tabindex="0"${attr("aria-label", `View solution: ${solution.title}`)}><div class="solution-card svelte-emf7hy"><div class="card-header svelte-emf7hy"><div class="icon-wrapper svelte-emf7hy"><span class="icon svelte-emf7hy">${escape_html(solution.icon)}</span> <div class="icon-glow svelte-emf7hy"></div></div> <div class="title-section svelte-emf7hy"><h3 class="svelte-emf7hy">${escape_html(solution.title)}</h3> <p class="subtitle-text svelte-emf7hy">${escape_html(solution.subtitle)}</p></div></div> <div class="services-section svelte-emf7hy"><!--[-->`;
     for (let j = 0, $$length2 = each_array_1.length; j < $$length2; j++) {
       let service = each_array_1[j];
-      $$payload.out += `<div class="service-card svelte-ngnhkm"${attr_style(`--delay: ${stringify(j * 0.1)}s`)}><div class="service-header svelte-ngnhkm"><h4 class="svelte-ngnhkm">${escape_html(service.name)}</h4> <span class="tech-stack svelte-ngnhkm">${escape_html(service.tech)}</span></div> <p class="service-description svelte-ngnhkm">${escape_html(service.description)}</p></div>`;
+      $$payload.out += `<div class="service-card svelte-emf7hy"${attr_style(`--delay: ${stringify(j * 0.1)}s`)}><div class="service-header svelte-emf7hy"><h4 class="svelte-emf7hy">${escape_html(service.name)}</h4> <span class="tech-stack svelte-emf7hy">${escape_html(service.tech)}</span></div> <p class="service-description svelte-emf7hy">${escape_html(service.description)}</p></div>`;
     }
-    $$payload.out += `<!--]--></div> <div class="metrics-section svelte-ngnhkm"><div class="metrics-grid svelte-ngnhkm"><!--[-->`;
+    $$payload.out += `<!--]--></div> <div class="metrics-section svelte-emf7hy"><div class="metrics-grid svelte-emf7hy"><!--[-->`;
     for (let $$index_1 = 0, $$length2 = each_array_2.length; $$index_1 < $$length2; $$index_1++) {
       let [key, value] = each_array_2[$$index_1];
-      $$payload.out += `<div class="metric svelte-ngnhkm"><span class="metric-value svelte-ngnhkm">${escape_html(value)}</span> <span class="metric-label svelte-ngnhkm">${escape_html(key)}</span></div>`;
+      $$payload.out += `<div class="metric svelte-emf7hy"><span class="metric-value svelte-emf7hy">${escape_html(value)}</span> <span class="metric-label svelte-emf7hy">${escape_html(key)}</span></div>`;
     }
-    $$payload.out += `<!--]--></div></div> <div class="cta-section svelte-ngnhkm"><button class="cta-button svelte-ngnhkm"><span class="svelte-ngnhkm">${escape_html(solution.cta)}</span> <div class="button-arrow svelte-ngnhkm">→</div></button></div></div> <div class="solution-visual svelte-ngnhkm"><div class="visual-container svelte-ngnhkm"><div class="tech-orbit svelte-ngnhkm"><div class="orbit-ring orbit-1 svelte-ngnhkm"></div> <div class="orbit-ring orbit-2 svelte-ngnhkm"></div> <div class="orbit-ring orbit-3 svelte-ngnhkm"></div> <div class="center-node svelte-ngnhkm"><span class="node-icon svelte-ngnhkm">${escape_html(solution.icon)}</span></div> <div class="orbit-nodes svelte-ngnhkm"><!--[-->`;
+    $$payload.out += `<!--]--></div></div> <div class="cta-section svelte-emf7hy"><button class="cta-button svelte-emf7hy" type="button"><span class="svelte-emf7hy">${escape_html(solution.cta)}</span> <div class="button-arrow svelte-emf7hy">→</div></button></div></div> <div class="solution-visual svelte-emf7hy"><div class="visual-container svelte-emf7hy"><div class="tech-orbit svelte-emf7hy"><div class="orbit-ring orbit-1 svelte-emf7hy"></div> <div class="orbit-ring orbit-2 svelte-emf7hy"></div> <div class="orbit-ring orbit-3 svelte-emf7hy"></div> <div class="center-node svelte-emf7hy"><span class="node-icon svelte-emf7hy">${escape_html(solution.icon)}</span></div> <div class="orbit-nodes svelte-emf7hy"><!--[-->`;
     for (let nodeIndex = 0, $$length2 = each_array_3.length; nodeIndex < $$length2; nodeIndex++) {
       each_array_3[nodeIndex];
-      $$payload.out += `<div class="orbit-node svelte-ngnhkm"${attr_style(`--angle: ${stringify(nodeIndex * 60)}deg`)}></div>`;
+      $$payload.out += `<div class="orbit-node svelte-emf7hy"${attr_style(`--angle: ${stringify(nodeIndex * 60)}deg`)}></div>`;
     }
-    $$payload.out += `<!--]--></div></div> <div class="data-flow svelte-ngnhkm"><!--[-->`;
+    $$payload.out += `<!--]--></div></div> <div class="data-flow svelte-emf7hy"><!--[-->`;
     for (let flowIndex = 0, $$length2 = each_array_4.length; flowIndex < $$length2; flowIndex++) {
       each_array_4[flowIndex];
-      $$payload.out += `<div class="flow-particle svelte-ngnhkm"${attr_style(`--flow-delay: ${stringify(flowIndex * 0.2)}s`)}></div>`;
+      $$payload.out += `<div class="flow-particle svelte-emf7hy"${attr_style(`--flow-delay: ${stringify(flowIndex * 0.2)}s`)}></div>`;
     }
     $$payload.out += `<!--]--></div></div></div></div>`;
   }
-  $$payload.out += `<!--]--></div> <div class="bottom-cta svelte-ngnhkm"><h3 class="svelte-ngnhkm">Ready to Transform Your Organization?</h3> <p class="svelte-ngnhkm">Let's build technology that amplifies your mission and maximizes your impact.</p> <button class="primary-cta svelte-ngnhkm"><span class="svelte-ngnhkm">Start Your Journey</span> <div class="cta-glow svelte-ngnhkm"></div></button></div></section>`;
+  $$payload.out += `<!--]--></div> <div class="bottom-cta svelte-emf7hy"><h3 class="svelte-emf7hy">Ready to Transform Your Organization?</h3> <p class="svelte-emf7hy">Let's build technology that amplifies your mission and maximizes your impact.</p> <button class="primary-cta svelte-emf7hy" type="button"><span class="svelte-emf7hy">Start Your Journey</span> <div class="cta-glow svelte-emf7hy"></div></button></div></section>`;
   pop();
 }
 function _page($$payload) {
@@ -538,8 +393,6 @@ function _page($$payload) {
   ImpactDomains($$payload);
   $$payload.out += `<!----> `;
   Solutions($$payload);
-  $$payload.out += `<!----> `;
-  Collaboration($$payload);
   $$payload.out += `<!----> `;
   CallToAction($$payload);
   $$payload.out += `<!----> <main class="svelte-ck21ns"></main>`;

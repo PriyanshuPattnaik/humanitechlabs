@@ -1,0 +1,300 @@
+{
+  "techFields": [
+    {
+      "id": "edge-ai",
+      "title": "Edge AI",
+      "subtitle": "Intelligence at the Edge",
+      "description": "Developing AI systems that operate on edge devices for real-time processing and privacy preservation.",
+      "impact": "18+ Edge AI Systems",
+      "domains": [
+        "Edge Computing",
+        "Privacy",
+        "Real-time Processing"
+      ],
+      "icon": "📱",
+      "color": "#84cc16",
+      "tech": [
+        "Edge AI"
+      ],
+      "area": [
+        "Healthcare Diagnostics",
+        "Early Warning Systems",
+        "Privacy Protection",
+        "Health Monitoring",
+        "Language Translation",
+        "Community Decision Making",
+        "Agricultural Monitoring",
+        "Emergency Response",
+        "Accessible Interfaces",
+        "Educational Content"
+      ],
+      "topic": [
+        "Computer Vision",
+        "Bioinformatics",
+        "Embedded Systems",
+        "IoT",
+        "WSN",
+        "Geospatial Computing",
+        "Privacy Computing",
+        "Cybersecurity",
+        "Federated Learning",
+        "Wearable Tech",
+        "Green Computing",
+        "NLP",
+        "Mobile Computing",
+        "Blockchain",
+        "Distributed Systems",
+        "Governance",
+        "Crisis Management",
+        "Communication",
+        "Accessibility Tech",
+        "HCI",
+        "Educational Technology",
+        "Rural Education",
+        "Digital Divide"
+      ],
+      "topics": [
+        {
+          "title": "Offline AI for Remote Healthcare Diagnostics",
+          "description": "AI systems for medical diagnostics that work without internet connectivity.",
+          "technologies": [
+            "Computer Vision",
+            "Bioinformatics",
+            "Embedded Systems"
+          ],
+          "category": "Edge AI",
+          "subcategory": "Healthcare Diagnostics",
+          "tech": [
+            "Computer Vision",
+            "Bioinformatics",
+            "Embedded Systems"
+          ],
+          "area": [
+            "Healthcare Diagnostics"
+          ],
+          "topic": [
+            "Computer Vision",
+            "Bioinformatics",
+            "Embedded Systems"
+          ]
+        },
+        {
+          "title": "Edge-Based Early Warning Systems for Natural Disasters",
+          "description": "Real-time early warning systems for natural disasters using edge computing.",
+          "technologies": [
+            "IoT",
+            "WSN",
+            "Geospatial Computing"
+          ],
+          "category": "Edge AI",
+          "subcategory": "Early Warning Systems",
+          "tech": [
+            "IoT",
+            "WSN",
+            "Geospatial Computing"
+          ],
+          "area": [
+            "Early Warning Systems"
+          ],
+          "topic": [
+            "IoT",
+            "WSN",
+            "Geospatial Computing"
+          ]
+        },
+        {
+          "title": "Privacy-Preserving AI for Sensitive Humanitarian Data",
+          "description": "AI systems that protect sensitive data while providing insights.",
+          "technologies": [
+            "Privacy Computing",
+            "Cybersecurity",
+            "Federated Learning"
+          ],
+          "category": "Edge AI",
+          "subcategory": "Privacy Protection",
+          "tech": [
+            "Privacy Computing",
+            "Cybersecurity",
+            "Federated Learning"
+          ],
+          "area": [
+            "Privacy Protection"
+          ],
+          "topic": [
+            "Privacy Computing",
+            "Cybersecurity",
+            "Federated Learning"
+          ]
+        },
+        {
+          "title": "Low-Power AI for Wearable Health Monitors",
+          "description": "Energy-efficient AI for continuous health monitoring devices.",
+          "technologies": [
+            "Wearable Tech",
+            "Green Computing",
+            "Embedded Systems"
+          ],
+          "category": "Edge AI",
+          "subcategory": "Health Monitoring",
+          "tech": [
+            "Wearable Tech",
+            "Green Computing",
+            "Embedded Systems"
+          ],
+          "area": [
+            "Health Monitoring"
+          ],
+          "topic": [
+            "Wearable Tech",
+            "Green Computing",
+            "Embedded Systems"
+          ]
+        },
+        {
+          "title": "Edge AI for Real-Time Language Translation",
+          "description": "Real-time language translation without internet connectivity.",
+          "technologies": [
+            "NLP",
+            "Mobile Computing",
+            "Embedded Systems"
+          ],
+          "category": "Edge AI",
+          "subcategory": "Language Translation",
+          "tech": [
+            "NLP",
+            "Mobile Computing",
+            "Embedded Systems"
+          ],
+          "area": [
+            "Language Translation"
+          ],
+          "topic": [
+            "NLP",
+            "Mobile Computing",
+            "Embedded Systems"
+          ]
+        },
+        {
+          "title": "Decentralized AI for Community-Based Decision Making",
+          "description": "AI systems that support community decision-making processes.",
+          "technologies": [
+            "Blockchain",
+            "Distributed Systems",
+            "Governance"
+          ],
+          "category": "Edge AI",
+          "subcategory": "Community Decision Making",
+          "tech": [
+            "Blockchain",
+            "Distributed Systems",
+            "Governance"
+          ],
+          "area": [
+            "Community Decision Making"
+          ],
+          "topic": [
+            "Blockchain",
+            "Distributed Systems",
+            "Governance"
+          ]
+        },
+        {
+          "title": "Edge Computing for Agricultural Monitoring",
+          "description": "Local AI systems for agricultural monitoring and decision support.",
+          "technologies": [
+            "IoT",
+            "Computer Vision",
+            "WSN"
+          ],
+          "category": "Edge AI",
+          "subcategory": "Agricultural Monitoring",
+          "tech": [
+            "IoT",
+            "Computer Vision",
+            "WSN"
+          ],
+          "area": [
+            "Agricultural Monitoring"
+          ],
+          "topic": [
+            "IoT",
+            "Computer Vision",
+            "WSN"
+          ]
+        },
+        {
+          "title": "AI-Powered Emergency Response Without Internet",
+          "description": "Emergency response systems that work without internet connectivity.",
+          "technologies": [
+            "Mobile Computing",
+            "Crisis Management",
+            "Communication"
+          ],
+          "category": "Edge AI",
+          "subcategory": "Emergency Response",
+          "tech": [
+            "Mobile Computing",
+            "Crisis Management",
+            "Communication"
+          ],
+          "area": [
+            "Emergency Response"
+          ],
+          "topic": [
+            "Mobile Computing",
+            "Crisis Management",
+            "Communication"
+          ]
+        },
+        {
+          "title": "Edge AI for Accessible Interface Design",
+          "description": "AI-powered accessible interfaces for edge devices.",
+          "technologies": [
+            "Accessibility Tech",
+            "HCI",
+            "Embedded Systems"
+          ],
+          "category": "Edge AI",
+          "subcategory": "Accessible Interfaces",
+          "tech": [
+            "Accessibility Tech",
+            "HCI",
+            "Embedded Systems"
+          ],
+          "area": [
+            "Accessible Interfaces"
+          ],
+          "topic": [
+            "Accessibility Tech",
+            "HCI",
+            "Embedded Systems"
+          ]
+        },
+        {
+          "title": "Offline AI Models for Educational Content Delivery",
+          "description": "AI-powered educational content delivery without internet connectivity.",
+          "technologies": [
+            "Educational Technology",
+            "Mobile Computing",
+            "NLP"
+          ],
+          "category": "Edge AI",
+          "subcategory": "Educational Content",
+          "tech": [
+            "Educational Technology",
+            "Mobile Computing",
+            "NLP"
+          ],
+          "area": [
+            "Educational Content"
+          ],
+          "topic": [
+            "Educational Technology",
+            "Mobile Computing",
+            "NLP"
+          ]
+        }
+      ]
+    }
+  ]
+}
