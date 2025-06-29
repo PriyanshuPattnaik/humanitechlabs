@@ -554,38 +554,77 @@
     }
   
     @media (max-width: 768px) {
+      .hero {
+        min-height: auto;
+        padding: 60px 0;
+      }
+  
       .container {
-        padding: 80px 24px;
+        padding: 0 20px;
+        min-height: auto;
+        gap: 40px;
       }
   
       h1 {
-        font-size: 40px;
+        font-size: 36px;
+        line-height: 1.2;
+        margin-bottom: 24px;
       }
   
       .hero-description {
-        font-size: 18px;
+        font-size: 16px;
+        margin-bottom: 32px;
+        max-width: 100%;
       }
   
       .hero-actions {
         flex-direction: column;
         align-items: center;
+        gap: 16px;
+        margin-bottom: 40px;
       }
   
       .cta-primary,
       .cta-secondary {
         width: 100%;
         justify-content: center;
-        max-width: 300px;
+        max-width: 280px;
+        padding: 14px 24px;
+        font-size: 15px;
+      }
+  
+      .hero-stats {
+        margin-bottom: 20px;
       }
   
       .stats-container {
         justify-content: center;
+        gap: 32px;
+        height: 60px;
+      }
+  
+      .stat-item {
+        min-width: 100px;
+      }
+  
+      .stat-number {
+        font-size: 28px;
+      }
+  
+      .stat-label {
+        font-size: 12px;
+      }
+  
+      .hero-visual {
+        height: 300px;
+        order: -1;
       }
   
       .floating-card {
         position: relative !important;
-        margin: 16px auto;
-        max-width: 280px;
+        margin: 12px auto;
+        max-width: 260px;
+        padding: 20px;
       }
   
       .visual-container {
@@ -593,25 +632,162 @@
         flex-direction: column;
         align-items: center;
         height: auto;
+        gap: 16px;
+      }
+  
+      .card-1, .card-2, .card-3 {
+        position: relative !important;
+        top: auto !important;
+        left: auto !important;
+        right: auto !important;
+        bottom: auto !important;
+        width: 100% !important;
+        max-width: 260px;
+      }
+  
+      .card-icon {
+        width: 40px;
+        height: 40px;
+        margin-bottom: 12px;
+      }
+  
+      .card-title {
+        font-size: 14px;
+      }
+  
+      .card-subtitle {
+        font-size: 11px;
+      }
+  
+      .card-metric {
+        font-size: 20px;
       }
     }
   
     @media (max-width: 480px) {
+      .hero {
+        padding: 40px 0;
+      }
+  
       .container {
-        padding: 60px 16px;
+        padding: 0 16px;
+        gap: 32px;
       }
   
       h1 {
-        font-size: 32px;
+        font-size: 28px;
+        margin-bottom: 20px;
       }
   
       .hero-description {
-        font-size: 16px;
+        font-size: 15px;
+        margin-bottom: 28px;
+      }
+  
+      .hero-badge {
+        padding: 10px 16px;
+        font-size: 13px;
+        margin-bottom: 24px;
+      }
+  
+      .hero-actions {
+        margin-bottom: 32px;
+      }
+  
+      .cta-primary,
+      .cta-secondary {
+        max-width: 100%;
+        padding: 12px 20px;
+        font-size: 14px;
+      }
+  
+      .stats-container {
+        gap: 24px;
+      }
+  
+      .stat-item {
+        min-width: 80px;
+      }
+  
+      .stat-number {
+        font-size: 24px;
+      }
+  
+      .stat-label {
+        font-size: 11px;
+      }
+  
+      .hero-visual {
+        height: 250px;
       }
   
       .floating-card {
-        padding: 20px;
-        margin: 12px auto;
+        padding: 16px;
+        margin: 8px auto;
+        max-width: 240px;
+      }
+  
+      .card-icon {
+        width: 36px;
+        height: 36px;
+        margin-bottom: 10px;
+      }
+  
+      .card-title {
+        font-size: 13px;
+      }
+  
+      .card-subtitle {
+        font-size: 10px;
+      }
+  
+      .card-metric {
+        font-size: 18px;
+      }
+    }
+  
+    @media (max-width: 360px) {
+      .hero {
+        padding: 30px 0;
+      }
+  
+      .container {
+        padding: 0 12px;
+        gap: 24px;
+      }
+  
+      h1 {
+        font-size: 24px;
+      }
+  
+      .hero-description {
+        font-size: 14px;
+      }
+  
+      .hero-badge {
+        padding: 8px 12px;
+        font-size: 12px;
+      }
+  
+      .stats-container {
+        gap: 16px;
+      }
+  
+      .stat-item {
+        min-width: 70px;
+      }
+  
+      .stat-number {
+        font-size: 20px;
+      }
+  
+      .stat-label {
+        font-size: 10px;
+      }
+  
+      .floating-card {
+        padding: 14px;
+        max-width: 220px;
       }
     }
   </style>

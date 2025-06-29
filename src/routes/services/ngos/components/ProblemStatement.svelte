@@ -500,65 +500,252 @@
       .mission-content h3 {
         font-size: 32px;
       }
+
+      .challenges-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 24px;
+      }
     }
   
     @media (max-width: 768px) {
       .problem-statement {
-        padding: 80px 0;
+        padding: 60px 0;
       }
-  
+
+      .container {
+        padding: 0 20px;
+      }
+
+      .section-header {
+        margin-bottom: 60px;
+      }
+
+      .section-badge {
+        padding: 10px 16px;
+        font-size: 13px;
+        margin-bottom: 24px;
+      }
+
+      h2 {
+        font-size: 32px;
+        margin-bottom: 20px;
+      }
+
+      .section-header p {
+        font-size: 16px;
+        max-width: 100%;
+      }
+
       .challenges-grid {
         grid-template-columns: 1fr;
-        gap: 24px;
+        gap: 20px;
+        margin-bottom: 60px;
       }
-  
+
       .challenge-card {
-        padding: 32px 28px;
+        padding: 28px 24px;
       }
-  
+
+      .challenge-icon {
+        width: 64px;
+        height: 64px;
+        margin-bottom: 24px;
+      }
+
+      .challenge-card h3 {
+        font-size: 24px;
+        margin-bottom: 16px;
+      }
+
+      .challenge-card p {
+        font-size: 15px;
+        margin-bottom: 24px;
+      }
+
+      .stat {
+        font-size: 28px;
+      }
+
+      .label {
+        font-size: 13px;
+      }
+
       .mission-statement {
-        padding: 48px 32px;
+        padding: 40px 28px;
       }
-  
+
+      .mission-content h3 {
+        font-size: 28px;
+        margin-bottom: 24px;
+      }
+
+      .mission-content p {
+        font-size: 16px;
+        margin-bottom: 32px;
+      }
+
       .mission-highlights {
         flex-direction: column;
         align-items: center;
-        gap: 24px;
+        gap: 20px;
       }
-  
-      .mission-content h3 {
-        font-size: 28px;
+
+      .highlight {
+        font-size: 15px;
       }
-  
-      .mission-content p {
-        font-size: 18px;
+
+      .highlight-icon {
+        width: 28px;
+        height: 28px;
       }
     }
   
     @media (max-width: 480px) {
+      .problem-statement {
+        padding: 40px 0;
+      }
+
       .container {
         padding: 0 16px;
       }
-  
+
+      .section-header {
+        margin-bottom: 40px;
+      }
+
+      .section-badge {
+        padding: 8px 12px;
+        font-size: 12px;
+        margin-bottom: 20px;
+      }
+
+      h2 {
+        font-size: 28px;
+        margin-bottom: 16px;
+      }
+
+      .section-header p {
+        font-size: 15px;
+      }
+
+      .challenges-grid {
+        gap: 16px;
+        margin-bottom: 40px;
+      }
+
       .challenge-card {
-        padding: 28px 24px;
+        padding: 24px 20px;
       }
-  
-      .mission-statement {
-        padding: 40px 24px;
-      }
-  
+
       .challenge-icon {
-        width: 64px;
-        height: 64px;
+        width: 56px;
+        height: 56px;
+        margin-bottom: 20px;
       }
-  
+
       .challenge-card h3 {
+        font-size: 22px;
+        margin-bottom: 12px;
+      }
+
+      .challenge-card p {
+        font-size: 14px;
+        margin-bottom: 20px;
+      }
+
+      .stat {
         font-size: 24px;
       }
-  
+
+      .label {
+        font-size: 12px;
+      }
+
+      .mission-statement {
+        padding: 32px 20px;
+      }
+
+      .mission-content h3 {
+        font-size: 24px;
+        margin-bottom: 20px;
+      }
+
+      .mission-content p {
+        font-size: 15px;
+        margin-bottom: 24px;
+      }
+
+      .mission-highlights {
+        gap: 16px;
+      }
+
+      .highlight {
+        font-size: 14px;
+      }
+
+      .highlight-icon {
+        width: 24px;
+        height: 24px;
+      }
+    }
+
+    @media (max-width: 360px) {
+      .problem-statement {
+        padding: 30px 0;
+      }
+
+      .container {
+        padding: 0 12px;
+      }
+
+      .section-header {
+        margin-bottom: 32px;
+      }
+
+      h2 {
+        font-size: 24px;
+      }
+
+      .section-header p {
+        font-size: 14px;
+      }
+
+      .challenge-card {
+        padding: 20px 16px;
+      }
+
+      .challenge-icon {
+        width: 48px;
+        height: 48px;
+        margin-bottom: 16px;
+      }
+
+      .challenge-card h3 {
+        font-size: 20px;
+      }
+
+      .challenge-card p {
+        font-size: 13px;
+      }
+
       .stat {
-        font-size: 28px;
+        font-size: 20px;
+      }
+
+      .mission-statement {
+        padding: 24px 16px;
+      }
+
+      .mission-content h3 {
+        font-size: 20px;
+      }
+
+      .mission-content p {
+        font-size: 14px;
+      }
+
+      .highlight {
+        font-size: 13px;
       }
     }
   </style>

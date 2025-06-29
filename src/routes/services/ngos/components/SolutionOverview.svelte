@@ -732,6 +732,14 @@
   
     /* Responsive Design */
     @media (max-width: 1024px) {
+      .solution-overview {
+        padding: 80px 0 100px;
+      }
+  
+      .section-header {
+        margin-bottom: 80px;
+      }
+  
       .solution-circle {
         width: 350px;
         height: 350px;
@@ -751,9 +759,15 @@
         50% { transform: translate(-50%, -50%) rotate(var(--angle)) translateY(-140px) rotate(calc(-1 * var(--angle))) translateY(-5px); }
       }
   
+      .solution-details {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 24px;
+      }
+  
       .research-content {
         flex-direction: column;
         text-align: center;
+        gap: 32px;
       }
   
       .research-highlights {
@@ -763,7 +777,35 @@
   
     @media (max-width: 768px) {
       .solution-overview {
-        padding: 80px 0 100px;
+        padding: 60px 0 80px;
+      }
+  
+      .container {
+        padding: 0 20px;
+      }
+  
+      .section-header {
+        margin-bottom: 60px;
+      }
+  
+      .section-badge {
+        padding: 10px 16px;
+        font-size: 13px;
+        margin-bottom: 24px;
+      }
+  
+      h2 {
+        font-size: 32px;
+        margin-bottom: 20px;
+      }
+  
+      .section-header p {
+        font-size: 16px;
+        max-width: 100%;
+      }
+  
+      .solution-visual {
+        margin-bottom: 60px;
       }
   
       .solution-circle {
@@ -785,21 +827,80 @@
         50% { transform: translate(-50%, -50%) rotate(var(--angle)) translateY(-110px) rotate(calc(-1 * var(--angle))) translateY(-5px); }
       }
   
+      .center-icon {
+        width: 80px;
+        height: 80px;
+        margin-bottom: 16px;
+      }
+  
+      .center-element h3 {
+        font-size: 18px;
+      }
+  
+      .orbit-icon {
+        width: 48px;
+        height: 48px;
+      }
+  
       .orbit-item span {
         font-size: 11px;
       }
   
       .solution-details {
         grid-template-columns: 1fr;
-        gap: 24px;
+        gap: 20px;
+        margin-bottom: 60px;
+      }
+  
+      .detail-card {
+        padding: 32px 24px;
+      }
+  
+      .card-header {
+        gap: 12px;
+        margin-bottom: 16px;
+      }
+  
+      .card-icon {
+        width: 40px;
+        height: 40px;
+      }
+  
+      .detail-card h3 {
+        font-size: 20px;
+      }
+  
+      .detail-card p {
+        font-size: 15px;
+        margin-bottom: 20px;
+      }
+  
+      .feature-list li {
+        font-size: 14px;
+        padding: 6px 0;
       }
   
       .research-focus {
-        padding: 40px 32px;
+        padding: 40px 28px;
+      }
+  
+      .research-content {
+        gap: 24px;
+      }
+  
+      .research-icon {
+        width: 80px;
+        height: 80px;
       }
   
       .research-text h3 {
-        font-size: 28px;
+        font-size: 24px;
+        margin-bottom: 16px;
+      }
+  
+      .research-text p {
+        font-size: 15px;
+        margin-bottom: 24px;
       }
   
       .research-highlights {
@@ -807,11 +908,47 @@
         align-items: center;
         gap: 16px;
       }
+  
+      .highlight {
+        font-size: 14px;
+      }
+  
+      .highlight-icon {
+        width: 20px;
+        height: 20px;
+      }
     }
   
     @media (max-width: 480px) {
+      .solution-overview {
+        padding: 40px 0 60px;
+      }
+  
       .container {
         padding: 0 16px;
+      }
+  
+      .section-header {
+        margin-bottom: 40px;
+      }
+  
+      .section-badge {
+        padding: 8px 12px;
+        font-size: 12px;
+        margin-bottom: 20px;
+      }
+  
+      h2 {
+        font-size: 28px;
+        margin-bottom: 16px;
+      }
+  
+      .section-header p {
+        font-size: 15px;
+      }
+  
+      .solution-visual {
+        margin-bottom: 40px;
       }
   
       .solution-circle {
@@ -833,12 +970,198 @@
         50% { transform: translate(-50%, -50%) rotate(var(--angle)) translateY(-90px) rotate(calc(-1 * var(--angle))) translateY(-5px); }
       }
   
+      .center-icon {
+        width: 64px;
+        height: 64px;
+        margin-bottom: 12px;
+      }
+  
+      .center-element h3 {
+        font-size: 16px;
+      }
+  
+      .orbit-icon {
+        width: 40px;
+        height: 40px;
+      }
+  
+      .orbit-item span {
+        font-size: 10px;
+      }
+  
+      .solution-details {
+        gap: 16px;
+        margin-bottom: 40px;
+      }
+  
       .detail-card {
-        padding: 32px 24px;
+        padding: 24px 20px;
+      }
+  
+      .card-header {
+        gap: 10px;
+        margin-bottom: 12px;
+      }
+  
+      .card-icon {
+        width: 36px;
+        height: 36px;
+      }
+  
+      .detail-card h3 {
+        font-size: 18px;
+      }
+  
+      .detail-card p {
+        font-size: 14px;
+        margin-bottom: 16px;
+      }
+  
+      .feature-list li {
+        font-size: 13px;
+        padding: 4px 0;
       }
   
       .research-focus {
         padding: 32px 20px;
+      }
+  
+      .research-content {
+        gap: 20px;
+      }
+  
+      .research-icon {
+        width: 64px;
+        height: 64px;
+      }
+  
+      .research-text h3 {
+        font-size: 20px;
+        margin-bottom: 12px;
+      }
+  
+      .research-text p {
+        font-size: 14px;
+        margin-bottom: 20px;
+      }
+  
+      .research-highlights {
+        gap: 12px;
+      }
+  
+      .highlight {
+        font-size: 13px;
+      }
+  
+      .highlight-icon {
+        width: 18px;
+        height: 18px;
+      }
+    }
+  
+    @media (max-width: 360px) {
+      .solution-overview {
+        padding: 30px 0 40px;
+      }
+  
+      .container {
+        padding: 0 12px;
+      }
+  
+      .section-header {
+        margin-bottom: 32px;
+      }
+  
+      h2 {
+        font-size: 24px;
+      }
+  
+      .section-header p {
+        font-size: 14px;
+      }
+  
+      .solution-circle {
+        width: 200px;
+        height: 200px;
+      }
+  
+      .orbit-1 {
+        width: 150px;
+        height: 150px;
+      }
+  
+      .orbit-item {
+        transform: translate(-50%, -50%) rotate(var(--angle)) translateY(-75px) rotate(calc(-1 * var(--angle)));
+      }
+  
+      @keyframes float {
+        0%, 100% { transform: translate(-50%, -50%) rotate(var(--angle)) translateY(-75px) rotate(calc(-1 * var(--angle))) translateY(0px); }
+        50% { transform: translate(-50%, -50%) rotate(var(--angle)) translateY(-75px) rotate(calc(-1 * var(--angle))) translateY(-5px); }
+      }
+  
+      .center-icon {
+        width: 56px;
+        height: 56px;
+      }
+  
+      .center-element h3 {
+        font-size: 14px;
+      }
+  
+      .orbit-icon {
+        width: 32px;
+        height: 32px;
+      }
+  
+      .orbit-item span {
+        font-size: 9px;
+      }
+  
+      .detail-card {
+        padding: 20px 16px;
+      }
+  
+      .card-icon {
+        width: 32px;
+        height: 32px;
+      }
+  
+      .detail-card h3 {
+        font-size: 16px;
+      }
+  
+      .detail-card p {
+        font-size: 13px;
+      }
+  
+      .feature-list li {
+        font-size: 12px;
+      }
+  
+      .research-focus {
+        padding: 24px 16px;
+      }
+  
+      .research-icon {
+        width: 56px;
+        height: 56px;
+      }
+  
+      .research-text h3 {
+        font-size: 18px;
+      }
+  
+      .research-text p {
+        font-size: 13px;
+      }
+  
+      .highlight {
+        font-size: 12px;
+      }
+  
+      .highlight-icon {
+        width: 16px;
+        height: 16px;
       }
     }
   </style>
