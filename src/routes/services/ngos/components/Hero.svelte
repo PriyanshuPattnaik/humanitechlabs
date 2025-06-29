@@ -31,60 +31,7 @@
     </div>
     
     <div class="container">
-      <div class="hero-content">
-        {#if mounted}
-          <div class="hero-badge" in:fly={{ y: 30, duration: 800, delay: 200 }}>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-              <path d="M12 2L2 7V10C2 16 6 20.88 12 22C18 20.88 22 16 22 10V7L12 2Z" stroke="currentColor" stroke-width="1.5" fill="none"/>
-            </svg>
-            Technology for Good
-          </div>
-          
-          <h1 in:fly={{ y: 50, duration: 1000, delay: 400 }}>
-            Empowering NGOs with 
-            <span class="gradient-text">Next-Gen Technology</span>
-          </h1>
-          
-          <p class="hero-description" in:fly={{ y: 30, duration: 800, delay: 600 }}>
-            Transform your mission with cutting-edge digital solutions designed specifically for non-profits. 
-            From intelligent websites to data-driven impact measurement, we bridge the technology gap 
-            so you can focus on changing the world.
-          </p>
-          
-          <div class="hero-actions" in:fly={{ y: 30, duration: 800, delay: 800 }}>
-            <button class="cta-primary">
-              <span>Start Your Transformation</span>
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-                <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </button>
-            
-            <button class="cta-secondary">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-                <path d="M8 12L11 15L16 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-              See Our Impact
-            </button>
-          </div>
-          
-          <div class="hero-stats" in:fade={{ duration: 800, delay: 1000 }}>
-            <div class="stats-container">
-              {#each stats as stat, i}
-                <div class="stat-item" class:active={currentStat === i}>
-                  <div class="stat-number">{stat.number}</div>
-                  <div class="stat-label">{stat.label}</div>
-                </div>
-              {/each}
-            </div>
-            <div class="stats-indicator">
-              {#each stats as _, i}
-                <div class="indicator-dot" class:active={currentStat === i}></div>
-              {/each}
-            </div>
-          </div>
-        {/if}
-      </div>
-      
+      <!-- Hero Visual - Moved to top for mobile -->
       <div class="hero-visual">
         {#if mounted}
           <div class="visual-container" in:fly={{ x: 50, duration: 1200, delay: 600 }}>
@@ -138,6 +85,60 @@
           </div>
         {/if}
       </div>
+      
+      <div class="hero-content">
+        {#if mounted}
+          <div class="hero-badge" in:fly={{ y: 30, duration: 800, delay: 200 }}>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+              <path d="M12 2L2 7V10C2 16 6 20.88 12 22C18 20.88 22 16 22 10V7L12 2Z" stroke="currentColor" stroke-width="1.5" fill="none"/>
+            </svg>
+            Technology for Good
+          </div>
+          
+          <h1 in:fly={{ y: 50, duration: 1000, delay: 400 }}>
+            Empowering NGOs with 
+            <span class="gradient-text">Next-Gen Technology</span>
+          </h1>
+          
+          <p class="hero-description" in:fly={{ y: 30, duration: 800, delay: 600 }}>
+            Transform your mission with cutting-edge digital solutions designed specifically for non-profits. 
+            From intelligent websites to data-driven impact measurement, we bridge the technology gap 
+            so you can focus on changing the world.
+          </p>
+          
+          <div class="hero-actions" in:fly={{ y: 30, duration: 800, delay: 800 }}>
+            <button class="cta-primary">
+              <span>Start Your Transformation</span>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            
+            <button class="cta-secondary">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                <path d="M8 12L11 15L16 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              See Our Impact
+            </button>
+          </div>
+          
+          <div class="hero-stats" in:fade={{ duration: 800, delay: 1000 }}>
+            <div class="stats-container">
+              {#each stats as stat, i}
+                <div class="stat-item" class:active={currentStat === i}>
+                  <div class="stat-number">{stat.number}</div>
+                  <div class="stat-label">{stat.label}</div>
+                </div>
+              {/each}
+            </div>
+            <div class="stats-indicator">
+              {#each stats as _, i}
+                <div class="indicator-dot" class:active={currentStat === i}></div>
+              {/each}
+            </div>
+          </div>
+        {/if}
+      </div>
     </div>
   </section>
   
@@ -149,6 +150,7 @@
       position: relative;
       overflow: hidden;
       background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0f0f0f 100%);
+      padding: 80px 0;
     }
   
     .hero-background {
@@ -209,7 +211,6 @@
       grid-template-columns: 1fr 1fr;
       gap: 80px;
       align-items: center;
-      min-height: 100vh;
     }
   
     .hero-content {
@@ -551,6 +552,10 @@
         order: -1;
         height: 400px;
       }
+      
+      .hero-description {
+        max-width: 100%;
+      }
     }
   
     @media (max-width: 768px) {
@@ -561,20 +566,18 @@
   
       .container {
         padding: 0 20px;
-        min-height: auto;
         gap: 40px;
       }
   
       h1 {
-        font-size: 36px;
+        font-size: 42px;
         line-height: 1.2;
         margin-bottom: 24px;
       }
   
       .hero-description {
-        font-size: 16px;
+        font-size: 18px;
         margin-bottom: 32px;
-        max-width: 100%;
       }
   
       .hero-actions {
@@ -588,13 +591,7 @@
       .cta-secondary {
         width: 100%;
         justify-content: center;
-        max-width: 280px;
-        padding: 14px 24px;
-        font-size: 15px;
-      }
-  
-      .hero-stats {
-        margin-bottom: 20px;
+        max-width: 300px;
       }
   
       .stats-container {
@@ -611,31 +608,99 @@
         font-size: 28px;
       }
   
+      .hero-visual {
+        height: 350px;
+      }
+  
+      .card-1 {
+        top: 20px;
+        right: 20px;
+        width: 180px;
+      }
+  
+      .card-2 {
+        top: 150px;
+        left: 20px;
+        width: 170px;
+      }
+  
+      .card-3 {
+        bottom: 20px;
+        right: 60px;
+        width: 160px;
+      }
+    }
+  
+    @media (max-width: 480px) {
+      .hero {
+        padding: 40px 0;
+      }
+  
+      .container {
+        padding: 0 16px;
+        gap: 32px;
+      }
+  
+      h1 {
+        font-size: 32px;
+        margin-bottom: 20px;
+      }
+  
+      .hero-description {
+        font-size: 16px;
+        margin-bottom: 28px;
+      }
+  
+      .hero-badge {
+        padding: 10px 16px;
+        font-size: 13px;
+        margin-bottom: 24px;
+      }
+  
+      .hero-actions {
+        margin-bottom: 32px;
+      }
+  
+      .cta-primary,
+      .cta-secondary {
+        padding: 14px 24px;
+        font-size: 15px;
+        max-width: 280px;
+      }
+  
+      .stats-container {
+        gap: 24px;
+        flex-wrap: wrap;
+        height: auto;
+        justify-content: center;
+      }
+  
+      .stat-item {
+        min-width: 80px;
+      }
+  
+      .stat-number {
+        font-size: 24px;
+      }
+  
       .stat-label {
         font-size: 12px;
       }
   
       .hero-visual {
-        height: 300px;
+        height: 280px;
         order: -1;
-      }
-  
-      .floating-card {
-        position: relative !important;
-        margin: 12px auto;
-        max-width: 260px;
-        padding: 20px;
       }
   
       .visual-container {
         display: flex;
         flex-direction: column;
         align-items: center;
+        gap: 12px;
         height: auto;
-        gap: 16px;
       }
   
-      .card-1, .card-2, .card-3 {
+      .floating-card {
         position: relative !important;
         top: auto !important;
         left: auto !important;
@@ -643,6 +708,8 @@
         bottom: auto !important;
         width: 100% !important;
         max-width: 260px;
+        padding: 18px;
+        margin: 0;
       }
   
       .card-icon {
@@ -664,53 +731,52 @@
       }
     }
   
-    @media (max-width: 480px) {
+    @media (max-width: 360px) {
       .hero {
-        padding: 40px 0;
+        padding: 30px 0;
       }
   
       .container {
-        padding: 0 16px;
-        gap: 32px;
+        padding: 0 12px;
+        gap: 24px;
       }
   
       h1 {
         font-size: 28px;
-        margin-bottom: 20px;
       }
   
       .hero-description {
         font-size: 15px;
-        margin-bottom: 28px;
-      }
-  
-      .hero-badge {
-        padding: 10px 16px;
-        font-size: 13px;
         margin-bottom: 24px;
       }
   
+      .hero-badge {
+        padding: 8px 12px;
+        font-size: 12px;
+        margin-bottom: 20px;
+      }
+  
       .hero-actions {
-        margin-bottom: 32px;
+        margin-bottom: 28px;
       }
   
       .cta-primary,
       .cta-secondary {
-        max-width: 100%;
         padding: 12px 20px;
         font-size: 14px;
+        max-width: 100%;
       }
   
       .stats-container {
-        gap: 24px;
+        gap: 16px;
       }
   
       .stat-item {
-        min-width: 80px;
+        min-width: 70px;
       }
   
       .stat-number {
-        font-size: 24px;
+        font-size: 20px;
       }
   
       .stat-label {
@@ -718,12 +784,11 @@
       }
   
       .hero-visual {
-        height: 250px;
+        height: 240px;
       }
   
       .floating-card {
         padding: 16px;
-        margin: 8px auto;
         max-width: 240px;
       }
   
@@ -746,48 +811,85 @@
       }
     }
   
-    @media (max-width: 360px) {
+    /* Extra small devices (phones < 320px) */
+    @media (max-width: 320px) {
       .hero {
-        padding: 30px 0;
+        padding: 20px 0;
       }
   
       .container {
-        padding: 0 12px;
-        gap: 24px;
+        padding: 0 8px;
+        gap: 20px;
       }
   
       h1 {
         font-size: 24px;
+        line-height: 1.3;
       }
   
       .hero-description {
         font-size: 14px;
+        margin-bottom: 20px;
       }
   
       .hero-badge {
-        padding: 8px 12px;
-        font-size: 12px;
+        padding: 6px 10px;
+        font-size: 11px;
+        margin-bottom: 16px;
+      }
+  
+      .hero-actions {
+        margin-bottom: 24px;
+      }
+  
+      .cta-primary,
+      .cta-secondary {
+        padding: 10px 16px;
+        font-size: 13px;
+        gap: 8px;
       }
   
       .stats-container {
-        gap: 16px;
+        gap: 12px;
       }
   
       .stat-item {
-        min-width: 70px;
+        min-width: 60px;
       }
   
       .stat-number {
-        font-size: 20px;
+        font-size: 18px;
       }
   
       .stat-label {
         font-size: 10px;
       }
   
+      .hero-visual {
+        height: 200px;
+      }
+  
       .floating-card {
-        padding: 14px;
-        max-width: 220px;
+        padding: 12px;
+        max-width: 200px;
+      }
+  
+      .card-icon {
+        width: 32px;
+        height: 32px;
+        margin-bottom: 8px;
+      }
+  
+      .card-title {
+        font-size: 12px;
+      }
+  
+      .card-subtitle {
+        font-size: 9px;
+      }
+  
+      .card-metric {
+        font-size: 16px;
       }
     }
   </style>
