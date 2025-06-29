@@ -9,7 +9,8 @@
   // Load data on mount
   onMount(async () => {
     try {
-      const response = await fetch('/src/lib/data/researchDatafinal.json');
+      // Fetch from static directory
+      const response = await fetch('/researchDatafinal.json');
       const data = await response.json();
       researchAreas = data.techFields;
       isLoading = false;
