@@ -169,7 +169,7 @@
         <h3 class="cta-title">Ready to Shape Tomorrow?</h3>
         <p class="cta-description">Join our global research community and help build technology that matters.</p>
         <div class="cta-buttons">
-          <button class="cta-primary" on:click={() => console.log('Explore Open Research clicked')}>
+          <button class="cta-primary" on:click={() => window.location.href = '/research'}>
             Explore Open Research
           </button>
           <button class="cta-secondary" on:click={() => console.log('Collaborate with Us clicked')}>

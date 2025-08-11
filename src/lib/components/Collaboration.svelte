@@ -368,6 +368,7 @@
   </section>
   
   <style>
+  
     .collaboration {
       background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
       padding: 8rem 2rem;

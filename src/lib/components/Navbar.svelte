@@ -174,7 +174,7 @@
         <span class="link-text">Hub</span>
         <div class="link-glow"></div>
       </a>
-      <a href="#results" on:click={handleNavClick}>
+      <a href="/join-us" on:click={handleNavClick}>
         <span class="link-text">Join Us</span>
         <div class="link-glow"></div>
       </a>

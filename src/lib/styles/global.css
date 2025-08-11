@@ -11,6 +11,18 @@
   --color-soft-rose: #F0486B;
   --color-muted-silver: #B0B0B0;
 
+  /* Glassmorphism Theme */
+  --glass-bg: rgba(255, 255, 255, 0.1);
+  --glass-border: rgba(255, 255, 255, 0.18);
+  --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  --glass-blur: blur(10px);
+  --text-primary: #ffffff;
+  --text-secondary: #a1a1aa;
+  --text-muted: #71717a;
+  --bg-primary: #000000;
+  --glass-accent-glow: rgba(255, 255, 255, 0.2);
+  --glass-btn-hover: rgba(255, 255, 255, 0.15);
+
   /* Typography */
   --font-headers: 'Satoshi Variable', 'Space Grotesk', sans-serif;
   --font-body: 'Inter', 'IBM Plex Sans', sans-serif;

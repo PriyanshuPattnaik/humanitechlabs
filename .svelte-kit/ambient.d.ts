@@ -36,17 +36,18 @@ declare module '$env/static/private' {
 	export const CommonProgramW6432: string;
 	export const COMPUTERNAME: string;
 	export const ComSpec: string;
-	export const CURSOR_TRACE_ID: string;
 	export const DF_PROJECT_ID: string;
 	export const DF_SERVICE_ACCOUNT_PATH: string;
 	export const DriverData: string;
 	export const EDITOR: string;
-	export const EFC_10224_1262719628: string;
-	export const EFC_10224_1592913036: string;
-	export const EFC_10224_2283032206: string;
-	export const EFC_10224_2775293581: string;
-	export const EFC_10224_3789132940: string;
+	export const EFC_13092_1262719628: string;
+	export const EFC_13092_1592913036: string;
+	export const EFC_13092_2283032206: string;
+	export const EFC_13092_2775293581: string;
+	export const EFC_13092_3789132940: string;
 	export const EnableLog: string;
+	export const FPS_BROWSER_APP_PROFILE_STRING: string;
+	export const FPS_BROWSER_USER_PROFILE_STRING: string;
 	export const GIT_ASKPASS: string;
 	export const GROQ_API_KEY: string;
 	export const HF_API_KEY: string;
@@ -118,6 +119,7 @@ declare module '$env/static/private' {
 	export const VSCODE_INJECTION: string;
 	export const windir: string;
 	export const ZES_ENABLE_SYSMAN: string;
+	export const __COMPAT_LAYER: string;
 }
 
 /**
@@ -159,17 +161,18 @@ declare module '$env/dynamic/private' {
 		CommonProgramW6432: string;
 		COMPUTERNAME: string;
 		ComSpec: string;
-		CURSOR_TRACE_ID: string;
 		DF_PROJECT_ID: string;
 		DF_SERVICE_ACCOUNT_PATH: string;
 		DriverData: string;
 		EDITOR: string;
-		EFC_10224_1262719628: string;
-		EFC_10224_1592913036: string;
-		EFC_10224_2283032206: string;
-		EFC_10224_2775293581: string;
-		EFC_10224_3789132940: string;
+		EFC_13092_1262719628: string;
+		EFC_13092_1592913036: string;
+		EFC_13092_2283032206: string;
+		EFC_13092_2775293581: string;
+		EFC_13092_3789132940: string;
 		EnableLog: string;
+		FPS_BROWSER_APP_PROFILE_STRING: string;
+		FPS_BROWSER_USER_PROFILE_STRING: string;
 		GIT_ASKPASS: string;
 		GROQ_API_KEY: string;
 		HF_API_KEY: string;
@@ -241,6 +244,7 @@ declare module '$env/dynamic/private' {
 		VSCODE_INJECTION: string;
 		windir: string;
 		ZES_ENABLE_SYSMAN: string;
+		__COMPAT_LAYER: string;
 		[key: `PUBLIC_${string}`]: undefined;
 		[key: `${string}`]: string | undefined;
 	}
