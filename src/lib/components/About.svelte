@@ -1,5 +1,6 @@
 <script lang="ts">
   import { onMount } from 'svelte';
+  import { Atom, Globe, Handshake } from 'lucide-svelte';
   
   let mounted = false;
   let scrollY = 0;
@@ -96,17 +97,23 @@
           
           <div class="approach-grid">
             <div class="approach-item">
-              <div class="approach-icon">🧬</div>
+              <div class="approach-icon">
+                <Atom size={32} />
+              </div>
               <h4>Research-Driven</h4>
               <p>Groundbreaking research in AI, IoT, blockchain, and emerging technologies</p>
             </div>
             <div class="approach-item">
-              <div class="approach-icon">🌍</div>
+              <div class="approach-icon">
+                <Globe size={32} />
+              </div>
               <h4>Impact-Focused</h4>
               <p>Solutions addressing healthcare, education, climate, and social equity</p>
             </div>
             <div class="approach-item">
-              <div class="approach-icon">🤝</div>
+              <div class="approach-icon">
+                <Handshake size={32} />
+              </div>
               <h4>Collaborative</h4>
               <p>Open-source development with global research institutions and NGOs</p>
             </div>

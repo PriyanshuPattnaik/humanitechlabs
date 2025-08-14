@@ -1,5 +1,6 @@
 <script>
   import { onMount } from 'svelte';
+  import { Handshake, Bot, Zap, TrendingUp, Rocket } from 'lucide-svelte';
   
   let isVisible = false;
   
@@ -8,7 +9,7 @@
       id: 'ngos',
       title: '360° Tech Solutions for NGOs',
       description: 'Complete digital transformation solutions designed specifically for non-profit organizations.',
-      icon: '🤝',
+      icon: Handshake,
       features: ['Website Development', 'Donor Management', 'Impact Tracking', 'Digital Marketing'],
       color: '#667eea',
       link: '/services/ngos'
@@ -17,7 +18,7 @@
       id: 'ai',
       title: 'AI Integration Services',
       description: 'Cutting-edge artificial intelligence solutions to automate and optimize your business processes.',
-      icon: '🤖',
+      icon: Bot,
       features: ['Machine Learning', 'Natural Language Processing', 'Computer Vision', 'Process Automation'],
       color: '#764ba2',
       link: '/services/ai'
@@ -44,7 +45,7 @@
   <div class="container">
     <div class="hero-content" class:visible={isVisible}>
       <div class="hero-badge">
-        <span class="badge-icon">⚡</span>
+        <Zap class="badge-icon" size={16} />
         <span>Our Services</span>
       </div>
       
@@ -67,7 +68,9 @@
       {#each services as service, index}
         <div class="service-card" style="--delay: {index * 0.2}s; --color: {service.color}">
           <div class="card-header">
-            <div class="service-icon">{service.icon}</div>
+            <div class="service-icon">
+              <svelte:component this={service.icon} size={48} />
+            </div>
             <h2 class="service-title">{service.title}</h2>
             <p class="service-description">{service.description}</p>
           </div>
@@ -117,17 +120,23 @@
         <p>Custom-built solutions that perfectly fit your unique requirements and goals.</p>
       </div>
       <div class="benefit-item">
-        <div class="benefit-icon">🚀</div>
+        <div class="benefit-icon">
+          <Rocket size={32} />
+        </div>
         <h3>Cutting-Edge Technology</h3>
         <p>Latest technologies and frameworks to ensure your solutions are future-ready.</p>
       </div>
       <div class="benefit-item">
-        <div class="benefit-icon">🤝</div>
+        <div class="benefit-icon">
+          <Handshake size={32} />
+        </div>
         <h3>Ongoing Support</h3>
         <p>Comprehensive support and maintenance to keep your systems running smoothly.</p>
       </div>
       <div class="benefit-item">
-        <div class="benefit-icon">📈</div>
+        <div class="benefit-icon">
+          <TrendingUp size={32} />
+        </div>
         <h3>Proven Results</h3>
         <p>Track record of successful implementations with measurable business impact.</p>
       </div>

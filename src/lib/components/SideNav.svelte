@@ -1,15 +1,16 @@
 <script lang="ts">
     import { onMount } from 'svelte';
+    import { Home, Info, Zap, Target, Settings, Users, Play, Mail } from 'lucide-svelte';
     
     let sections = [
-        { id: 'hero', label: 'Home', icon: '⌂' },
-        { id: 'about', label: 'About', icon: '◉' },
-        { id: 'research', label: 'Research', icon: '⚡' },
-        { id: 'impact', label: 'Impact', icon: '◈' },
-        { id: 'solutions', label: 'Solutions', icon: '◊' },
-        { id: 'collaboration', label: 'Collaboration', icon: '◎' },
-        { id: 'cta', label: 'Get Started', icon: '▶' },
-        { id: 'contact', label: 'Contact', icon: '◐' }
+        { id: 'hero', label: 'Home', icon: Home },
+        { id: 'about', label: 'About', icon: Info },
+        { id: 'research', label: 'Research', icon: Zap },
+        { id: 'impact', label: 'Impact', icon: Target },
+        { id: 'solutions', label: 'Solutions', icon: Settings },
+        { id: 'collaboration', label: 'Collaboration', icon: Users },
+        { id: 'cta', label: 'Get Started', icon: Play },
+        { id: 'contact', label: 'Contact', icon: Mail }
     ];
     
     let activeSection = 'hero';
@@ -80,7 +81,7 @@
                     
                     <!-- Main dot with icon -->
                     <span class="dot">
-                        <span class="dot-icon">{section.icon}</span>
+                        <svelte:component this={section.icon} class="dot-icon" size={10} />
                         <span class="dot-core"></span>
                     </span>
                     
@@ -260,9 +261,8 @@
         transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
     }
 
-    .dot-icon {
+    :global(.dot-icon) {
         position: absolute;
-        font-size: 10px;
         color: rgba(0, 0, 0, 0.6);
         z-index: 2;
         transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
@@ -288,8 +288,8 @@
             inset 0 1px 0 rgba(255, 255, 255, 0.1);
     }
 
-    .nav-dot:hover .dot-icon,
-    .nav-dot.active .dot-icon {
+    .nav-dot:hover :global(.dot-icon),
+    .nav-dot.active :global(.dot-icon) {
         opacity: 1;
         color: rgba(255, 255, 255, 0.9);
         transform: scale(1.1);

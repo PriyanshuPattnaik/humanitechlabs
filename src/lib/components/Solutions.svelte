@@ -1,6 +1,7 @@
 <script lang="ts">
   import { onMount } from 'svelte';
   import { slide } from 'svelte/transition';
+  import { Zap, Brain, Rocket } from 'lucide-svelte';
 
   interface Service {
     name: string;
@@ -17,7 +18,7 @@
   interface Solution {
     title: string;
     subtitle: string;
-    icon: string;
+    icon: any;
     services: Service[];
     metrics: Metrics;
     cta: string;
@@ -27,7 +28,7 @@
     {
       title: 'Digital Transformation',
       subtitle: 'Building Tomorrow\'s Foundations Today',
-      icon: '⚡',
+      icon: Zap,
       services: [
         {
           name: 'Next-Gen Web & Mobile Apps',
@@ -55,7 +56,7 @@
     {
       title: 'Intelligence & Analytics',
       subtitle: 'Data-Driven Decisions for Maximum Impact',
-      icon: '🧠',
+      icon: Brain,
       services: [
         {
           name: 'Real-Time Impact Dashboards',
@@ -83,7 +84,7 @@
     {
       title: 'Emerging Tech Integration',
       subtitle: 'Tomorrow\'s Technology, Today\'s Solutions',
-      icon: '🚀',
+      icon: Rocket,
       services: [
         {
           name: 'Ethical AI Implementation',
@@ -175,7 +176,7 @@
         <div class="solution-card">
           <div class="card-header">
             <div class="icon-wrapper">
-              <span class="icon">{solution.icon}</span>
+              <svelte:component this={solution.icon} class="icon" size={40} />
               <div class="icon-glow"></div>
             </div>
             <div class="title-section">
@@ -222,7 +223,7 @@
               <div class="orbit-ring orbit-2"></div>
               <div class="orbit-ring orbit-3"></div>
               <div class="center-node">
-                <span class="node-icon">{solution.icon}</span>
+                <svelte:component this={solution.icon} class="node-icon" size={24} />
               </div>
               <div class="orbit-nodes">
                 {#each Array(6) as _, nodeIndex}
@@ -350,9 +351,9 @@
     border: 2px solid #dee2e6;
   }
 
-  .icon {
-    font-size: 2.5rem;
+  :global(.icon) {
     z-index: 2;
+    color: #333;
   }
 
   .icon-glow {

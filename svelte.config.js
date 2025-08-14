@@ -1,15 +1,10 @@
-// svelte.config.js
-import adapter from '@sveltejs/adapter-auto';
-import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
+import adapter from '@sveltejs/adapter-netlify';
 
-/** @type {import('@sveltejs/kit').Config} */
-const config = {
-  preprocess: vitePreprocess(),
+export default {
   kit: {
     adapter: adapter({
-      fallback: 'index.html' // Optional SPA fallback
+      // Ensure the _redirects file is included
+      split: false
     })
   }
 };
-
-export default config;

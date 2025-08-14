@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { Zap, TrendingUp, Atom } from 'lucide-svelte';
   export let activeTab: string = 'index';
   export let isMobile: boolean = false;
   
@@ -7,21 +8,21 @@
       key: 'index', 
       label: 'Discover Research', 
       shortLabel: 'Discover', 
-      icon: '⚡',
+      icon: Zap,
       gradient: 'from-blue-500 to-cyan-400'
     },
     { 
       key: 'overview', 
       label: 'Research Overview', 
       shortLabel: 'Overview', 
-      icon: '📈',
+      icon: TrendingUp,
       gradient: 'from-purple-500 to-pink-400'
     },
     { 
       key: 'lab', 
       label: 'Research Lab', 
       shortLabel: 'Lab', 
-      icon: '🧬',
+      icon: Atom,
       gradient: 'from-emerald-500 to-teal-400'
     }
   ];
@@ -53,7 +54,7 @@
         >
           <div class="mobile-tab-inner">
             <div class="mobile-icon-container">
-              <span class="mobile-tab-icon">{tab.icon}</span>
+              <svelte:component this={tab.icon} class="mobile-tab-icon" size={20} />
               <div class="mobile-icon-glow"></div>
             </div>
             <span class="mobile-tab-label">{tab.shortLabel}</span>
@@ -89,7 +90,7 @@
           >
             <div class="tab-inner">
               <div class="icon-container">
-                <span class="tab-icon">{tab.icon}</span>
+                <svelte:component this={tab.icon} class="tab-icon" size={24} />
                 <div class="icon-glow"></div>
               </div>
               <div class="tab-text">

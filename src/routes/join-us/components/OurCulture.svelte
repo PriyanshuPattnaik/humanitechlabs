@@ -1,5 +1,6 @@
 <script lang="ts">
     import { onMount } from 'svelte';
+    import { Globe, Rocket, Zap, Lightbulb, Handshake, Sparkles } from 'lucide-svelte';
     
     let sectionElement: HTMLElement;
     let mounted = false;
@@ -37,7 +38,7 @@
         <div class="culture-card primary-card">
           <div class="card-header">
             <div class="icon-container">
-              <div class="icon">🌍</div>
+              <Globe class="icon" size={32} />
             </div>
             <h3>Global. Remote. Connected.</h3>
           </div>
@@ -47,7 +48,7 @@
         <div class="culture-card">
           <div class="card-header">
             <div class="icon-container">
-              <div class="icon">🚀</div>
+              <Rocket class="icon" size={32} />
             </div>
             <h3>Age is Just a Number</h3>
           </div>
@@ -57,7 +58,7 @@
         <div class="culture-card">
           <div class="card-header">
             <div class="icon-container">
-              <div class="icon">⚡</div>
+              <Zap class="icon" size={32} />
             </div>
             <h3>Flexible by Design</h3>
           </div>
@@ -67,7 +68,7 @@
         <div class="culture-card">
           <div class="card-header">
             <div class="icon-container">
-              <div class="icon">💡</div>
+              <Lightbulb class="icon" size={32} />
             </div>
             <h3>Innovation Without Ego</h3>
           </div>
@@ -77,7 +78,7 @@
         <div class="culture-card">
           <div class="card-header">
             <div class="icon-container">
-              <div class="icon">🤝</div>
+              <Handshake class="icon" size={32} />
             </div>
             <h3>Human-First Technology</h3>
           </div>
@@ -87,7 +88,7 @@
         <div class="culture-card">
           <div class="card-header">
             <div class="icon-container">
-              <div class="icon">✨</div>
+              <Sparkles class="icon" size={32} />
             </div>
             <h3>Growth Through Impact</h3>
           </div>
