@@ -10,50 +10,31 @@
 </script>
 
 <svelte:head>
-  <title>NGO Services - Free Technology Solutions | Humanitech</title>
-  <meta name="description" content="Transform your NGO's impact with free 360° technology solutions. Web development, AI, data analytics, and more for qualifying non-profits." />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <title>NGO Technology Services | Humanitech Labs</title>
+  <meta name="description" content="Comprehensive technology solutions designed for non-profit organizations. Modern web development, data analytics, and capacity building to amplify your social impact." />
+  <meta name="keywords" content="NGO technology services, non-profit web development, social impact technology, humanitarian tech solutions" />
 </svelte:head>
 
-<!-- Hero Section -->
 <Hero />
-
-<!-- Problem Statement -->
 <ProblemStatement />
-
-<!-- Solution Overview -->
 <SolutionOverview />
-
-<!-- Services Grid -->
 <ServicesGrid />
-
-<!-- Pricing Philosophy -->
 <PricingPhilosophy />
-
-<!-- Process Timeline -->
 <ProcessTimeline />
-
-<!-- Why Choose Us -->
 <WhyChooseUs />
-
-<!-- Final CTA -->
 <FinalCTA />
 
 <style>
   :global(html) {
-    background: #000000;
+    scroll-behavior: smooth;
   }
 
   :global(body) {
     margin: 0;
     padding: 0;
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
-    background: #000000;
-    color: #ffffff;
     line-height: 1.6;
     overflow-x: hidden;
-    scroll-behavior: smooth;
-    min-height: 100vh;
   }
 
   :global(*) {

@@ -94,7 +94,7 @@
                         </div>
                         <h3>Partner With Us</h3>
                         <p>Join our network of organizations creating positive change through technology.</p>
-                        <a href="/contact" class="contact-link">
+                        <a href="/join-us" class="contact-link">
                             <span>Start a Conversation</span>
                             <div class="link-arrow">→</div>
                         </a>
@@ -116,7 +116,7 @@
                         </div>
                         <h3>Share Your Ideas</h3>
                         <p>Have a project in mind? Let's explore how we can bring it to life together.</p>
-                        <a href="/contact" class="contact-link">
+                        <a href="/join-us" class="contact-link">
                             <span>Pitch Your Project</span>
                             <div class="link-arrow">→</div>
                         </a>
@@ -134,7 +134,7 @@
                         </div>
                         <h3>Join Our Team</h3>
                         <p>Looking for a place where your work makes a real difference? We're always growing.</p>
-                        <a href="/careers" class="contact-link">
+                        <a href="/join-us" class="contact-link">
                             <span>View Opportunities</span>
                             <div class="link-arrow">→</div>
                         </a>
@@ -146,7 +146,7 @@
                 <div class="cta-glow"></div>
                 <div class="cta-content">
                     <p>Ready to make an impact?</p>
-                    <a href="/contact" class="cta-button">
+                    <a href="/join-us" class="cta-button">
                         <span>Get in Touch</span>
                         <div class="button-shine"></div>
                     </a>

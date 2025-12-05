@@ -92,8 +92,8 @@
         <span class="link-text">Research</span>
         <div class="link-glow"></div>
       </a>
-      <a href="#for-who" on:click={handleNavClick}>
-        <span class="link-text">Products</span>
+      <a href="/#solutions" on:click={handleNavClick}>
+        <span class="link-text">Solutions</span>
         <div class="link-glow"></div>
       </a>
       
@@ -136,28 +136,25 @@
           <div class="dropdown-content">
             <div class="dropdown-section">
               <div class="dropdown-title">
-                <span class="title-icon">🤖</span>
-                For NGOs
+                <svg class="title-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                  <circle cx="9" cy="7" r="4"/>
+                  <path d="M23 21v-2a4 4 0 0 0-3-3.87m-4-12a4 4 0 0 1 0 7.75"/>
+                </svg>
+                Our Services
               </div>
               <a href="/services/ngos" class="dropdown-item" on:click={handleNavClick}>
                 <div class="item-icon">
                   <span class="icon-bg"></span>
-                  <span class="icon-text">🤝</span>
+                  <svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+                    <circle cx="9" cy="7" r="4"/>
+                    <path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>
+                  </svg>
                 </div>
                 <div class="item-content">
-                  <span class="item-title">360 Tech Solution</span>
-                  <span class="item-description">Complete digital transformation</span>
-                </div>
-                <div class="item-glow"></div>
-              </a>
-              <a href="/services/ai" class="dropdown-item" on:click={handleNavClick}>
-                <div class="item-icon">
-                  <span class="icon-bg"></span>
-                  <span class="icon-text">⚡</span>
-                </div>
-                <div class="item-content">
-                  <span class="item-title">AI Integration</span>
-                  <span class="item-description">Smart automation solutions</span>
+                  <span class="item-title">NGO Services</span>
+                  <span class="item-description">Technology for social impact</span>
                 </div>
                 <div class="item-glow"></div>
               </a>
@@ -166,24 +163,12 @@
         </div>
       </div>
       
-      <a href="#features" on:click={handleNavClick}>
-        <span class="link-text">Blog</span>
+      <a href="/#collaboration" on:click={handleNavClick}>
+        <span class="link-text">Collaborate</span>
         <div class="link-glow"></div>
       </a>
-      <a href="#results" on:click={handleNavClick}>
-        <span class="link-text">Hub</span>
-        <div class="link-glow"></div>
-      </a>
-      <a href="/join-us" on:click={handleNavClick}>
-        <span class="link-text">Join Us</span>
-        <div class="link-glow"></div>
-      </a>
-      <a href="#faq" on:click={handleNavClick}>
-        <span class="link-text">FAQ</span>
-        <div class="link-glow"></div>
-      </a>
-      <a href="/services/ngos" class="apply-button" on:click={handleNavClick}>
-        <span class="button-text">Build with Us</span>
+      <a href="/join-us" class="apply-button" on:click={handleNavClick}>
+        <span class="button-text">Join Us</span>
         <div class="button-shine"></div>
         <div class="button-glow-effect"></div>
       </a>
@@ -485,7 +470,8 @@
   }
 
   .title-icon {
-    font-size: 1.2rem;
+    width: 20px;
+    height: 20px;
   }
 
   .dropdown-item {
@@ -529,6 +515,13 @@
     position: relative;
     z-index: 1;
     font-size: 1.2rem;
+  }
+
+  .icon-svg {
+    position: relative;
+    z-index: 1;
+    width: 20px;
+    height: 20px;
   }
 
   .item-content {

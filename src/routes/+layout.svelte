@@ -1,6 +1,7 @@
 <script>
   import '../lib/styles/global.css';
   import Navbar from '$lib/components/Navbar.svelte';
+  import Footer from '$lib/components/Footer.svelte';
 </script>
 
 <Navbar />
@@ -9,9 +10,11 @@
   <slot />
 </main>
 
+<Footer />
+
 <style>
   main {
     min-height: 100vh;
-    margin-top: 0; /* Remove any top margin to allow hero section to start from the very top */
+    margin-top: 0;
   }
 </style>

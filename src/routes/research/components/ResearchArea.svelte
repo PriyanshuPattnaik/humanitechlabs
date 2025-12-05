@@ -15,7 +15,7 @@
 </script>
 
 <div class="area-block">
-  <div class="area-header" on:click={() => onToggle(area.id)}>
+  <button class="area-header" on:click={() => onToggle(area.id)} aria-expanded={isExpanded}>
     <div class="area-main-info">
       <span class="area-icon" style={`background:${area.color}20; color:${area.color}`}>{area.icon}</span>
       <div class="area-text">
@@ -26,11 +26,11 @@
       </div>
     </div>
     <div class="area-toggle">
-      <svg class="toggle-icon" class:expanded={isExpanded} width="24" height="24" viewBox="0 0 24 24">
+      <svg class="toggle-icon" class:expanded={isExpanded} width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
         <path d="M7 10l5 5 5-5" stroke="currentColor" stroke-width="2" fill="none"/>
       </svg>
     </div>
-  </div>
+  </button>
   
   {#if isExpanded}
     <div class="topics-grid">
@@ -82,6 +82,11 @@
   margin-bottom: 1.5rem;
   cursor: pointer;
   transition: transform 0.2s;
+  width: 100%;
+  background: none;
+  border: none;
+  text-align: left;
+  padding: 0;
 }
 
 .area-header:hover {

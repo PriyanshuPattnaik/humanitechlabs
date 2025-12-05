@@ -209,10 +209,10 @@
           </div>
 
           <div class="cta-section">
-            <button class="cta-button" type="button">
+            <a href="/join-us" class="cta-button">
               <span>{solution.cta}</span>
               <div class="button-arrow">→</div>
-            </button>
+            </a>
           </div>
         </div>
 
@@ -503,6 +503,7 @@
     align-items: center;
     gap: 0.5rem;
     margin: 0 auto;
+    text-decoration: none;
   }
 
   .cta-button:hover {
@@ -677,6 +678,8 @@
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
+    text-decoration: none;
+    display: inline-block;
   }
 
   .primary-cta:hover {

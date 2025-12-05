@@ -1,10 +1,10 @@
 <script>
   import { onMount } from 'svelte';
+  
   let visible = false;
   let currentWordIndex = 0;
   let isAnimating = false;
   
-  // More impactful rotating words
   const rotatingWords = [
     'HUMANITY',
     'IMPACT', 
@@ -13,15 +13,13 @@
     'TOMORROW'
   ];
   
-  // Typing effect for subtitle
   let typedText = '';
-  const fullText = 'Architecting ethical AI, scalable solutions, and inclusive ecosystems to empower the next billion minds.';
+  const fullText = 'Building ethical AI and scalable solutions to bridge the gap between technology and humanitarian needs.';
   let typeIndex = 0;
   
   onMount(() => {
     visible = true;
     
-    // Word rotation with smooth animation
     const rotateWords = () => {
       isAnimating = true;
       setTimeout(() => {
@@ -32,7 +30,6 @@
     
     const wordInterval = setInterval(rotateWords, 3500);
     
-    // Typing effect
     const typeText = () => {
       if (typeIndex < fullText.length) {
         typedText += fullText.charAt(typeIndex);
@@ -46,10 +43,7 @@
     return () => clearInterval(wordInterval);
   });
   
-  // Particle system for background
-  /** @typedef {{id: number, x: number, y: number, delay: number}} Particle */
-  
-  /** @type {Particle[]} */
+  /** @type {Array<{id: number, x: number, y: number, delay: number}>} */
   let particles = [];
   
   onMount(() => {
@@ -66,7 +60,7 @@
 </script>
 
 <section class="hero" class:visible>
-  <!-- Animated background particles -->
+  
   <div class="particles">
     {#each particles as particle}
       <div 
@@ -82,7 +76,6 @@
   
   <div class="container">
     <div class="hero-content">
-      <!-- Enhanced title with better hierarchy -->
       <div class="title-wrapper">
         <h1 class="hero-title">
           <span class="word primary">TECH</span>
@@ -93,51 +86,52 @@
           <span class="word accent">UPLIFTING.</span>
         </h1>
         
-        <!-- Animated underline -->
         <div class="title-underline"></div>
       </div>
       
-      <!-- Enhanced subtitle with typing effect -->
       <div class="subtitle-container">
         <p class="hero-subtitle typing">
           {typedText}<span class="cursor">|</span>
         </p>
         
         <p class="hero-description">
-          Transforming global challenges through breakthrough research, 
-          open-source innovation, and technology that serves humanity first.
+          We're an innovation lab focused on solving real humanitarian challenges through 
+          open-source technology, research, and services for NGOs.
         </p>
         
-        <!-- Enhanced tags with icons -->
         <div class="tags">
           <span class="tag">
-            <span class="tag-icon">🔬</span>
-            Breakthrough Research
+            <svg class="tag-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+            </svg>
+            Research & Innovation
           </span>
           <span class="tag">
-            <span class="tag-icon">⚡</span>
-            Ethical AI Systems
+            <svg class="tag-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+            </svg>
+            Open Source First
           </span>
           <span class="tag">
-            <span class="tag-icon">🌍</span>
-            Global Impact Focus
+            <svg class="tag-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+            Social Impact
           </span>
         </div>
       </div>
       
-      <!-- Enhanced CTA section -->
       <div class="cta-container">
         <div class="primary-cta">
-          <a href="#contact" class="cta-button primary">
-            <span>Start Building</span>
+          <a href="/join-us" class="cta-button primary">
+            <span>Register to Collaborate</span>
             <span class="button-arrow">→</span>
           </a>
-          <a href="#research" class="cta-button secondary">
+          <a href="/research" class="cta-button secondary">
             <span>Explore Research</span>
           </a>
         </div>
         
-        <!-- Enhanced profile card -->
         <div class="profile-card">
           <div class="profile-icon-wrapper">
             <img src="/images/4.png" alt="Hume AI" class="profile-icon" />
@@ -145,16 +139,15 @@
           </div>
           <div class="profile-text">
             <strong>Meet Hume</strong>
-            <span>Your AI research companion ready to solve tomorrow's challenges</span>
+            <span>Your AI research companion exploring humanitarian tech solutions</span>
           </div>
         </div>
       </div>
       
-      <!-- Impact metrics -->
       <div class="metrics">
         <div class="metric">
           <span class="metric-number">20+</span>
-          <span class="metric-label">Impact Domains</span>
+          <span class="metric-label">Research Domains</span>
         </div>
         <div class="metric">
           <span class="metric-number">100%</span>
@@ -168,7 +161,6 @@
     </div>
   </div>
   
-  <!-- Scroll indicator -->
   <div class="scroll-indicator">
     <div class="scroll-text">Scroll to explore</div>
     <div class="scroll-arrow">↓</div>
@@ -179,16 +171,17 @@
   .hero {
     min-height: 100vh;
     display: flex;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+    background: transparent;
     color: var(--color-jet-black);
     position: relative;
     overflow: hidden;
     padding: 2rem;
-    padding-top: 6rem;
+    padding-top: 8rem;
   }
 
-  /* Animated particles */
   .particles {
     position: absolute;
     top: 0;
@@ -196,7 +189,7 @@
     width: 100%;
     height: 100%;
     pointer-events: none;
-    z-index: 1;
+    z-index: 2;
   }
 
   .particle {
@@ -209,8 +202,8 @@
   }
 
   @keyframes float {
-    0%, 100% { transform: translateY(0px) opacity(0.3); }
-    50% { transform: translateY(-20px) opacity(0.8); }
+    0%, 100% { transform: translateY(0px); opacity: 0.3; }
+    50% { transform: translateY(-20px); opacity: 0.8; }
   }
 
   .hero-background {
@@ -222,7 +215,7 @@
     background-image: url('/images/hero.png');
     background-size: cover;
     background-position: center right;
-    z-index: 0;
+    z-index: 1;
   }
 
   .gradient-overlay {
@@ -233,16 +226,17 @@
     height: 100%;
     background: linear-gradient(
       90deg, 
-      rgba(255,255,255,0.9) 0%, 
-      rgba(255,255,255,0.7) 40%,
-      rgba(255,255,255,0.3) 70%,
+      rgba(255,255,255,0.95) 0%, 
+      rgba(255,255,255,0.85) 30%,
+      rgba(255,255,255,0.4) 60%,
       transparent 100%
     );
+    z-index: 2;
   }
 
   .container {
     position: relative;
-    z-index: 2;
+    z-index: 3;
     max-width: 1440px;
     margin: 0 auto;
     width: 100%;
@@ -260,7 +254,6 @@
     transform: translateY(0);
   }
 
-  /* Enhanced title styling */
   .title-wrapper {
     position: relative;
     margin-bottom: 3rem;
@@ -313,25 +306,6 @@
   .word.accent {
     color: var(--color-jet-black);
     animation-delay: 0.8s;
-    position: relative;
-  }
-
-  .word.accent::after {
-    content: '';
-    position: absolute;
-    bottom: -10px;
-    left: 0;
-    width: 0;
-    height: 4px;
-    background: linear-gradient(90deg, #000000, #C0C0C0);
-    animation: expandLine 1s ease-out 1.5s forwards;
-  }
-
-  .title-underline {
-    width: 0;
-    height: 2px;
-    background: linear-gradient(90deg, #C0C0C0, #E8E8E8);
-    animation: expandUnderline 1.5s ease-out 1s forwards;
   }
 
   @keyframes slideUp {
@@ -341,15 +315,17 @@
     }
   }
 
-  @keyframes expandLine {
-    to { width: 100px; }
+  .title-underline {
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #C0C0C0, #E8E8E8);
+    animation: expandUnderline 1.5s ease-out 1s forwards;
   }
 
   @keyframes expandUnderline {
     to { width: 200px; }
   }
 
-  /* Enhanced subtitle */
   .subtitle-container {
     margin-bottom: 4rem;
   }
@@ -379,7 +355,6 @@
     line-height: 1.6;
   }
 
-  /* Enhanced tags */
   .tags {
     display: flex;
     gap: 1.5rem;
@@ -409,10 +384,11 @@
   }
 
   .tag-icon {
-    font-size: 1.1em;
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
   }
 
-  /* Enhanced CTA */
   .cta-container {
     display: flex;
     flex-direction: column;
@@ -486,7 +462,6 @@
     transform: translateX(5px);
   }
 
-  /* Enhanced profile card */
   .profile-card {
     display: flex;
     align-items: center;
@@ -551,7 +526,6 @@
     color: #666;
   }
 
-  /* Impact metrics */
   .metrics {
     display: flex;
     gap: 3rem;
@@ -580,7 +554,6 @@
     letter-spacing: 1px;
   }
 
-  /* Scroll indicator */
   .scroll-indicator {
     position: absolute;
     bottom: 2rem;
@@ -612,7 +585,6 @@
     60% { transform: translateX(-50%) translateY(-5px); }
   }
 
-  /* Responsive design */
   @media (max-width: 768px) {
     .hero {
       padding: 1rem;
@@ -654,12 +626,6 @@
     .hero-background {
       width: 100%;
       opacity: 0.3;
-    }
-  }
-
-  @media (min-width: 769px) and (max-width: 1024px) {
-    .hero-title {
-      font-size: clamp(3rem, 10vw, 6rem);
     }
   }
 </style>

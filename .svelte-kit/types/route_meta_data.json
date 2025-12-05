@@ -1,8 +1,12 @@
 {
 	"/": [],
-	"/about": [],
+	"/about": [
+		"src/routes/about/+page.ts"
+	],
 	"/join-us": [],
-	"/research": [],
+	"/research": [
+		"src/routes/research/+page.ts"
+	],
 	"/services": [],
 	"/services/ngos": []
 }

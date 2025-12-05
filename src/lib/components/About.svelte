@@ -1,39 +1,19 @@
 <script lang="ts">
   import { onMount } from 'svelte';
   import { Atom, Globe, Handshake } from 'lucide-svelte';
+  import NotificationBanner from './NotificationBanner.svelte';
   
   let mounted = false;
   let scrollY = 0;
-  let impactCounter = 0;
-  let domainsCounter = 0;
-  let collaborationsCounter = 0;
 
   onMount(() => {
     mounted = true;
-    
-    // Animate counters
-    const animateCounter = (target: number, duration: number, callback: (val: number) => void) => {
-      let start = 0;
-      const increment = target / (duration / 16);
-      const timer = setInterval(() => {
-        start += increment;
-        if (start >= target) {
-          start = target;
-          clearInterval(timer);
-        }
-        callback(Math.floor(start));
-      }, 16);
-    };
-
-    setTimeout(() => {
-      animateCounter(100, 2000, (val) => impactCounter = val);
-      animateCounter(25, 1500, (val) => domainsCounter = val);
-      animateCounter(5, 1800, (val) => collaborationsCounter = val);
-    }, 500);
   });
 </script>
 
 <svelte:window bind:scrollY />
+
+<NotificationBanner />
 
 <section class="about">
   <div class="about-background">
@@ -65,16 +45,16 @@
 
     <div class="stats-section" class:visible={mounted}>
       <div class="stat-item">
-        <div class="stat-number">{impactCounter.toLocaleString()}+</div>
-        <div class="stat-label">Lives Impacted</div>
+        <div class="stat-number">20+</div>
+        <div class="stat-label">Research Domains</div>
       </div>
       <div class="stat-item">
-        <div class="stat-number">{domainsCounter}+</div>
-        <div class="stat-label">Impact Domains</div>
+        <div class="stat-number">100%</div>
+        <div class="stat-label">Open Source</div>
       </div>
       <div class="stat-item">
-        <div class="stat-number">{collaborationsCounter}+</div>
-        <div class="stat-label">Global Partners</div>
+        <div class="stat-number">∞</div>
+        <div class="stat-label">Potential Impact</div>
       </div>
     </div>
 
@@ -157,7 +137,7 @@
           <div class="cta-content">
             <h4>Ready to Build Impact?</h4>
             <p>Join us in creating technology that matters</p>
-            <a href="/contact" class="cta-button">
+            <a href="/join-us" class="cta-button">
               <span>Collaborate with Us</span>
               <span class="arrow">→</span>
             </a>

@@ -8,6 +8,29 @@
       "_internal.js"
     ]
   },
+  "_Icon.js": {
+    "file": "chunks/Icon.js",
+    "name": "Icon",
+    "imports": [
+      "_index.js"
+    ]
+  },
+  "_circle-alert.js": {
+    "file": "chunks/circle-alert.js",
+    "name": "circle-alert",
+    "imports": [
+      "_index.js",
+      "_Icon.js"
+    ]
+  },
+  "_client.js": {
+    "file": "chunks/client.js",
+    "name": "client",
+    "imports": [
+      "_exports.js",
+      "_index.js"
+    ]
+  },
   "_equality.js": {
     "file": "chunks/equality.js",
     "name": "equality"
@@ -16,7 +39,16 @@
     "file": "chunks/exports.js",
     "name": "exports",
     "imports": [
+      "_index.js",
       "_equality.js"
+    ]
+  },
+  "_heart.js": {
+    "file": "chunks/heart.js",
+    "name": "heart",
+    "imports": [
+      "_index.js",
+      "_Icon.js"
     ]
   },
   "_index.js": {
@@ -27,8 +59,56 @@
     "file": "chunks/internal.js",
     "name": "internal",
     "imports": [
-      "_equality.js",
-      "_index.js"
+      "_index.js",
+      "_equality.js"
+    ]
+  },
+  "_mail.js": {
+    "file": "chunks/mail.js",
+    "name": "mail",
+    "imports": [
+      "_index.js",
+      "_Icon.js"
+    ]
+  },
+  "_rocket.js": {
+    "file": "chunks/rocket.js",
+    "name": "rocket",
+    "imports": [
+      "_index.js",
+      "_Icon.js"
+    ]
+  },
+  "_target.js": {
+    "file": "chunks/target.js",
+    "name": "target",
+    "imports": [
+      "_index.js",
+      "_Icon.js"
+    ]
+  },
+  "_twitter.js": {
+    "file": "chunks/twitter.js",
+    "name": "twitter",
+    "imports": [
+      "_index.js",
+      "_Icon.js"
+    ]
+  },
+  "_users.js": {
+    "file": "chunks/users.js",
+    "name": "users",
+    "imports": [
+      "_index.js",
+      "_Icon.js"
+    ]
+  },
+  "_zap.js": {
+    "file": "chunks/zap.js",
+    "name": "zap",
+    "imports": [
+      "_index.js",
+      "_Icon.js"
     ]
   },
   "node_modules/@sveltejs/kit/src/runtime/components/svelte-5/error.svelte": {
@@ -38,8 +118,7 @@
     "isEntry": true,
     "imports": [
       "_index.js",
-      "_equality.js",
-      "_exports.js"
+      "_client.js"
     ]
   },
   "node_modules/@sveltejs/kit/src/runtime/server/index.js": {
@@ -58,10 +137,13 @@
     "src": "src/routes/+layout.svelte",
     "isEntry": true,
     "imports": [
-      "_index.js"
+      "_index.js",
+      "_heart.js",
+      "_twitter.js",
+      "_mail.js"
     ],
     "css": [
-      "_app/immutable/assets/_layout.CZzDFE8d.css"
+      "_app/immutable/assets/_layout.CoHqofKf.css"
     ]
   },
   "src/routes/+page.svelte": {
@@ -70,10 +152,133 @@
     "src": "src/routes/+page.svelte",
     "isEntry": true,
     "imports": [
+      "_index.js",
+      "_users.js",
+      "_heart.js",
+      "_Icon.js",
+      "_rocket.js",
+      "_target.js",
+      "_zap.js",
+      "_mail.js"
+    ],
+    "css": [
+      "_app/immutable/assets/_page.CUqvNvgZ.css"
+    ]
+  },
+  "src/routes/about/+layout.svelte": {
+    "file": "entries/pages/about/_layout.svelte.js",
+    "name": "entries/pages/about/_layout.svelte",
+    "src": "src/routes/about/+layout.svelte",
+    "isEntry": true,
+    "imports": [
+      "_index.js",
+      "_circle-alert.js",
+      "_target.js",
+      "_Icon.js",
+      "_heart.js",
+      "_zap.js",
+      "_twitter.js",
+      "_mail.js"
+    ],
+    "css": [
+      "_app/immutable/assets/_layout.BtgdOYhD.css"
+    ]
+  },
+  "src/routes/about/+page.svelte": {
+    "file": "entries/pages/about/_page.svelte.js",
+    "name": "entries/pages/about/_page.svelte",
+    "src": "src/routes/about/+page.svelte",
+    "isEntry": true,
+    "imports": [
+      "_index.js",
+      "_client.js"
+    ]
+  },
+  "src/routes/about/+page.ts": {
+    "file": "entries/pages/about/_page.ts.js",
+    "name": "entries/pages/about/_page.ts",
+    "src": "src/routes/about/+page.ts",
+    "isEntry": true
+  },
+  "src/routes/join-us/+page.svelte": {
+    "file": "entries/pages/join-us/_page.svelte.js",
+    "name": "entries/pages/join-us/_page.svelte",
+    "src": "src/routes/join-us/+page.svelte",
+    "isEntry": true,
+    "imports": [
+      "_index.js",
+      "_Icon.js",
+      "_users.js",
+      "_heart.js"
+    ],
+    "css": [
+      "_app/immutable/assets/_page.y7KySElM.css"
+    ]
+  },
+  "src/routes/research/+layout.svelte": {
+    "file": "entries/pages/research/_layout.svelte.js",
+    "name": "entries/pages/research/_layout.svelte",
+    "src": "src/routes/research/+layout.svelte",
+    "isEntry": true,
+    "imports": [
+      "_index.js",
+      "_circle-alert.js",
+      "_Icon.js",
+      "_mail.js"
+    ],
+    "css": [
+      "_app/immutable/assets/_layout.iCAPDAV6.css"
+    ]
+  },
+  "src/routes/research/+page.svelte": {
+    "file": "entries/pages/research/_page.svelte.js",
+    "name": "entries/pages/research/_page.svelte",
+    "src": "src/routes/research/+page.svelte",
+    "isEntry": true,
+    "imports": [
+      "_index.js"
+    ]
+  },
+  "src/routes/research/+page.ts": {
+    "file": "entries/pages/research/_page.ts.js",
+    "name": "entries/pages/research/_page.ts",
+    "src": "src/routes/research/+page.ts",
+    "isEntry": true
+  },
+  "src/routes/services/+page.svelte": {
+    "file": "entries/pages/services/_page.svelte.js",
+    "name": "entries/pages/services/_page.svelte",
+    "src": "src/routes/services/+page.svelte",
+    "isEntry": true,
+    "imports": [
+      "_index.js",
+      "_zap.js",
+      "_rocket.js",
+      "_Icon.js"
+    ],
+    "css": [
+      "_app/immutable/assets/_page.CQBzf8cM.css"
+    ]
+  },
+  "src/routes/services/ngos/+layout.svelte": {
+    "file": "entries/pages/services/ngos/_layout.svelte.js",
+    "name": "entries/pages/services/ngos/_layout.svelte",
+    "src": "src/routes/services/ngos/+layout.svelte",
+    "isEntry": true,
+    "imports": [
+      "_index.js"
+    ]
+  },
+  "src/routes/services/ngos/+page.svelte": {
+    "file": "entries/pages/services/ngos/_page.svelte.js",
+    "name": "entries/pages/services/ngos/_page.svelte",
+    "src": "src/routes/services/ngos/+page.svelte",
+    "isEntry": true,
+    "imports": [
       "_index.js"
     ],
     "css": [
-      "_app/immutable/assets/_page.BkYsvytj.css"
+      "_app/immutable/assets/_page.a1vRlUUt.css"
     ]
   }
 }

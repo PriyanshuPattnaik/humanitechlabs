@@ -2,21 +2,16 @@
     import Hero from './components/Hero.svelte';
     import Story from './components/Story.svelte';
     import Mission from './components/Mission.svelte';
-    import Impact from './components/Impact.svelte';
-    import Team from './components/Team.svelte';
-    import Approach from './components/Approach.svelte';
-    import Research from './components/Research.svelte';
-    import Contact from './components/Contact.svelte';
+    import Founder from './components/Founder.svelte';
+    import Journey from './components/Journey.svelte';
 </script>
 
 <main>
     <Hero />
     <Story />
     <Mission />
-    <Team />
-    <Approach />
-    <Research />
-    <Contact />
+    <Founder />
+    <Journey />
 </main>
 
 <style>

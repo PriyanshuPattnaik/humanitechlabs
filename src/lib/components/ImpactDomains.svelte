@@ -1,6 +1,7 @@
 <script>
   import { onMount } from 'svelte';
   import { fade, fly } from 'svelte/transition';
+  import { Dna, Wheat, Brain, Globe, Scale, Lightbulb } from 'lucide-svelte';
   
   /** @typedef {Object} DomainMetrics
    * @property {number} progress
@@ -23,7 +24,7 @@
   let domains = [
     {
       title: 'Healthcare & Medicine',
-      icon: '🧬',
+      icon: Dna,
       tagline: 'Healing Through Intelligence',
       description: 'AI-powered diagnostics revolutionizing patient care',
       details: 'From predictive disease modeling to personalized treatment plans, we\'re building the future of medicine where AI saves lives before symptoms appear.',
@@ -33,7 +34,7 @@
     },
     {
       title: 'Agriculture & Food Security',
-      icon: '🌾',
+      icon: Wheat,
       tagline: 'Feeding Tomorrow, Today',
       description: 'Smart farming for a hunger-free world',
       details: 'Precision agriculture powered by IoT sensors, satellite imagery, and AI algorithms that optimize crop yields while minimizing environmental impact.',
@@ -43,7 +44,7 @@
     },
     {
       title: 'Education & Accessibility',
-      icon: '🧠',
+      icon: Brain,
       tagline: 'Knowledge Without Barriers',
       description: 'Democratizing learning through adaptive AI',
       details: 'Personalized learning experiences that adapt to individual needs, breaking down barriers of language, disability, and geography.',
@@ -53,7 +54,7 @@
     },
     {
       title: 'Climate & Sustainability',
-      icon: '🌍',
+      icon: Globe,
       tagline: 'Planet-Scale Solutions',
       description: 'Tech-driven climate action and regeneration',
       details: 'Advanced climate modeling, carbon footprint optimization, and renewable energy management systems that make sustainability scalable.',
@@ -63,7 +64,7 @@
     },
     {
       title: 'Social Equity & Governance',
-      icon: '⚖️',
+      icon: Scale,
       tagline: 'Democracy Amplified',
       description: 'Transparent governance through blockchain',
       details: 'Building trust in institutions through immutable records, participatory decision-making platforms, and bias-free AI systems.',
@@ -73,7 +74,7 @@
     },
     {
       title: 'Financial Inclusion',
-      icon: '💡',
+      icon: Lightbulb,
       tagline: 'Banking the Unbanked',
       description: 'AI-driven financial accessibility',
       details: 'Revolutionary fintech solutions bringing banking, credit, and investment opportunities to underserved communities worldwide.',
@@ -161,7 +162,9 @@
           <!-- Main Content -->
           <div class="card-main">
             <div class="icon-container">
-              <span class="domain-icon">{domain.icon}</span>
+              <span class="domain-icon">
+                <svelte:component this={domain.icon} size={40} strokeWidth={1.5} />
+              </span>
               <div class="pulse-ring"></div>
             </div>
             
@@ -373,6 +376,12 @@
     position: relative;
     z-index: 2;
     transition: transform 0.3s ease;
+    color: #000000;
+  }
+
+  .domain-icon :global(svg) {
+    color: #000000;
+    stroke: #000000;
   }
 
   .domain-card:hover .domain-icon {

@@ -1,5 +1,7 @@
 <script lang="ts">
   import { onMount } from 'svelte';
+  import { Brain, Users, Globe, Scale, GraduationCap, Sparkles } from 'lucide-svelte';
+  import type { ComponentType } from 'svelte';
   
   type ResearchArea = {
     id: string;
@@ -8,7 +10,7 @@
     description: string;
     impact: string;
     domains: string[];
-    icon: string;
+    icon: ComponentType;
   };
   
   let activeCard: string | null = null;
@@ -22,7 +24,7 @@
       description: 'Developing bias-free AI systems for disease prediction, drug discovery, and agricultural optimization. Our models prioritize fairness, transparency, and global accessibility.',
       impact: '50+ Lives Impacted',
       domains: ['Healthcare', 'Agriculture', 'Climate'],
-      icon: '🧠'
+      icon: Brain
     },
     {
       id: 'assistive-tech',
@@ -31,7 +33,7 @@
       description: 'Creating IoT prosthetics, AI-powered sign language recognition, and voice-enabled systems that ensure technology serves everyone, regardless of ability.',
       impact: 'Working on 5+ Accessibility Solutions',
       domains: ['Accessibility', 'IoT', 'Inclusion'],
-      icon: '🤝'
+      icon: Users
     },
     {
       id: 'climate-tech',
@@ -40,7 +42,7 @@
       description: 'Leveraging satellite imagery, IoT sensors, and predictive analytics to combat climate change through renewable energy optimization and carbon tracking.',
       impact: '1 Climate Project',
       domains: ['Environment', 'Sustainability', 'Energy'],
-      icon: '🌍'
+      icon: Globe
     },
     {
       id: 'social-systems',
@@ -49,7 +51,7 @@
       description: 'Building blockchain governance platforms, digital identity systems, and civic engagement tools that promote transparency and democratic participation.',
       impact: 'Aiming to Empower 1M+ Citizens',
       domains: ['Governance', 'Transparency', 'Democracy'],
-      icon: '⚖️'
+      icon: Scale
     },
     {
       id: 'education-ai',
@@ -58,7 +60,7 @@
       description: 'Developing personalized learning platforms, multilingual AI tutors, and AR/VR educational experiences for underserved communities worldwide.',
       impact: '100+ Students Reached',
       domains: ['Education', 'AI', 'Global Access'],
-      icon: '📚'
+      icon: GraduationCap
     },
     {
       id: 'open-innovation',
@@ -67,7 +69,7 @@
       description: 'Leading open-source initiatives that accelerate breakthrough discoveries and ensure technological advances benefit humanity as a whole.',
       impact: 'A Growing Developer Community',
       domains: ['Open Source', 'Collaboration', 'Global'],
-      icon: '🔓'
+      icon: Sparkles
     }
   ];
 
@@ -137,7 +139,9 @@
         >
           <div class="card-content">
             <div class="card-header">
-              <div class="card-icon" role="img" aria-label={area.title}>{area.icon}</div>
+              <div class="card-icon" role="img" aria-label={area.title}>
+                <svelte:component this={area.icon} size={32} strokeWidth={1.5} />
+              </div>
               <div class="card-impact">{area.impact}</div>
             </div>
             
@@ -172,7 +176,7 @@
           <button class="cta-primary" on:click={() => window.location.href = '/research'}>
             Explore Open Research
           </button>
-          <button class="cta-secondary" on:click={() => console.log('Collaborate with Us clicked')}>
+          <button class="cta-secondary" on:click={() => window.location.href = '/join-us'}>
             Collaborate with Us
           </button>
         </div>

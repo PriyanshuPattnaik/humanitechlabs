@@ -7,21 +7,12 @@
   const services = [
     {
       id: 'ngos',
-      title: '360° Tech Solutions for NGOs',
-      description: 'Complete digital transformation solutions designed specifically for non-profit organizations.',
+      title: 'Technology Solutions for NGOs',
+      description: 'Comprehensive digital solutions designed specifically for non-profit organizations to amplify their social impact.',
       icon: Handshake,
-      features: ['Website Development', 'Donor Management', 'Impact Tracking', 'Digital Marketing'],
+      features: ['Web Development', 'Data Analytics', 'Capacity Building', 'Digital Strategy'],
       color: '#667eea',
       link: '/services/ngos'
-    },
-    {
-      id: 'ai',
-      title: 'AI Integration Services',
-      description: 'Cutting-edge artificial intelligence solutions to automate and optimize your business processes.',
-      icon: Bot,
-      features: ['Machine Learning', 'Natural Language Processing', 'Computer Vision', 'Process Automation'],
-      color: '#764ba2',
-      link: '/services/ai'
     }
   ];
   
@@ -31,9 +22,9 @@
 </script>
 
 <svelte:head>
-  <title>Our Services - HumaniTech</title>
-  <meta name="description" content="Explore our comprehensive technology services including AI integration and complete digital solutions for NGOs and businesses." />
-  <meta name="keywords" content="technology services, AI integration, NGO solutions, digital transformation" />
+  <title>Our Services | Humanitech Labs</title>
+  <meta name="description" content="Technology solutions designed for social impact. We're building comprehensive services to empower non-profit organizations through modern digital solutions." />
+  <meta name="keywords" content="NGO technology services, social impact technology, non-profit digital solutions, humanitarian tech" />
 </svelte:head>
 
 <section class="services-hero">
@@ -51,12 +42,12 @@
       
       <h1 class="hero-title">
         Technology Solutions for
-        <span class="gradient-text">Every Need</span>
+        <span class="gradient-text">Social Impact</span>
       </h1>
       
       <p class="hero-description">
-        From AI-powered automation to complete digital transformation, we provide 
-        cutting-edge technology solutions that drive growth and innovation.
+        We're building comprehensive technology services designed to empower non-profit 
+        organizations and amplify their mission impact through modern digital solutions.
       </p>
     </div>
   </div>
@@ -107,38 +98,33 @@
 <section class="why-choose-section">
   <div class="container">
     <div class="section-header" class:visible={isVisible}>
-      <h2 class="section-title">Why Choose HumaniTech?</h2>
+      <h2 class="section-title">Why Humanitech?</h2>
       <p class="section-description">
-        We combine technical expertise with deep understanding of your industry needs
+        We combine technical expertise with genuine commitment to social impact
       </p>
     </div>
     
     <div class="benefits-grid" class:visible={isVisible}>
       <div class="benefit-item">
-        <div class="benefit-icon">🎯</div>
-        <h3>Tailored Solutions</h3>
-        <p>Custom-built solutions that perfectly fit your unique requirements and goals.</p>
-      </div>
-      <div class="benefit-item">
         <div class="benefit-icon">
           <Rocket size={32} />
         </div>
-        <h3>Cutting-Edge Technology</h3>
-        <p>Latest technologies and frameworks to ensure your solutions are future-ready.</p>
+        <h3>Research-Driven</h3>
+        <p>Our solutions are informed by ongoing research in humanitarian technology and real-world insights.</p>
       </div>
       <div class="benefit-item">
         <div class="benefit-icon">
           <Handshake size={32} />
         </div>
-        <h3>Ongoing Support</h3>
-        <p>Comprehensive support and maintenance to keep your systems running smoothly.</p>
+        <h3>Mission-Aligned</h3>
+        <p>We understand the unique challenges NGOs face and design solutions accordingly.</p>
       </div>
       <div class="benefit-item">
         <div class="benefit-icon">
           <TrendingUp size={32} />
         </div>
-        <h3>Proven Results</h3>
-        <p>Track record of successful implementations with measurable business impact.</p>
+        <h3>Modern Technology</h3>
+        <p>We use cutting-edge technologies and best practices to build scalable solutions.</p>
       </div>
     </div>
   </div>
@@ -147,19 +133,19 @@
 <section class="cta-section">
   <div class="container">
     <div class="cta-content" class:visible={isVisible}>
-      <h2 class="cta-title">Ready to Transform Your Organization?</h2>
+      <h2 class="cta-title">Ready to Amplify Your Impact?</h2>
       <p class="cta-description">
-        Let's discuss how our technology solutions can help you achieve your goals.
+        We're currently developing our services and will be launching soon. Join our waitlist to be among the first.
       </p>
       <div class="cta-actions">
         <a href="/services/ngos" class="cta-button primary">
-          <span>Get Started</span>
+          <span>Explore NGO Services</span>
           <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor">
             <path d="M5 12h14M12 5l7 7-7 7"/>
           </svg>
         </a>
-        <a href="/about" class="cta-button secondary">
-          <span>Learn About Us</span>
+        <a href="/join-us" class="cta-button secondary">
+          <span>Join Waitlist</span>
         </a>
       </div>
     </div>

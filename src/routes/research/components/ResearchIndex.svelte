@@ -85,9 +85,12 @@
   }
 </script>
 
-<section class="index-section">
+<section class="index-section" id="research-index">
   <div class="container">
-    <h2 class="index-title">Research Index</h2>
+    <div class="section-header">
+      <h2 class="index-title">Research Topic Finder</h2>
+      <p class="index-subtitle">Explore research areas across various technology domains</p>
+    </div>
     
     <!-- Simple Tech Field Selector -->
     <div class="tech-selector">
@@ -131,7 +134,7 @@
       </div>
 
       {#if showDropdown}
-        <div class="dropdown-backdrop" on:click={closeDropdown}></div>
+        <button class="dropdown-backdrop" on:click={closeDropdown} aria-label="Close dropdown"></button>
         <div class="dropdown-panel">
           <div class="search-container">
             <input 
@@ -206,53 +209,46 @@
 
 <style>
 .index-section {
-  padding: 2rem 0 1rem 0;
-  background: #fff;
-}
-
-@media (min-width: 768px) {
-  .index-section {
-    padding: 4rem 0 2rem 0;
-  }
+  padding: 6rem 0;
+  background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
 }
 
 .container {
   max-width: 1100px;
   margin: 0 auto;
-  padding: 0 1rem;
+  padding: 0 2rem;
 }
 
-@media (min-width: 640px) {
-  .container {
-    padding: 0 1.5rem;
-  }
-}
-
-@media (min-width: 1024px) {
-  .container {
-    padding: 0 2rem;
-  }
+.section-header {
+  text-align: center;
+  margin-bottom: 4rem;
 }
 
 .index-title {
-  font-size: 1.8rem;
-  font-weight: 700;
-  color: #111;
-  margin-bottom: 1.5rem;
-  text-align: left;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 800;
+  color: #0a0a0a;
+  margin-bottom: 1rem;
 }
 
-@media (min-width: 640px) {
-  .index-title {
-    font-size: 2rem;
-    margin-bottom: 2rem;
+.index-subtitle {
+  font-size: 1.25rem;
+  color: #666;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  .index-section {
+    padding: 4rem 0;
   }
-}
 
-@media (min-width: 768px) {
-  .index-title {
-    font-size: 2.5rem;
-    margin-bottom: 2.5rem;
+  .container {
+    padding: 0 1.5rem;
+  }
+
+  .section-header {
+    margin-bottom: 3rem;
   }
 }
 
@@ -269,10 +265,10 @@
 }
 
 .selector-button {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.9);
   backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 1rem;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
   padding: 1rem 1.25rem;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -284,31 +280,15 @@
   overflow: hidden;
 }
 
-.selector-button::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.selector-button:hover::before {
-  opacity: 1;
-}
-
 .selector-button:hover {
-  border-color: rgba(255, 255, 255, 0.3);
+  border-color: rgba(0, 0, 0, 0.2);
   transform: translateY(-1px);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
 
 .selector-button.has-selections {
-  background: rgba(59, 130, 246, 0.15);
-  border-color: rgba(59, 130, 246, 0.3);
+  background: rgba(10, 10, 10, 0.05);
+  border-color: rgba(10, 10, 10, 0.2);
 }
 
 .selector-content {
@@ -321,19 +301,19 @@
 }
 
 .selector-icon {
-  color: #60a5fa;
+  color: #0a0a0a;
   display: flex;
   align-items: center;
 }
 
 .selector-text {
-  color: #e5e7eb;
+  color: #0a0a0a;
   font-weight: 500;
   font-size: 0.95rem;
 }
 
 .selector-badge {
-  background: #3b82f6;
+  background: #0a0a0a;
   color: white;
   font-size: 0.75rem;
   font-weight: 600;
@@ -351,9 +331,9 @@
 }
 
 .tech-chip {
-  background: rgba(59, 130, 246, 0.2);
-  border: 1px solid rgba(59, 130, 246, 0.3);
-  color: #60a5fa;
+  background: rgba(10, 10, 10, 0.08);
+  border: 1px solid rgba(10, 10, 10, 0.15);
+  color: #0a0a0a;
   padding: 0.5rem 0.75rem;
   border-radius: 0.75rem;
   font-size: 0.85rem;
@@ -366,14 +346,14 @@
 }
 
 .tech-chip:hover {
-  background: rgba(59, 130, 246, 0.3);
+  background: rgba(10, 10, 10, 0.12);
   transform: translateY(-1px);
 }
 
 .tech-chip button {
   background: none;
   border: none;
-  color: #60a5fa;
+  color: #0a0a0a;
   font-size: 1.1rem;
   font-weight: bold;
   cursor: pointer;
@@ -389,7 +369,7 @@
 
 .tech-chip button:hover {
   background: rgba(239, 68, 68, 0.2);
-  color: #f87171;
+  color: #ef4444;
 }
 
 .clear-all-btn {
@@ -417,6 +397,9 @@
   right: 0;
   bottom: 0;
   z-index: 998;
+  background: transparent;
+  border: none;
+  cursor: default;
 }
 
 .dropdown-panel {
@@ -424,11 +407,11 @@
   top: calc(100% + 0.5rem);
   left: 0;
   right: 0;
-  background: rgba(17, 24, 39, 0.95);
+  background: rgba(255, 255, 255, 0.98);
   backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 1rem;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
   z-index: 999;
   overflow: hidden;
   max-height: 400px;
@@ -438,28 +421,28 @@
 
 .search-container {
   padding: 1rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .search-input {
   width: 100%;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(0, 0, 0, 0.03);
+  border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 0.75rem;
   padding: 0.75rem 1rem;
-  color: #e5e7eb;
+  color: #0a0a0a;
   font-size: 0.9rem;
   transition: all 0.2s ease;
 }
 
 .search-input::placeholder {
-  color: #9ca3af;
+  color: #666;
 }
 
 .search-input:focus {
   outline: none;
-  border-color: #3b82f6;
-  background: rgba(255, 255, 255, 0.08);
+  border-color: #0a0a0a;
+  background: rgba(0, 0, 0, 0.05);
 }
 
 .options-list {
@@ -473,7 +456,7 @@
   background: none;
   border: none;
   padding: 0.75rem 1rem;
-  color: #e5e7eb;
+  color: #0a0a0a;
   text-align: left;
   cursor: pointer;
   display: flex;
@@ -484,45 +467,45 @@
 }
 
 .option-item:hover {
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(0, 0, 0, 0.05);
 }
 
 .option-item.selected {
-  background: rgba(59, 130, 246, 0.1);
-  color: #60a5fa;
+  background: rgba(10, 10, 10, 0.08);
+  color: #0a0a0a;
+  font-weight: 600;
 }
 
 .option-item.selected svg {
-  color: #60a5fa;
+  color: #0a0a0a;
 }
 
 .no-options {
   padding: 1rem;
   text-align: center;
-  color: #9ca3af;
+  color: #666;
   font-size: 0.9rem;
 }
 
 .dropdown-footer {
   padding: 1rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .footer-btn {
   width: 100%;
-  background: rgba(59, 130, 246, 0.2);
-  border: 1px solid rgba(59, 130, 246, 0.3);
-  color: #60a5fa;
+  background: #0a0a0a;
+  border: none;
+  color: #ffffff;
   padding: 0.75rem;
   border-radius: 0.75rem;
-  font-weight: 500;
+  font-weight: 600;
   cursor: pointer;
   transition: all 0.2s ease;
-  backdrop-filter: blur(10px);
 }
 
 .footer-btn:hover {
-  background: rgba(59, 130, 246, 0.3);
+  background: #333;
   transform: translateY(-1px);
 }
 
@@ -532,17 +515,17 @@
 }
 
 .options-list::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(0, 0, 0, 0.05);
   border-radius: 3px;
 }
 
 .options-list::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(0, 0, 0, 0.2);
   border-radius: 3px;
 }
 
 .options-list::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.3);
+  background: rgba(0, 0, 0, 0.3);
 }
 
 /* Areas List */
@@ -587,18 +570,19 @@
 }
 
 .select-btn {
-  background: #3b82f6;
+  background: #0a0a0a;
   color: white;
   border: none;
   padding: 0.8rem 1.5rem;
   border-radius: 0.5rem;
   font-weight: 600;
   cursor: pointer;
-  transition: background 0.2s;
+  transition: all 0.2s;
 }
 
 .select-btn:hover {
-  background: #2563eb;
+  background: #333;
+  transform: translateY(-2px);
 }
 
 /* Loading */

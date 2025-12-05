@@ -1,12 +1,108 @@
-import "clsx";
+import { clsx as clsx$1 } from "clsx";
+var is_array = Array.isArray;
+var index_of = Array.prototype.indexOf;
+var array_from = Array.from;
+var define_property = Object.defineProperty;
+var get_descriptor = Object.getOwnPropertyDescriptor;
+var object_prototype = Object.prototype;
+var array_prototype = Array.prototype;
+var get_prototype_of = Object.getPrototypeOf;
+var is_extensible = Object.isExtensible;
+const noop = () => {
+};
+function run_all(arr) {
+  for (var i = 0; i < arr.length; i++) {
+    arr[i]();
+  }
+}
+function fallback(value, fallback2, lazy = false) {
+  return value === void 0 ? lazy ? (
+    /** @type {() => V} */
+    fallback2()
+  ) : (
+    /** @type {V} */
+    fallback2
+  ) : value;
+}
 const HYDRATION_START = "[";
 const HYDRATION_END = "]";
 const HYDRATION_ERROR = {};
+const ELEMENT_IS_NAMESPACED = 1;
+const ELEMENT_PRESERVE_ATTRIBUTE_CASE = 1 << 1;
 const UNINITIALIZED = Symbol();
 function lifecycle_outside_component(name) {
   {
     throw new Error(`https://svelte.dev/e/lifecycle_outside_component`);
   }
+}
+const VOID_ELEMENT_NAMES = [
+  "area",
+  "base",
+  "br",
+  "col",
+  "command",
+  "embed",
+  "hr",
+  "img",
+  "input",
+  "keygen",
+  "link",
+  "meta",
+  "param",
+  "source",
+  "track",
+  "wbr"
+];
+function is_void(name) {
+  return VOID_ELEMENT_NAMES.includes(name) || name.toLowerCase() === "!doctype";
+}
+const DOM_BOOLEAN_ATTRIBUTES = [
+  "allowfullscreen",
+  "async",
+  "autofocus",
+  "autoplay",
+  "checked",
+  "controls",
+  "default",
+  "disabled",
+  "formnovalidate",
+  "hidden",
+  "indeterminate",
+  "inert",
+  "ismap",
+  "loop",
+  "multiple",
+  "muted",
+  "nomodule",
+  "novalidate",
+  "open",
+  "playsinline",
+  "readonly",
+  "required",
+  "reversed",
+  "seamless",
+  "selected",
+  "webkitdirectory",
+  "defer",
+  "disablepictureinpicture",
+  "disableremoteplayback"
+];
+function is_boolean_attribute(name) {
+  return DOM_BOOLEAN_ATTRIBUTES.includes(name);
+}
+const PASSIVE_EVENTS = ["touchstart", "touchmove"];
+function is_passive_event(name) {
+  return PASSIVE_EVENTS.includes(name);
+}
+const RAW_TEXT_ELEMENTS = (
+  /** @type {const} */
+  ["textarea", "script", "style", "title"]
+);
+function is_raw_text_element(name) {
+  return RAW_TEXT_ELEMENTS.includes(
+    /** @type {RAW_TEXT_ELEMENTS[number]} */
+    name
+  );
 }
 const ATTR_REGEX = /[&"<]/g;
 const CONTENT_REGEX = /[&<]/g;
@@ -35,6 +131,13 @@ function attr(name, value, is_boolean = false) {
   const normalized = name in replacements && replacements[name].get(value) || value;
   const assignment = is_boolean ? "" : `="${escape_html(normalized, true)}"`;
   return ` ${name}${assignment}`;
+}
+function clsx(value) {
+  if (typeof value === "object") {
+    return clsx$1(value);
+  } else {
+    return value ?? "";
+  }
 }
 const whitespace = [..." 	\n\r\f \v\uFEFF"];
 function to_class(value, hash, directives) {
@@ -111,6 +214,7 @@ function get_parent_context(component_context) {
 }
 const BLOCK_OPEN = `<!--${HYDRATION_START}-->`;
 const BLOCK_CLOSE = `<!--${HYDRATION_END}-->`;
+const EMPTY_COMMENT = `<!---->`;
 class HeadPayload {
   /** @type {Set<{ hash: string; code: string }>} */
   css = /* @__PURE__ */ new Set();
@@ -139,6 +243,23 @@ function props_id_generator(prefix) {
   let uid = 1;
   return () => `${prefix}s${uid++}`;
 }
+const INVALID_ATTR_NAME_CHAR_REGEX = /[\s'">/=\u{FDD0}-\u{FDEF}\u{FFFE}\u{FFFF}\u{1FFFE}\u{1FFFF}\u{2FFFE}\u{2FFFF}\u{3FFFE}\u{3FFFF}\u{4FFFE}\u{4FFFF}\u{5FFFE}\u{5FFFF}\u{6FFFE}\u{6FFFF}\u{7FFFE}\u{7FFFF}\u{8FFFE}\u{8FFFF}\u{9FFFE}\u{9FFFF}\u{AFFFE}\u{AFFFF}\u{BFFFE}\u{BFFFF}\u{CFFFE}\u{CFFFF}\u{DFFFE}\u{DFFFF}\u{EFFFE}\u{EFFFF}\u{FFFFE}\u{FFFFF}\u{10FFFE}\u{10FFFF}]/u;
+function element(payload, tag, attributes_fn = noop, children_fn = noop) {
+  payload.out += "<!---->";
+  if (tag) {
+    payload.out += `<${tag}`;
+    attributes_fn();
+    payload.out += `>`;
+    if (!is_void(tag)) {
+      children_fn();
+      if (!is_raw_text_element(tag)) {
+        payload.out += EMPTY_COMMENT;
+      }
+      payload.out += `</${tag}>`;
+    }
+  }
+  payload.out += "<!---->";
+}
 let on_destroy = [];
 function render(component, options = {}) {
   const payload = new Payload(options.idPrefix ? options.idPrefix + "-" : "");
@@ -156,15 +277,57 @@ function render(component, options = {}) {
   payload.out += BLOCK_CLOSE;
   for (const cleanup of on_destroy) cleanup();
   on_destroy = prev_on_destroy;
-  let head = payload.head.out + payload.head.title;
+  let head2 = payload.head.out + payload.head.title;
   for (const { hash, code } of payload.css) {
-    head += `<style id="${hash}">${code}</style>`;
+    head2 += `<style id="${hash}">${code}</style>`;
   }
   return {
-    head,
+    head: head2,
     html: payload.out,
     body: payload.out
   };
+}
+function head(payload, fn) {
+  const head_payload = payload.head;
+  head_payload.out += BLOCK_OPEN;
+  fn(head_payload);
+  head_payload.out += BLOCK_CLOSE;
+}
+function spread_attributes(attrs, css_hash, classes, styles, flags = 0) {
+  if (attrs.class) {
+    attrs.class = clsx(attrs.class);
+  }
+  let attr_str = "";
+  let name;
+  const is_html = (flags & ELEMENT_IS_NAMESPACED) === 0;
+  const lowercase = (flags & ELEMENT_PRESERVE_ATTRIBUTE_CASE) === 0;
+  for (name in attrs) {
+    if (typeof attrs[name] === "function") continue;
+    if (name[0] === "$" && name[1] === "$") continue;
+    if (INVALID_ATTR_NAME_CHAR_REGEX.test(name)) continue;
+    var value = attrs[name];
+    if (lowercase) {
+      name = name.toLowerCase();
+    }
+    attr_str += attr(name, value, is_html && is_boolean_attribute(name));
+  }
+  return attr_str;
+}
+function spread_props(props) {
+  const merged_props = {};
+  let key;
+  for (let i = 0; i < props.length; i++) {
+    const obj = props[i];
+    for (key in obj) {
+      const desc = Object.getOwnPropertyDescriptor(obj, key);
+      if (desc) {
+        Object.defineProperty(merged_props, key, desc);
+      } else {
+        merged_props[key] = obj[key];
+      }
+    }
+  }
+  return merged_props;
 }
 function stringify(value) {
   return typeof value === "string" ? value : value == null ? "" : value + "";
@@ -186,6 +349,29 @@ function slot(payload, $$props, name, slot_props, fallback_fn) {
     slot_fn(payload, slot_props);
   }
 }
+function rest_props(props, rest) {
+  const rest_props2 = {};
+  let key;
+  for (key in props) {
+    if (!rest.includes(key)) {
+      rest_props2[key] = props[key];
+    }
+  }
+  return rest_props2;
+}
+function sanitize_props(props) {
+  const { children, $$slots, ...sanitized } = props;
+  return sanitized;
+}
+function bind_props(props_parent, props_now) {
+  for (const key in props_now) {
+    const initial_value = props_parent[key];
+    const value = props_now[key];
+    if (initial_value === void 0 && value !== void 0 && Object.getOwnPropertyDescriptor(props_parent, key)?.set) {
+      props_parent[key] = value;
+    }
+  }
+}
 function ensure_array_like(array_like_or_iterator) {
   if (array_like_or_iterator) {
     return array_like_or_iterator.length !== void 0 ? array_like_or_iterator : Array.from(array_like_or_iterator);
@@ -193,20 +379,41 @@ function ensure_array_like(array_like_or_iterator) {
   return [];
 }
 export {
+  stringify as A,
+  head as B,
+  bind_props as C,
+  noop as D,
+  rest_props as E,
+  fallback as F,
+  spread_attributes as G,
   HYDRATION_ERROR as H,
+  clsx as I,
+  element as J,
   UNINITIALIZED as U,
-  HYDRATION_START as a,
-  HYDRATION_END as b,
-  pop as c,
-  attr_class as d,
-  attr as e,
-  slot as f,
-  getContext as g,
-  escape_html as h,
-  ensure_array_like as i,
-  attr_style as j,
-  stringify as k,
+  array_prototype as a,
+  get_prototype_of as b,
+  is_extensible as c,
+  index_of as d,
+  define_property as e,
+  HYDRATION_START as f,
+  get_descriptor as g,
+  HYDRATION_END as h,
+  is_array as i,
+  array_from as j,
+  is_passive_event as k,
+  render as l,
+  pop as m,
+  attr_class as n,
+  object_prototype as o,
   push as p,
-  render as r,
-  setContext as s
+  attr as q,
+  run_all as r,
+  setContext as s,
+  ensure_array_like as t,
+  escape_html as u,
+  slot as v,
+  getContext as w,
+  sanitize_props as x,
+  spread_props as y,
+  attr_style as z
 };

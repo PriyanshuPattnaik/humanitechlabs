@@ -40,14 +40,12 @@ declare module '$env/static/private' {
 	export const DF_SERVICE_ACCOUNT_PATH: string;
 	export const DriverData: string;
 	export const EDITOR: string;
-	export const EFC_10164_1262719628: string;
-	export const EFC_10164_1592913036: string;
-	export const EFC_10164_2283032206: string;
-	export const EFC_10164_2775293581: string;
-	export const EFC_10164_3789132940: string;
+	export const EFC_4332_1262719628: string;
+	export const EFC_4332_1592913036: string;
+	export const EFC_4332_2283032206: string;
+	export const EFC_4332_2775293581: string;
+	export const EFC_4332_3789132940: string;
 	export const EnableLog: string;
-	export const FPS_BROWSER_APP_PROFILE_STRING: string;
-	export const FPS_BROWSER_USER_PROFILE_STRING: string;
 	export const GIT_ASKPASS: string;
 	export const GROQ_API_KEY: string;
 	export const HF_API_KEY: string;
@@ -78,11 +76,11 @@ declare module '$env/static/private' {
 	export const npm_lifecycle_event: string;
 	export const npm_lifecycle_script: string;
 	export const npm_node_execpath: string;
+	export const npm_package_engines_node: string;
 	export const npm_package_json: string;
 	export const npm_package_name: string;
 	export const npm_package_version: string;
 	export const NUMBER_OF_PROCESSORS: string;
-	export const NVIDIAWHITELISTED: string;
 	export const NVM_HOME: string;
 	export const NVM_SYMLINK: string;
 	export const OneDrive: string;
@@ -99,11 +97,12 @@ declare module '$env/static/private' {
 	export const ProgramFiles: string;
 	export const ProgramW6432: string;
 	export const PROMPT: string;
+	export const PROMPT_COMMAND: string;
 	export const PSModulePath: string;
 	export const PUBLIC: string;
+	export const Q_TERM_DISABLED: string;
 	export const RlsSvcPort: string;
 	export const SESSIONNAME: string;
-	export const SHIM_MCCOMPAT: string;
 	export const SystemDrive: string;
 	export const SystemRoot: string;
 	export const TEMP: string;
@@ -119,9 +118,9 @@ declare module '$env/static/private' {
 	export const VSCODE_GIT_ASKPASS_NODE: string;
 	export const VSCODE_GIT_IPC_HANDLE: string;
 	export const VSCODE_INJECTION: string;
+	export const VTE_VERSION: string;
 	export const windir: string;
 	export const ZES_ENABLE_SYSMAN: string;
-	export const __COMPAT_LAYER: string;
 }
 
 /**
@@ -167,14 +166,12 @@ declare module '$env/dynamic/private' {
 		DF_SERVICE_ACCOUNT_PATH: string;
 		DriverData: string;
 		EDITOR: string;
-		EFC_10164_1262719628: string;
-		EFC_10164_1592913036: string;
-		EFC_10164_2283032206: string;
-		EFC_10164_2775293581: string;
-		EFC_10164_3789132940: string;
+		EFC_4332_1262719628: string;
+		EFC_4332_1592913036: string;
+		EFC_4332_2283032206: string;
+		EFC_4332_2775293581: string;
+		EFC_4332_3789132940: string;
 		EnableLog: string;
-		FPS_BROWSER_APP_PROFILE_STRING: string;
-		FPS_BROWSER_USER_PROFILE_STRING: string;
 		GIT_ASKPASS: string;
 		GROQ_API_KEY: string;
 		HF_API_KEY: string;
@@ -205,11 +202,11 @@ declare module '$env/dynamic/private' {
 		npm_lifecycle_event: string;
 		npm_lifecycle_script: string;
 		npm_node_execpath: string;
+		npm_package_engines_node: string;
 		npm_package_json: string;
 		npm_package_name: string;
 		npm_package_version: string;
 		NUMBER_OF_PROCESSORS: string;
-		NVIDIAWHITELISTED: string;
 		NVM_HOME: string;
 		NVM_SYMLINK: string;
 		OneDrive: string;
@@ -226,11 +223,12 @@ declare module '$env/dynamic/private' {
 		ProgramFiles: string;
 		ProgramW6432: string;
 		PROMPT: string;
+		PROMPT_COMMAND: string;
 		PSModulePath: string;
 		PUBLIC: string;
+		Q_TERM_DISABLED: string;
 		RlsSvcPort: string;
 		SESSIONNAME: string;
-		SHIM_MCCOMPAT: string;
 		SystemDrive: string;
 		SystemRoot: string;
 		TEMP: string;
@@ -246,9 +244,9 @@ declare module '$env/dynamic/private' {
 		VSCODE_GIT_ASKPASS_NODE: string;
 		VSCODE_GIT_IPC_HANDLE: string;
 		VSCODE_INJECTION: string;
+		VTE_VERSION: string;
 		windir: string;
 		ZES_ENABLE_SYSMAN: string;
-		__COMPAT_LAYER: string;
 		[key: `PUBLIC_${string}`]: undefined;
 		[key: `${string}`]: string | undefined;
 	}

@@ -1,7 +1,7 @@
-import { o as object_prototype, a as array_prototype, g as get_descriptor, b as get_prototype_of, i as is_array, s as safe_equals, e as equals, c as is_extensible, r as run_all, d as index_of, f as define_property, h as array_from } from "./equality.js";
-import { U as UNINITIALIZED, H as HYDRATION_ERROR, a as HYDRATION_START, b as HYDRATION_END, r as render, p as push$1, s as setContext, c as pop$1 } from "./index.js";
+import { o as object_prototype, a as array_prototype, U as UNINITIALIZED, g as get_descriptor, b as get_prototype_of, i as is_array, H as HYDRATION_ERROR, c as is_extensible, r as run_all, d as index_of, e as define_property, f as HYDRATION_START, h as HYDRATION_END, j as array_from, k as is_passive_event, l as render, p as push$1, s as setContext, m as pop$1 } from "./index.js";
+import { s as safe_equals, e as equals } from "./equality.js";
 import "clsx";
-const DEV = false;
+const BROWSER = false;
 let base = "";
 let assets = base;
 const app_dir = "_app";
@@ -1046,8 +1046,8 @@ function update_effect(effect2) {
     effect2.wv = write_version;
     var deps = effect2.deps;
     var dep;
-    if (DEV && tracing_mode_flag && (effect2.f & DIRTY) !== 0 && deps !== null) ;
-    if (DEV) ;
+    if (BROWSER && tracing_mode_flag && (effect2.f & DIRTY) !== 0 && deps !== null) ;
+    if (BROWSER) ;
   } catch (error) {
     handle_error(error, effect2, previous_effect, previous_component_context || effect2.ctx);
   } finally {
@@ -1225,10 +1225,6 @@ function get(signal) {
 const STATUS_MASK = -7169;
 function set_signal_status(signal, status) {
   signal.f = signal.f & STATUS_MASK | status;
-}
-const PASSIVE_EVENTS = ["touchstart", "touchmove"];
-function is_passive_event(name) {
-  return PASSIVE_EVENTS.includes(name);
 }
 const all_registered_events = /* @__PURE__ */ new Set();
 const root_event_handles = /* @__PURE__ */ new Set();
@@ -1605,7 +1601,8 @@ function Root($$payload, $$props) {
     components = [],
     form,
     data_0 = null,
-    data_1 = null
+    data_1 = null,
+    data_2 = null
   } = $$props;
   {
     setContext("__svelte__", stores);
@@ -1613,7 +1610,7 @@ function Root($$payload, $$props) {
   {
     stores.page.set(page);
   }
-  const Pyramid_1 = constructors[1];
+  const Pyramid_2 = constructors[2];
   if (constructors[1]) {
     $$payload.out += "<!--[-->";
     const Pyramid_0 = constructors[0];
@@ -1622,9 +1619,29 @@ function Root($$payload, $$props) {
       data: data_0,
       form,
       children: ($$payload2) => {
-        $$payload2.out += `<!---->`;
-        Pyramid_1($$payload2, { data: data_1, form });
-        $$payload2.out += `<!---->`;
+        if (constructors[2]) {
+          $$payload2.out += "<!--[-->";
+          const Pyramid_1 = constructors[1];
+          $$payload2.out += `<!---->`;
+          Pyramid_1($$payload2, {
+            data: data_1,
+            form,
+            children: ($$payload3) => {
+              $$payload3.out += `<!---->`;
+              Pyramid_2($$payload3, { data: data_2, form });
+              $$payload3.out += `<!---->`;
+            },
+            $$slots: { default: true }
+          });
+          $$payload2.out += `<!---->`;
+        } else {
+          $$payload2.out += "<!--[!-->";
+          const Pyramid_1 = constructors[1];
+          $$payload2.out += `<!---->`;
+          Pyramid_1($$payload2, { data: data_1, form });
+          $$payload2.out += `<!---->`;
+        }
+        $$payload2.out += `<!--]-->`;
       },
       $$slots: { default: true }
     });
@@ -1658,7 +1675,7 @@ const options = {
   root,
   service_worker: false,
   templates: {
-    app: ({ head, body, assets: assets2, nonce, env }) => '<!DOCTYPE html>\n<html lang="en">\n  <head>\n    <meta charset="utf-8" />\n    <link rel="icon" href="' + assets2 + '/favicon.png" />\n    <meta name="viewport" content="width=device-width, initial-scale=1" />\n    <title>Humanitech Labs - Open Source Tech for Society</title>\n    ' + head + '\n  </head>\n  <body data-sveltekit-preload-data="hover">\n    <div style="display: contents">' + body + "</div>\n  </body>\n</html>\n",
+    app: ({ head, body, assets: assets2, nonce, env }) => '<!DOCTYPE html>\n<html lang="en">\n  <head>\n    <meta charset="utf-8" />\n    <link rel="icon" href="' + assets2 + '/favicon.png" />\n    <meta name="viewport" content="width=device-width, initial-scale=1" />\n    \n    <!-- Primary Meta Tags -->\n    <title>Humanitech Labs - Technology for Humanitarian Impact</title>\n    <meta name="title" content="Humanitech Labs - Technology for Humanitarian Impact" />\n    <meta name="description" content="An innovation lab building ethical AI, open-source solutions, and technology services for NGOs. We bridge the gap between technology and humanitarian needs through research and collaboration." />\n    <meta name="keywords" content="humanitarian technology, ethical AI, open source, NGO technology solutions, social impact tech, innovation lab, tech for good" />\n    <meta name="author" content="Humanitech Labs" />\n    <meta name="robots" content="index, follow" />\n    \n    <!-- Open Graph / Facebook -->\n    <meta property="og:type" content="website" />\n    <meta property="og:url" content="https://humanitech.org/" />\n    <meta property="og:title" content="Humanitech Labs - Technology for Humanitarian Impact" />\n    <meta property="og:description" content="Building ethical AI and scalable solutions to bridge the gap between technology and humanitarian needs." />\n    <meta property="og:image" content="' + assets2 + '/images/og-image.png" />\n    \n    <!-- Twitter -->\n    <meta property="twitter:card" content="summary_large_image" />\n    <meta property="twitter:url" content="https://humanitech.org/" />\n    <meta property="twitter:title" content="Humanitech Labs - Technology for Humanitarian Impact" />\n    <meta property="twitter:description" content="Building ethical AI and scalable solutions to bridge the gap between technology and humanitarian needs." />\n    <meta property="twitter:image" content="' + assets2 + '/images/og-image.png" />\n    \n    <!-- Canonical URL -->\n    <link rel="canonical" href="https://humanitech.org/" />\n    \n    ' + head + '\n  </head>\n  <body data-sveltekit-preload-data="hover">\n    <div style="display: contents">' + body + "</div>\n  </body>\n</html>\n",
     error: ({ status, message }) => '<!doctype html>\n<html lang="en">\n	<head>\n		<meta charset="utf-8" />\n		<title>' + message + `</title>
 
 		<style>
@@ -1730,7 +1747,7 @@ const options = {
 		<div class="error">
 			<span class="status">` + status + '</span>\n			<div class="message">\n				<h1>' + message + "</h1>\n			</div>\n		</div>\n	</body>\n</html>\n"
   },
-  version_hash: "mqgvdj"
+  version_hash: "1ixc4s6"
 };
 async function get_hooks() {
   let handle;
@@ -1749,7 +1766,7 @@ async function get_hooks() {
   };
 }
 export {
-  DEV as D,
+  BROWSER as B,
   assets as a,
   base as b,
   app_dir as c,

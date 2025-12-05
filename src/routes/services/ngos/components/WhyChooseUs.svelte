@@ -1,302 +1,172 @@
 <script lang="ts">
-  import { fly } from 'svelte/transition';
+  import { onMount } from 'svelte';
+  import { BookOpen, Users2, Zap, Shield } from 'lucide-svelte';
+  
+  let mounted = false;
+  
+  onMount(() => {
+    mounted = true;
+  });
 </script>
 
-<section class="why-choose" in:fly={{ y: 50, duration: 1000, delay: 200 }}>
+<section class="why-choose-us">
   <div class="container">
-    <div class="section-header">
-      <div class="section-badge">Why Humanitech</div>
-      <h2>Why NGOs Trust Us</h2>
-      <p>We're not just a tech company—we're your mission-driven technology partner with a unique approach to social impact.</p>
-    </div>
-    
-    <div class="features-grid">
-      <div class="feature-card" in:fly={{ y: 30, duration: 800, delay: 400 }}>
-        <div class="feature-icon">
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
-            <path d="M12 2L13.09 8.26L20 9L13.09 9.74L12 16L10.91 9.74L4 9L10.91 8.26L12 2Z" stroke="currentColor" stroke-width="1.5"/>
-          </svg>
-        </div>
-        <h3>Tech for Good Focus</h3>
-        <p>We're driven by a singular mission: leveraging technology to amplify social impact. Every solution we create is designed with your mission at the center.</p>
-        <div class="feature-highlight">
-          <span>Mission-first approach</span>
-        </div>
+    {#if mounted}
+      <div class="section-header">
+        <h2>Why Work With Us</h2>
+        <p>
+          We bring a unique combination of technical expertise, research-driven insights, 
+          and genuine commitment to social impact.
+        </p>
       </div>
       
-      <div class="feature-card" in:fly={{ y: 30, duration: 800, delay: 600 }}>
-        <div class="feature-icon">
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
-            <path d="M9 20L3 17V4L9 7L15 4L21 7V20L15 17L9 20Z" stroke="currentColor" stroke-width="1.5"/>
-          </svg>
+      <div class="benefits-grid">
+        <div class="benefit-card">
+          <div class="benefit-icon">
+            <BookOpen size={32} />
+          </div>
+          <h3>Research-Backed</h3>
+          <p>
+            Our solutions are informed by ongoing research in humanitarian technology 
+            and real-world insights from the non-profit sector.
+          </p>
         </div>
-        <h3>Research Institution Background</h3>
-        <p>As a research institution, we bring academic rigor and cutting-edge innovation to every project. Our solutions are grounded in research and proven methodologies.</p>
-        <div class="feature-highlight">
-          <span>Academic excellence</span>
+        
+        <div class="benefit-card">
+          <div class="benefit-icon">
+            <Users2 size={32} />
+          </div>
+          <h3>Sector Understanding</h3>
+          <p>
+            We understand the unique challenges NGOs face—from limited budgets to 
+            complex stakeholder needs and impact measurement.
+          </p>
         </div>
-      </div>
-      
-      <div class="feature-card" in:fly={{ y: 30, duration: 800, delay: 800 }}>
-        <div class="feature-icon">
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
-            <path d="M12 2L2 7V10C2 16 6 20.88 12 22C18 20.88 22 16 22 10V7L12 2Z" stroke="currentColor" stroke-width="1.5"/>
-          </svg>
+        
+        <div class="benefit-card">
+          <div class="benefit-icon">
+            <Zap size={32} />
+          </div>
+          <h3>Modern Technology</h3>
+          <p>
+            We use cutting-edge technologies and best practices to build solutions 
+            that are fast, secure, and built to scale.
+          </p>
         </div>
-        <h3>Exclusive NGO Specialization</h3>
-        <p>We work exclusively with non-profit organizations, giving us deep expertise in the unique challenges and opportunities faced by the social sector.</p>
-        <div class="feature-highlight">
-          <span>NGO expertise</span>
-        </div>
-      </div>
-      
-      <div class="feature-card" in:fly={{ y: 30, duration: 800, delay: 1000 }}>
-        <div class="feature-icon">
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
-            <path d="M12 1V23M17 5H9.5A3.5 3.5 0 0 0 6 8.5C6 10.5 7 12 9 13C7 14 6 15.5 6 17.5A3.5 3.5 0 0 0 9.5 21H17" stroke="currentColor" stroke-width="1.5"/>
-          </svg>
-        </div>
-        <h3>Ethical Pricing Model</h3>
-        <p>Our pricing is designed to maximize your impact, not our profit. We offer transparent, mission-aligned pricing that makes technology accessible to all NGOs.</p>
-        <div class="feature-highlight">
-          <span>Impact-driven pricing</span>
-        </div>
-      </div>
-      
-      <div class="feature-card" in:fly={{ y: 30, duration: 800, delay: 1200 }}>
-        <div class="feature-icon">
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
-            <path d="M3 12H21M12 3V21" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-          </svg>
-        </div>
-        <h3>Scalable Solutions</h3>
-        <p>Technology that grows with your organization and adapts to changing needs. We build for the future, not just the present.</p>
-        <div class="feature-highlight">
-          <span>Future-proof technology</span>
+        
+        <div class="benefit-card">
+          <div class="benefit-icon">
+            <Shield size={32} />
+          </div>
+          <h3>Long-Term Support</h3>
+          <p>
+            We're committed to your success beyond launch, providing ongoing support, 
+            training, and capacity building for your team.
+          </p>
         </div>
       </div>
-      
-      <div class="feature-card" in:fly={{ y: 30, duration: 800, delay: 1400 }}>
-        <div class="feature-icon">
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
-            <path d="M12 6.5C13.3807 6.5 14.5 5.38071 14.5 4C14.5 2.61929 13.3807 1.5 12 1.5C10.6193 1.5 9.5 2.61929 9.5 4C9.5 5.38071 10.6193 6.5 12 6.5Z" stroke="currentColor" stroke-width="1.5"/>
-            <path d="M20.5 21C20.5 16.8579 16.6421 13.5 12 13.5C7.35786 13.5 3.5 16.8579 3.5 21" stroke="currentColor" stroke-width="1.5"/>
-          </svg>
-        </div>
-        <h3>Ethics-Driven Development</h3>
-        <p>Committed to data privacy, accessibility, and sustainable technology practices. We build solutions that respect both people and the planet.</p>
-        <div class="feature-highlight">
-          <span>Ethical technology</span>
-        </div>
-      </div>
-    </div>
-    
-    <div class="trust-indicators" in:fly={{ y: 50, duration: 1000, delay: 1600 }}>
-      <div class="indicator">
-        <div class="indicator-number">100%</div>
-        <div class="indicator-label">NGO Focus</div>
-      </div>
-      <div class="indicator">
-        <div class="indicator-number">Research</div>
-        <div class="indicator-label">Driven</div>
-      </div>
-      <div class="indicator">
-        <div class="indicator-number">Ethical</div>
-        <div class="indicator-label">Approach</div>
-      </div>
-      <div class="indicator">
-        <div class="indicator-number">Mission</div>
-        <div class="indicator-label">Aligned</div>
-      </div>
-    </div>
+    {/if}
   </div>
 </section>
 
 <style>
-  .why-choose {
-    padding: 120px 0;
+  .why-choose-us {
+    padding: 100px 0;
+    background: #fafafa;
   }
 
   .container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 24px;
+    padding: 0 2rem;
   }
 
   .section-header {
     text-align: center;
-    margin-bottom: 64px;
-  }
-
-  .section-badge {
-    display: inline-block;
-    background: rgba(255, 255, 255, 0.1);
-    padding: 8px 16px;
-    border-radius: 100px;
-    margin-bottom: 24px;
-    font-size: 14px;
-    font-weight: 500;
-    color: #fff;
+    margin-bottom: 4rem;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   h2 {
-    font-size: 48px;
+    font-size: clamp(2rem, 4vw, 3rem);
     font-weight: 700;
-    margin-bottom: 24px;
-    color: #fff;
+    margin-bottom: 1.5rem;
+    color: #0a0a0a;
   }
 
   .section-header p {
-    font-size: 18px;
-    color: rgba(255, 255, 255, 0.7);
-    max-width: 600px;
-    margin: 0 auto;
+    font-size: 1.125rem;
+    line-height: 1.7;
+    color: #666;
   }
 
-  .features-grid {
+  .benefits-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 32px;
-    margin-bottom: 64px;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 2rem;
   }
 
-  .feature-card {
-    background: rgba(255, 255, 255, 0.05);
-    padding: 32px;
-    border-radius: 24px;
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+  .benefit-card {
+    padding: 2.5rem;
+    background: white;
+    border-radius: 16px;
+    border: 1px solid #e5e5e5;
     transition: all 0.3s ease;
   }
 
-  .feature-card:hover {
-    transform: translateY(-8px);
-    background: rgba(255, 255, 255, 0.08);
-    border-color: rgba(255, 255, 255, 0.2);
+  .benefit-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    border-color: #d0d0d0;
   }
 
-  .feature-icon {
+  .benefit-icon {
     width: 64px;
     height: 64px;
-    background: rgba(255, 255, 255, 0.08);
-    border-radius: 16px;
+    background: #f5f5f5;
+    border-radius: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 24px;
-    color: #fff;
+    margin-bottom: 1.5rem;
+    color: #0a0a0a;
   }
 
-  .feature-card h3 {
-    font-size: 24px;
+  .benefit-card h3 {
+    font-size: 1.25rem;
     font-weight: 600;
-    margin-bottom: 16px;
-    color: #fff;
+    margin-bottom: 1rem;
+    color: #0a0a0a;
   }
 
-  .feature-card p {
-    font-size: 16px;
-    color: rgba(255, 255, 255, 0.7);
-    margin-bottom: 24px;
+  .benefit-card p {
+    font-size: 1rem;
     line-height: 1.6;
-  }
-
-  .feature-highlight {
-    display: inline-block;
-    background: rgba(255, 255, 255, 0.08);
-    padding: 6px 12px;
-    border-radius: 100px;
-    font-size: 12px;
-    font-weight: 500;
-    color: rgba(255, 255, 255, 0.8);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-  }
-
-  /* Trust Indicators */
-  .trust-indicators {
-    display: flex;
-    justify-content: center;
-    gap: 48px;
-    flex-wrap: wrap;
-  }
-
-  .indicator {
-    text-align: center;
-  }
-
-  .indicator-number {
-    font-size: 32px;
-    font-weight: 700;
-    color: #fff;
-    background: linear-gradient(135deg, #fff 0%, rgba(255, 255, 255, 0.6) 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    margin-bottom: 8px;
-  }
-
-  .indicator-label {
-    font-size: 14px;
-    color: rgba(255, 255, 255, 0.6);
-    font-weight: 500;
-  }
-
-  /* Responsive Design */
-  @media (max-width: 1024px) {
-    h2 {
-      font-size: 36px;
-    }
-
-    .features-grid {
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    }
-
-    .trust-indicators {
-      gap: 32px;
-    }
+    color: #666;
   }
 
   @media (max-width: 768px) {
-    .why-choose {
-      padding: 80px 0;
+    .why-choose-us {
+      padding: 60px 0;
     }
 
-    h2 {
-      font-size: 28px;
-    }
-
-    .features-grid {
-      grid-template-columns: 1fr;
-    }
-
-    .trust-indicators {
-      gap: 24px;
-    }
-
-    .indicator-number {
-      font-size: 24px;
-    }
-  }
-
-  @media (max-width: 480px) {
     .container {
-      padding: 0 16px;
+      padding: 0 1.5rem;
     }
 
-    h2 {
-      font-size: 24px;
+    .section-header {
+      margin-bottom: 3rem;
     }
 
-    .feature-card {
-      padding: 24px;
+    .benefits-grid {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
     }
 
-    .trust-indicators {
-      gap: 16px;
-    }
-
-    .indicator-number {
-      font-size: 20px;
+    .benefit-card {
+      padding: 2rem;
     }
   }
-</style> 
+</style>

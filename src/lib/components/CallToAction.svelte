@@ -2,10 +2,10 @@
   import { onMount } from 'svelte';
 
   const ctaButtons = [
-    { text: 'Start a Project', primary: true },
-    { text: 'Join Our Research', primary: false },
-    { text: 'Partner with Us', primary: true },
-    { text: 'Explore Open Source', primary: false }
+    { text: 'Start a Project', primary: true, href: '/join-us' },
+    { text: 'Join Our Research', primary: false, href: '/research' },
+    { text: 'Partner with Us', primary: true, href: '/join-us' },
+    { text: 'Explore Open Source', primary: false, href: '/#solutions' }
   ];
 
   let visible = false;
@@ -21,7 +21,7 @@
 
   function handleSubmit() {
     // Form submission logic here
-    console.log('Form submitted:', formData);
+    // TODO: Implement form submission
   }
 </script>
 
@@ -35,14 +35,15 @@
 
     <div class="cta-grid">
       {#each ctaButtons as button, i}
-        <button 
+        <a 
+          href={button.href}
           class="cta-button" 
           class:primary={button.primary}
           style="animation-delay: {i * 0.1}s"
         >
           {button.text}
           <div class="button-shine"></div>
-        </button>
+        </a>
       {/each}
     </div>
 
@@ -71,10 +72,10 @@
             required
           ></textarea>
         </div>
-        <button type="submit" class="submit-button primary">
+        <a href="/join-us" class="submit-button primary">
           Send Message
           <div class="button-shine"></div>
-        </button>
+        </a>
       </form>
     </div>
   </div>
@@ -139,6 +140,9 @@
     overflow: hidden;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     animation: fadeIn 0.5s ease backwards;
+    text-decoration: none;
+    display: block;
+    text-align: center;
   }
 
   .cta-button.primary {
@@ -224,6 +228,9 @@
     position: relative;
     overflow: hidden;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-decoration: none;
+    display: block;
+    text-align: center;
   }
 
   .submit-button:hover {

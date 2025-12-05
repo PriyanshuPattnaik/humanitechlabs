@@ -1,0 +1,31 @@
+# Dependencies
+node_modules
+
+# Build outputs
+.svelte-kit
+build
+
+# Development files
+.vscode
+.zencoder
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Misc
+*.stackdump
+fixJson.js
+generateResearchData.js
+humanitech/

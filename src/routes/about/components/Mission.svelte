@@ -1,531 +1,618 @@
 <script lang="ts">
-    import { onMount } from 'svelte';
-    
-    let showMission = false;
-    let showVision = false;
-    let showValues = false;
-    let mounted = false;
-    
-    // Intersection Observer for scroll animations
-    let missionRef: HTMLElement;
-    let visionRef: HTMLElement;
-    let valuesRef: HTMLElement;
-    
-    onMount(() => {
-        mounted = true;
-        
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    if (entry.target === missionRef) {
-                        setTimeout(() => showMission = true, 200);
-                    } else if (entry.target === visionRef) {
-                        setTimeout(() => showVision = true, 400);
-                    } else if (entry.target === valuesRef) {
-                        setTimeout(() => showValues = true, 600);
-                    }
-                }
-            });
-        }, { threshold: 0.2 });
-        
-        if (missionRef) observer.observe(missionRef);
-        if (visionRef) observer.observe(visionRef);
-        if (valuesRef) observer.observe(valuesRef);
-        
-        return () => observer.disconnect();
-    });
+  import { onMount } from 'svelte';
+  import { Target, Eye, Sparkles, Code2, Heart, Zap } from 'lucide-svelte';
+  
+  let mounted = false;
+  let activeCard = 0;
+  
+  onMount(() => {
+    mounted = true;
+  });
+
+  function setActive(index: number) {
+    activeCard = index;
+  }
 </script>
 
-<section class="mission-vision" id="mission">
-    <!-- Animated Background Elements -->
-    <div class="bg-elements">
-        <div class="floating-orb orb-1"></div>
-        <div class="floating-orb orb-2"></div>
-        <div class="floating-orb orb-3"></div>
-        <div class="grid-overlay"></div>
+<section class="mission-section" id="mission">
+  <!-- Animated Background -->
+  <div class="bg-animation">
+    <div class="gradient-orb orb-1"></div>
+    <div class="gradient-orb orb-2"></div>
+    <div class="gradient-orb orb-3"></div>
+    <div class="grid-overlay"></div>
+  </div>
+
+  <div class="container">
+    <!-- Mission & Vision - Overlapping Cards -->
+    <div class="mv-container" class:visible={mounted}>
+      <div class="mv-cards">
+        <!-- Mission Card -->
+        <div 
+          class="mv-card mission-card" 
+          class:active={activeCard === 0}
+          on:mouseenter={() => setActive(0)}
+          on:focus={() => setActive(0)}
+          role="button"
+          tabindex="0"
+        >
+          <div class="card-bg"></div>
+          <div class="card-shine"></div>
+          
+          <div class="card-header">
+            <div class="icon-box">
+              <Target size={40} strokeWidth={1.5} />
+            </div>
+            <div class="card-label">01</div>
+          </div>
+          
+          <h2 class="card-title">Our Mission</h2>
+          <p class="card-text">
+            To build technology that bridges gaps—between communities and opportunities, 
+            problems and solutions, today's challenges and tomorrow's possibilities.
+          </p>
+          
+          <div class="card-footer">
+            <div class="footer-line"></div>
+            <span class="footer-text">Empowering Through Innovation</span>
+          </div>
+        </div>
+
+        <!-- Vision Card -->
+        <div 
+          class="mv-card vision-card" 
+          class:active={activeCard === 1}
+          on:mouseenter={() => setActive(1)}
+          on:focus={() => setActive(1)}
+          role="button"
+          tabindex="0"
+        >
+          <div class="card-bg"></div>
+          <div class="card-shine"></div>
+          
+          <div class="card-header">
+            <div class="icon-box">
+              <Eye size={40} strokeWidth={1.5} />
+            </div>
+            <div class="card-label">02</div>
+          </div>
+          
+          <h2 class="card-title">Our Vision</h2>
+          <p class="card-text">
+            A world where technology feels accessible and human. Where innovation 
+            serves everyone, not just the privileged few. Where breakthroughs are kinder.
+          </p>
+          
+          <div class="card-footer">
+            <div class="footer-line"></div>
+            <span class="footer-text">Technology for Humanity</span>
+          </div>
+        </div>
+      </div>
     </div>
-    
-    <div class="container">
-        <!-- Mission Block -->
-        <div class="content-block mission-block" bind:this={missionRef}>
-            <div class="block-inner" class:visible={showMission}>
-                <div class="icon-wrapper">
-                    <div class="mission-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                        </svg>
-                    </div>
-                </div>
-                <h2 class="section-title">Our Mission</h2>
-                <p class="section-description">To harness the transformative power of technology as a bridge—connecting communities to opportunities, problems to solutions, and today's challenges to tomorrow's possibilities. We don't just build products; we build pathways to a more equitable, sustainable, and hopeful future.</p>
-                <div class="glow-line"></div>
-            </div>
+
+    <!-- Values - Modern Grid -->
+    <div class="values-container" class:visible={mounted}>
+      <div class="values-header">
+        <div class="header-icon">
+          <Sparkles size={28} />
         </div>
-        
-        <!-- Vision Block -->
-        <div class="content-block vision-block" bind:this={visionRef}>
-            <div class="block-inner" class:visible={showVision}>
-                <div class="icon-wrapper">
-                    <div class="vision-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
-                            <path d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
-                        </svg>
-                    </div>
-                </div>
-                <h2 class="section-title">Our Vision</h2>
-                <p class="section-description">A world where technology feels inherently human—where innovation serves every community, where digital solutions heal rather than divide, and where the next breakthrough isn't just smarter, but kinder.</p>
-                <div class="glow-line"></div>
-            </div>
+        <h2 class="values-title">What We Stand For</h2>
+        <p class="values-subtitle">Core principles driving our innovation</p>
+      </div>
+
+      <div class="values-grid">
+        <div class="value-card">
+          <div class="value-number">01</div>
+          <div class="value-icon">
+            <Heart size={32} strokeWidth={1.5} />
+          </div>
+          <h3 class="value-title">Human-First</h3>
+          <p class="value-desc">Technology that amplifies human potential, not replaces it</p>
+          <div class="value-glow"></div>
         </div>
-        
-        <!-- Values Grid -->
-        <div class="values-section" bind:this={valuesRef}>
-            <div class="values-header" class:visible={showValues}>
-                <h3 class="values-title">Core Values</h3>
-                <div class="values-subtitle">The principles that guide our innovation</div>
-            </div>
-            
-            <div class="values-grid" class:visible={showValues}>
-                <div class="value-card" style="--delay: 0.1s">
-                    <div class="card-glow"></div>
-                    <div class="value-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
-                        </svg>
-                    </div>
-                    <h4>Human-First Innovation</h4>
-                    <p>Technology that amplifies human potential</p>
-                </div>
-                
-                <div class="value-card" style="--delay: 0.2s">
-                    <div class="card-glow"></div>
-                    <div class="value-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
-                        </svg>
-                    </div>
-                    <h4>Sustainable Impact</h4>
-                    <p>Building for the long-term future</p>
-                </div>
-                
-                <div class="value-card" style="--delay: 0.3s">
-                    <div class="card-glow"></div>
-                    <div class="value-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <path d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
-                        </svg>
-                    </div>
-                    <h4>Open Source Everything</h4>
-                    <p>Transparency and collaboration first</p>
-                </div>
-                
-                <div class="value-card" style="--delay: 0.4s">
-                    <div class="card-glow"></div>
-                    <div class="value-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <path d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3"/>
-                        </svg>
-                    </div>
-                    <h4>Ethical Technology</h4>
-                    <p>Responsible innovation for all</p>
-                </div>
-                
-                <div class="value-card" style="--delay: 0.5s">
-                    <div class="card-glow"></div>
-                    <div class="value-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <path d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/>
-                        </svg>
-                    </div>
-                    <h4>Community Growth</h4>
-                    <p>Nurturing ecosystems of innovation</p>
-                </div>
-            </div>
+
+        <div class="value-card">
+          <div class="value-number">02</div>
+          <div class="value-icon">
+            <Code2 size={32} strokeWidth={1.5} />
+          </div>
+          <h3 class="value-title">Open Source</h3>
+          <p class="value-desc">Transparency and collaboration in everything we build</p>
+          <div class="value-glow"></div>
         </div>
+
+        <div class="value-card">
+          <div class="value-number">03</div>
+          <div class="value-icon">
+            <Zap size={32} strokeWidth={1.5} />
+          </div>
+          <h3 class="value-title">Impact Driven</h3>
+          <p class="value-desc">Real solutions for real problems, no buzzwords</p>
+          <div class="value-glow"></div>
+        </div>
+
+        <div class="value-card">
+          <div class="value-number">04</div>
+          <div class="value-icon">
+            <Sparkles size={32} strokeWidth={1.5} />
+          </div>
+          <h3 class="value-title">Community Built</h3>
+          <p class="value-desc">Building with people, not just for them</p>
+          <div class="value-glow"></div>
+        </div>
+      </div>
     </div>
+  </div>
 </section>
 
 <style>
-    .mission-vision {
-        position: relative;
-        background: linear-gradient(135deg, 
-            rgba(0, 0, 0, 0.95) 0%, 
-            rgba(10, 10, 10, 0.9) 50%, 
-            rgba(0, 0, 0, 0.95) 100%);
-        border-top: 1px solid rgba(255, 255, 255, 0.1);
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        padding: 120px 0;
-        overflow: hidden;
-        color: white;
+  .mission-section {
+    position: relative;
+    min-height: 100vh;
+    padding: 10rem 0;
+    background: #000000;
+    overflow: hidden;
+  }
+
+  /* Animated Background */
+  .bg-animation {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  .gradient-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(120px);
+    opacity: 0.15;
+    animation: float-orb 20s ease-in-out infinite;
+  }
+
+  .orb-1 {
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(99, 102, 241, 0.4) 0%, transparent 70%);
+    top: -200px;
+    right: -200px;
+    animation-delay: 0s;
+  }
+
+  .orb-2 {
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(168, 85, 247, 0.3) 0%, transparent 70%);
+    bottom: -150px;
+    left: -150px;
+    animation-delay: 7s;
+  }
+
+  .orb-3 {
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(59, 130, 246, 0.3) 0%, transparent 70%);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation-delay: 14s;
+  }
+
+  @keyframes float-orb {
+    0%, 100% {
+      transform: translate(0, 0) scale(1);
     }
-    
-    /* Animated Background Elements */
-    .bg-elements {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        pointer-events: none;
+    33% {
+      transform: translate(50px, -50px) scale(1.1);
     }
-    
-    .floating-orb {
-        position: absolute;
-        border-radius: 50%;
-        background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
-        animation: float 8s ease-in-out infinite;
+    66% {
+      transform: translate(-50px, 50px) scale(0.9);
     }
-    
-    .orb-1 {
-        width: 200px;
-        height: 200px;
-        top: 10%;
-        left: 10%;
-        animation-delay: 0s;
-    }
-    
-    .orb-2 {
-        width: 150px;
-        height: 150px;
-        top: 60%;
-        right: 15%;
-        animation-delay: -3s;
-    }
-    
-    .orb-3 {
-        width: 100px;
-        height: 100px;
-        bottom: 20%;
-        left: 70%;
-        animation-delay: -6s;
-    }
-    
-    @keyframes float {
-        0%, 100% { transform: translateY(0px) rotate(0deg); }
-        33% { transform: translateY(-20px) rotate(120deg); }
-        66% { transform: translateY(10px) rotate(240deg); }
-    }
-    
-    .grid-overlay {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-image: 
-            linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-            linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px);
-        background-size: 50px 50px;
-        animation: grid-move 20s linear infinite;
-    }
-    
-    @keyframes grid-move {
-        0% { transform: translate(0, 0); }
-        100% { transform: translate(50px, 50px); }
-    }
-    
-    .container {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 20px;
-        position: relative;
-        z-index: 1;
-    }
-    
-    /* Content Blocks */
-    .content-block {
-        margin-bottom: 80px;
-        perspective: 1000px;
-    }
-    
-    .block-inner {
-        max-width: 800px;
-        margin: 0 auto;
-        text-align: center;
-        padding: 60px 40px;
-        background: rgba(255, 255, 255, 0.05);
-        backdrop-filter: blur(20px);
-        border: 1px solid rgba(255, 255, 255, 0.15);
-        border-radius: 24px;
-        position: relative;
-        transform: translateY(60px) rotateX(15deg);
-        opacity: 0;
-        transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    }
-    
-    .block-inner.visible {
-        transform: translateY(0) rotateX(0deg);
-        opacity: 1;
-    }
-    
-    .block-inner::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: linear-gradient(135deg, 
-            rgba(255, 255, 255, 0.1) 0%, 
-            rgba(255, 255, 255, 0.05) 50%, 
-            rgba(255, 255, 255, 0.1) 100%);
-        border-radius: 24px;
-        z-index: -1;
-    }
-    
-    .icon-wrapper {
-        margin-bottom: 30px;
-    }
-    
-    .mission-icon, .vision-icon {
-        width: 80px;
-        height: 80px;
-        margin: 0 auto;
-        background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1));
-        border: 2px solid rgba(255, 255, 255, 0.3);
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        position: relative;
-        overflow: hidden;
-    }
-    
-    .mission-icon::before, .vision-icon::before {
-        content: '';
-        position: absolute;
-        top: -50%;
-        left: -50%;
-        width: 200%;
-        height: 200%;
-        background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-        transform: rotate(45deg);
-        animation: shine 3s ease-in-out infinite;
-    }
-    
-    @keyframes shine {
-        0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
-        50% { transform: translateX(100%) translateY(100%) rotate(45deg); }
-        100% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
-    }
-    
-    .mission-icon svg, .vision-icon svg {
-        width: 40px;
-        height: 40px;
-        color: white;
-        z-index: 1;
-    }
-    
-    .section-title {
-        font-size: 3rem;
-        font-weight: 700;
-        margin-bottom: 30px;
-        background: linear-gradient(135deg, #ffffff, #cccccc);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
-    }
-    
-    .section-description {
-        font-size: 1.25rem;
-        line-height: 1.8;
-        color: rgba(255, 255, 255, 0.9);
-        margin-bottom: 40px;
-    }
-    
-    .glow-line {
-        width: 100px;
-        height: 2px;
-        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.8), transparent);
-        margin: 0 auto;
-        position: relative;
-    }
-    
-    .glow-line::after {
-        content: '';
-        position: absolute;
-        top: -1px;
-        left: 0;
-        right: 0;
-        height: 4px;
-        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
-        filter: blur(2px);
-    }
-    
-    /* Values Section */
-    .values-section {
-        margin-top: 120px;
-    }
-    
-    .values-header {
-        text-align: center;
-        margin-bottom: 60px;
-        transform: translateY(30px);
-        opacity: 0;
-        transition: all 0.8s ease-out;
-    }
-    
-    .values-header.visible {
-        transform: translateY(0);
-        opacity: 1;
-    }
-    
-    .values-title {
-        font-size: 2.5rem;
-        font-weight: 600;
-        margin-bottom: 15px;
-        background: linear-gradient(135deg, #ffffff, #999999);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-    }
-    
-    .values-subtitle {
-        font-size: 1.1rem;
-        color: rgba(255, 255, 255, 0.7);
-    }
-    
+  }
+
+  .grid-overlay {
+    position: absolute;
+    inset: 0;
+    background-image: 
+      linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+    background-size: 50px 50px;
+    mask-image: radial-gradient(ellipse at center, black 0%, transparent 80%);
+  }
+
+  .container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Mission & Vision Cards */
+  .mv-container {
+    margin-bottom: 12rem;
+    opacity: 0;
+    transform: translateY(60px);
+    transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .mv-container.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .mv-cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .mv-card {
+    position: relative;
+    padding: 4rem;
+    min-height: 550px;
+    border-radius: 32px;
+    cursor: pointer;
+    transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .card-bg {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 32px;
+    transition: all 0.6s ease;
+  }
+
+  .mv-card.active .card-bg {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.03) 100%);
+    border-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 
+      0 20px 60px rgba(0, 0, 0, 0.5),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  }
+
+  .mv-card.active {
+    transform: translateY(-20px) scale(1.02);
+  }
+
+  .card-shine {
+    position: absolute;
+    inset: 0;
+    border-radius: 32px;
+    background: linear-gradient(
+      135deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0.05) 50%,
+      transparent 100%
+    );
+    opacity: 0;
+    transition: opacity 0.6s ease;
+  }
+
+  .mv-card.active .card-shine {
+    opacity: 1;
+  }
+
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 3rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .icon-box {
+    width: 80px;
+    height: 80px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    transition: all 0.4s ease;
+  }
+
+  .mv-card.active .icon-box {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.2);
+    transform: scale(1.1);
+  }
+
+  .card-label {
+    font-size: 5rem;
+    font-weight: 900;
+    color: rgba(255, 255, 255, 0.03);
+    line-height: 1;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .card-title {
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: #ffffff;
+    margin-bottom: 2rem;
+    letter-spacing: -0.03em;
+    position: relative;
+    z-index: 1;
+  }
+
+  .card-text {
+    font-size: 1.3rem;
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.75);
+    flex: 1;
+    position: relative;
+    z-index: 1;
+  }
+
+  .mv-card.active .card-text {
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  .card-footer {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 3rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .footer-line {
+    width: 60px;
+    height: 2px;
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.5), transparent);
+    transition: width 0.4s ease;
+  }
+
+  .mv-card.active .footer-line {
+    width: 100px;
+  }
+
+  .footer-text {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.6);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  /* Values Section */
+  .values-container {
+    opacity: 0;
+    transform: translateY(60px);
+    transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.3s;
+  }
+
+  .values-container.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .values-header {
+    text-align: center;
+    margin-bottom: 5rem;
+  }
+
+  .header-icon {
+    display: inline-flex;
+    width: 64px;
+    height: 64px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    margin-bottom: 2rem;
+  }
+
+  .values-title {
+    font-size: 4rem;
+    font-weight: 800;
+    color: #ffffff;
+    margin-bottom: 1rem;
+    letter-spacing: -0.03em;
+  }
+
+  .values-subtitle {
+    font-size: 1.3rem;
+    color: rgba(255, 255, 255, 0.6);
+  }
+
+  .values-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+  }
+
+  .value-card {
+    position: relative;
+    padding: 3rem 2rem;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 24px;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    overflow: hidden;
+  }
+
+  .value-card:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.15);
+    transform: translateY(-12px);
+  }
+
+  .value-number {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    font-size: 3rem;
+    font-weight: 900;
+    color: rgba(255, 255, 255, 0.03);
+    font-family: 'JetBrains Mono', monospace;
+    line-height: 1;
+  }
+
+  .value-icon {
+    width: 72px;
+    height: 72px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    margin-bottom: 2rem;
+    transition: all 0.3s ease;
+  }
+
+  .value-card:hover .value-icon {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.2);
+    transform: scale(1.1) rotate(5deg);
+  }
+
+  .value-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 1rem;
+  }
+
+  .value-desc {
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.7);
+    margin: 0;
+  }
+
+  .value-glow {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+      circle at 50% 0%,
+      rgba(255, 255, 255, 0.1) 0%,
+      transparent 60%
+    );
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+
+  .value-card:hover .value-glow {
+    opacity: 1;
+  }
+
+  @media (max-width: 1200px) {
     .values-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 30px;
-        opacity: 0;
-        transition: opacity 1s ease-out 0.3s;
+      grid-template-columns: repeat(2, 1fr);
     }
-    
-    .values-grid.visible {
-        opacity: 1;
+  }
+
+  @media (max-width: 968px) {
+    .mission-section {
+      padding: 6rem 0;
     }
-    
+
+    .mv-cards {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .mv-card {
+      padding: 3rem 2rem;
+      min-height: 450px;
+    }
+
+    .card-title {
+      font-size: 2.5rem;
+    }
+
+    .card-text {
+      font-size: 1.15rem;
+    }
+
+    .values-title {
+      font-size: 3rem;
+    }
+
+    .values-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .mission-section {
+      padding: 5rem 0;
+    }
+
+    .container {
+      padding: 0 1.5rem;
+    }
+
+    .mv-container {
+      margin-bottom: 8rem;
+    }
+
+    .mv-card {
+      padding: 2.5rem 2rem;
+      min-height: 400px;
+    }
+
+    .icon-box {
+      width: 64px;
+      height: 64px;
+    }
+
+    .card-label {
+      font-size: 3.5rem;
+    }
+
+    .card-title {
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .card-text {
+      font-size: 1.05rem;
+    }
+
+    .values-header {
+      margin-bottom: 3rem;
+    }
+
+    .values-title {
+      font-size: 2.5rem;
+    }
+
+    .values-subtitle {
+      font-size: 1.1rem;
+    }
+
     .value-card {
-        background: rgba(255, 255, 255, 0.05);
-        backdrop-filter: blur(10px);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        border-radius: 20px;
-        padding: 40px 30px;
-        text-align: center;
-        position: relative;
-        overflow: hidden;
-        transform: translateY(40px) scale(0.9);
-        opacity: 0;
-        transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        transition-delay: var(--delay, 0s);
+      padding: 2.5rem 2rem;
     }
-    
-    .values-grid.visible .value-card {
-        transform: translateY(0) scale(1);
-        opacity: 1;
-    }
-    
-    .value-card:hover {
-        transform: translateY(-10px) scale(1.05);
-        border-color: rgba(255, 255, 255, 0.3);
-    }
-    
-    .card-glow {
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: radial-gradient(circle at center, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
-        opacity: 0;
-        transition: opacity 0.3s ease;
-    }
-    
-    .value-card:hover .card-glow {
-        opacity: 1;
-    }
-    
+
     .value-icon {
-        width: 60px;
-        height: 60px;
-        margin: 0 auto 20px;
-        background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.05));
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        border-radius: 16px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: all 0.3s ease;
+      width: 64px;
+      height: 64px;
     }
-    
-    .value-card:hover .value-icon {
-        background: linear-gradient(135deg, rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0.15));
-        border-color: rgba(255, 255, 255, 0.4);
+
+    .value-title {
+      font-size: 1.3rem;
     }
-    
-    .value-icon svg {
-        width: 30px;
-        height: 30px;
-        color: white;
+
+    .value-desc {
+      font-size: 1rem;
     }
-    
-    .value-card h4 {
-        font-size: 1.3rem;
-        font-weight: 600;
-        margin-bottom: 15px;
-        color: white;
-    }
-    
-    .value-card p {
-        color: rgba(255, 255, 255, 0.8);
-        line-height: 1.6;
-    }
-    
-    /* Responsive Design */
-    @media (max-width: 768px) {
-        .mission-vision {
-            padding: 80px 0;
-        }
-        
-        .container {
-            padding: 0 15px;
-        }
-        
-        .block-inner {
-            padding: 40px 25px;
-        }
-        
-        .section-title {
-            font-size: 2.2rem;
-        }
-        
-        .section-description {
-            font-size: 1.1rem;
-        }
-        
-        .values-grid {
-            grid-template-columns: 1fr;
-            gap: 20px;
-        }
-        
-        .value-card {
-            padding: 30px 20px;
-        }
-        
-        .values-title {
-            font-size: 2rem;
-        }
-        
-        .orb-1, .orb-2, .orb-3 {
-            display: none;
-        }
-    }
-    
-    @media (max-width: 480px) {
-        .section-title {
-            font-size: 1.8rem;
-        }
-        
-        .section-description {
-            font-size: 1rem;
-        }
-        
-        .values-title {
-            font-size: 1.6rem;
-        }
-    }   
+  }
 </style>
